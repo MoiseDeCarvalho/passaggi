@@ -1,30 +1,41 @@
 <header>
 	<nav class="light-blue darken-4">
 		<div class="nav-wrapper">
-		  <%= link_to "Passaggi", root_path, class:"brand-logo"%>
-		  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-		  <ul class="right hide-on-med-and-down ul-header">
-		    <li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
-		    <li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
-		    <% if user_signed_in? %>
-		    	<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
+		  	<%= link_to "Passaggi", root_path, class:"brand-logo"%>
+		  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		  	<ul id="dropdown1" class="dropdown-content">
+		  		<li><%= link_to "Informazioni personali", profiles_path %></li>
+			  <li><a href="#!">preferenze</a></li>
+			  
+			  <li class="divider"></li>
+			  <li><a href="#!">three</a></li>
+		  	</ul>
+		    <ul class="right hide-on-med-and-down ul-header id="dropdown1" class="dropdown-content" >
+		     	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
+		      	<li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>    
+		      	 
+		      	<% if user_signed_in? %>
+		      		<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Profilo<i class="material-icons right">arrow_drop_down</i></a></li>
+		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
 		    	
-	    	<% else %>
-			    <li><%= link_to "Log in", new_user_session_path , :class=>"color-blank" %></li>
-			    <li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank" %></li>
-		    <% end %>
-		  </ul>
+	    	  	<% else %>
+			    	<li><%= link_to "Log in", new_user_session_path , :class=>"color-blank" %></li>
+			    	<li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank" %></li>
+		     	<% end %>
+		  	</ul>
 
-		  <ul class="sidenav id=mobile-demo">
-		  	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
-		    <li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
-		    <% if user_signed_in? %>
-		    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
-	    	<% else %>
-			    <li><%= link_to "Log in", new_user_session_path , :class=>"color-blank"%></li>
-			    <li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank"%></li>
-		    <% end %>
-		  </ul>
+			<ul class="sidenav id=mobile-demo">
+				<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
+			  	<li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
+			    <% if user_signed_in? %>
+			    	/i></a></li>
+			    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
+		    	<% else %>
+				    <li><%= link_to "Log in", new_user_session_path , :class=>"color-blank"%></li>
+				    <li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank"%></li>
+			    <% end %>
+			</ul>
+
 		</div>
 	</nav>
 </header>
