@@ -8,7 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     
 <%= csrf_meta_tags %>
 
@@ -32,7 +32,9 @@
   <script>
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, options);
+   // var instances = M.Sidenav.init(elems, options);
+    var dateP = document.querySelectorAll('.datepicker');
+    var instancesP = M.Datepicker.init(dateP, 'mmm dd, yyyy');
   });
 
   // Or with jQuery
@@ -40,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
+     $('.datepicker').datepicker();
+     $('.timepicker').timepicker();
   });
 
     

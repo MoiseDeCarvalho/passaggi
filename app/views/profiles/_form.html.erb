@@ -12,51 +12,56 @@
           </ul>
         </div>
       <% end %>
-
-      <div>
-        <div class="col l6 field">
-          <%=  image_tag @profile.avatar.url %>
-          <br/>
-          <%= form.label :avatar %>Seleziona l'immagine del profile
-          <br/>
-          <%= form.file_field :avatar %>
-        </div>
-
-        <div class="col l6 field">
-          <%= form.label :name %>
-          <%= form.text_field :name %>
-        </div >
-
-        <div class="col l6 field">
-          <%= form.label :surname %>
-          <%= form.text_field :surname %>
-        </div>
+       
+       
+      <div >
+        <%=  image_tag @profile.avatar.url %>
+        <br/>
+        <%= form.label :avatar %>Seleziona l'immagine del profile
+        <br/>
+        <%= form.file_field :avatar %>
       </div>
-      
-      <div>
-        <div class="col l6 field">
-          <%= form.label :address %>
-          <%= form.text_field :address %>
-        </div>
 
-        <div class="col l6 field">
-          <%= form.label :city %>
-          <%= form.text_field :city %>
-        </div>
+      <br/>
+
+      <div class="col l6  field">
+        <%= form.label :Nome %>
+        <%= form.text_field :name %>
+      </div >
+
+      <div class="col l6 field">
+        <%= form.label :Cognome %>
+        <%= form.text_field :surname %>
       </div>
-      
-      <div class="field">
-        <%= form.label :mobile %>
+            
+      <div class="col l6 field">
+        <%= form.label :Cellulare %>
         <%= form.text_field :mobile %>
       </div>
 
+      <div class="col l6 field">
+        <%= form.label :Data_di_nascita %>
+        <input type="text" class="datepicker">
+
+      </div>
+      
+      <div class="col l6 field">
+        <%= form.label :indirizzo %>
+        <%= form.text_field :address %>
+      </div>
+
+      <div class="col l6 field">
+        <%= form.label :Città %>
+        <%= form.text_field :city %>
+      </div> 
+
       <div class="field">
-        <%= form.label :description %>
+        <%= form.label :Descrizione_Personale %>
         <%= form.text_area :description %>
       </div>
 
       <div class="actions">
-        <%= form.submit class:"waves-effect waves-light btn btn-devise" %>
+        <%= form.submit "salva", class:"waves-effect waves-light btn btn-devise" %>
       </div>
     <% end %>
   </div>  
