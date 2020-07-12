@@ -33,8 +33,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 1.0.0'
 gem 'devise' 
+gem "paperclip", "~> 6.0.0"
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

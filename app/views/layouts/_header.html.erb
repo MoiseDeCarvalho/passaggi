@@ -1,27 +1,32 @@
-<header class="navbar-fixed">
+<header>
 	<nav class="light-blue darken-4">
-		<div class="container nav-wrapper">
-		  <%= link_to "Cerco offro passaggio", root_path, class:"brand-logo"%>
-      	  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-		  <ul class="right hide-on-med-and-down">
-	  		<li><%= link_to "Trova", search_path %></li>
+		<div class="nav-wrapper">
+		  <%= link_to "Passaggi", root_path, class:"brand-logo"%>
+		  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		  <ul class="right hide-on-med-and-down ul-header">
+		    <li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
+		    <li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
 		    <% if user_signed_in? %>
-		    	<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }%></li>
+		    	<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
+		    	
 	    	<% else %>
-			    <li><%= link_to "Log in", new_user_session_path %></li>
-			    <li><%= link_to "Registrazione", new_user_registration_path %></li>
+			    <li><%= link_to "Log in", new_user_session_path , :class=>"color-blank" %></li>
+			    <li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank" %></li>
 		    <% end %>
 		  </ul>
+
 		  <ul class="sidenav id=mobile-demo">
-		  	<li><%= link_to "Trova", search_path %></li>
+		  	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
+		    <li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
 		    <% if user_signed_in? %>
-		    	<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }%></li>
+		    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
 	    	<% else %>
-			    <li><%= link_to "Log in", new_user_session_path %></li>
-			    <li><%= link_to "Registrazione", new_user_registration_path %></li>
+			    <li><%= link_to "Log in", new_user_session_path , :class=>"color-blank"%></li>
+			    <li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank"%></li>
 		    <% end %>
 		  </ul>
 		</div>
 	</nav>
-	
-</header>		
+</header>
+
+, :class=>"color-blank"%>

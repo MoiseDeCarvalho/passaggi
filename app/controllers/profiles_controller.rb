@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = current_user.profile.build
+    @profile = current_user.build_profile
   end
 
   # GET /profiles/1/edit
@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-    @profile = current_user.profile.build(profile_params)
+    @profile = current_user.build_profile(profile_params)
 
     respond_to do |format|
       if @profile.save
@@ -68,12 +68,12 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:name, :surname, :address, :city, :mobile, :description)
+      params.require(:profile).permit(:name, :surname, :address, :city, :mobile, :description, :avatar)
     end
 
     #checko l'utente per le modifiche cancellazioni
     def check_user
-      if current_user != @content.user
+      if current_user != @profile.user
         redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
       end
     end

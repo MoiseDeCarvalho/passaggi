@@ -21,14 +21,37 @@ body {
     flex-direction: column;
   }
 
-  h1 {
+h1 {
     font-size: 3em;
-  }
+   }
 
-  main {
+main {
     flex: 1 0 auto;
-  }
+   }
 
-  .btn-devise {
+.btn-devise {
     width: 100%;
   }
+
+.show-img {
+  padding-right: 5%;
+}
+
+.show-titolo {
+  margin-top: 0px;
+  font-size: 3.4em;
+}
+
+.btn-form {
+  width: 100%;
+}
+
+.ul-header {
+  line-height :64px
+}
+.color-blank {
+  color: #ffffff;
+}
+a:visited{
+  color:#ffffff;
+}

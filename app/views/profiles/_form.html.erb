@@ -1,47 +1,64 @@
-<%= form_with(model: profile, local: true) do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+ <div class="row">
+  <div class="col l6 offset-l3">
+    <%= form_with model: @profile, local: true  , html: { multipart: true } do |form| %>
+      <% if profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-        <% profile.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+      <div>
+        <div class="col l6 field">
+          <%=  image_tag @profile.avatar.url %>
+          <br/>
+          <%= form.label :avatar %>Seleziona l'immagine del profile
+          <br/>
+          <%= form.file_field :avatar %>
+        </div>
 
-  <div class="field">
-    <%= form.label :surname %>
-    <%= form.text_field :surname %>
-  </div>
+        <div class="col l6 field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div >
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+        <div class="col l6 field">
+          <%= form.label :surname %>
+          <%= form.text_field :surname %>
+        </div>
+      </div>
+      
+      <div>
+        <div class="col l6 field">
+          <%= form.label :address %>
+          <%= form.text_field :address %>
+        </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
+        <div class="col l6 field">
+          <%= form.label :city %>
+          <%= form.text_field :city %>
+        </div>
+      </div>
+      
+      <div class="field">
+        <%= form.label :mobile %>
+        <%= form.text_field :mobile %>
+      </div>
 
-  <div class="field">
-    <%= form.label :mobile %>
-    <%= form.text_field :mobile %>
-  </div>
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= form.submit class:"waves-effect waves-light btn btn-devise" %>
+      </div>
+    <% end %>
+  </div>  
+ </div>
+ 

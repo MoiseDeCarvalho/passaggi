@@ -1,34 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @profile.name %>
-</p>
+<div class="row">
+  <div class="col l6 offset-l3">
+    <div>
+        <div class="col l6 field">
+          <%=  image_tag @profile.avatar.url %>          
+        </div>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @profile.surname %>
-</p>
+        <div class="col l6 field">
+          <label>Nome</label>
+          <%= @profile.name %>
+        </div >
 
-<p>
-  <strong>Address:</strong>
-  <%= @profile.address %>
-</p>
+        <div class="col l6 field">
+          <label>Cognome</label>
+          <%= @profile.surname %>
+        </div>
+      </div>
+      
+      <div>
+        <div class="col l6 field">
+          <label>Indirizzo</label>
+          <%= @profile.address %>
+        </div>
 
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
+        <div class="col l6 field">
+          <label>Città</label>
+          <%= @profile.city %>
+        </div>
+      </div>
 
-<p>
-  <strong>Mobile:</strong>
-  <%= @profile.mobile %>
-</p>
+      <div class="col l6 field">
+        <label>Cellulare</label>
+        <%= @profile.mobile %>
+      </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @profile.description %>
-</p>
+      <div class="col l6 field">
+        <label>Descrizione</label>
+        <%= @profile.description %>
+      </div>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+
+  </div>
+    <%= link_to 'Edit', edit_profile_path(@profile) %> |
+    <%= link_to 'Back', profiles_path %>
+  </div>  
+</div>
+  
+
+
