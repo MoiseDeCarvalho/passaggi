@@ -13,7 +13,7 @@
 		    <ul class="right hide-on-med-and-down ul-header id="dropdown1" class="dropdown-content" >
 		     	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
 		      	<li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>    
-		      	 
+		      	<li><a style="color:#fff" href="/message"><i class="material-icons left">message</i>Messaggi</a></li> 
 		      	<% if user_signed_in? %>
 		      		<li><a class="dropdown-trigger" style="color:#fff"  href="#!" data-target="dropdown1">Profilo<i class="material-icons right">arrow_drop_down</i></a></li>
 		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
@@ -27,6 +27,7 @@
 			<ul class="sidenav id=mobile-demo">
 				<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
 			  	<li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
+			  	<li><a style="color:#fff" href="/message"><i class="material-icons left">message</i>Messaggi</a></li> 
 			    <% if user_signed_in? %>
 			    	/i></a></li>
 			    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>

@@ -1,5 +1,5 @@
- <div class="row">
-  <div class="col l6 offset-l3">
+  
+  
     <%= form_with model: @profile, local: true  , html: { multipart: true } do |form| %>
       <% if profile.errors.any? %>
         <div id="error_explanation">
@@ -14,7 +14,7 @@
       <% end %>
        
        
-      <div >
+      <div class="field">
         <%=  image_tag @profile.avatar.url %>
         <br/>
         <%= form.label :avatar %>Seleziona l'immagine del profile
@@ -64,6 +64,6 @@
         <%= form.submit "salva", class:"waves-effect waves-light btn btn-devise" %>
       </div>
     <% end %>
-  </div>  
- </div>
+ 
+ 
  
