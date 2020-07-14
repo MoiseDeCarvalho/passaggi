@@ -11,15 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
+ <div>
+   <div class="col l12">
+    <div class="field col l6">
+      <%= form.label :user_id %>
+    </div>
+  
+   
+    <div class="field col l6">
+      <%= form.number_field :user_id %>
+    </div>
+   
+ <script>$('input[type="checkbox"]').css("visibility","visible");</script>
 
-  <div class="field">
-    <%= form.label :conversation %>
-    <%= form.check_box :conversation %>
-  </div>
+<div class="col l6">
+  <%= form.check_box(:cuteness, {}, true, false) %>
+<label for="cuteness">Is this kitten exceptionally cute? </label>
+
+</div>
+ <div class="col l6 field">
+      <%= form.check_box :conversation, class:'ndeterminate-checkbox', allow_label_click: true %>
+    </div>
+    <div class="col l6 field">
+      <%= form.label :conversation %>
+    </div>
+   
+   
+    
+   </div>
+
+   
 
   <div class="field">
     <%= form.label :smoke %>
