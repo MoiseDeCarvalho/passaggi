@@ -1,0 +1,63 @@
+<%= form_with(model: preference, local: true) do |form| %>
+  <% if preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+
+      <ul>
+        <% preference.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div>
+   <div class="col l12">
+    <div class="field col l6">
+      <%= form.label :user_id %>
+    </div>
+  
+   
+    <div class="field col l6">
+      <%= form.number_field :user_id %>
+    </div>
+   
+ <script>$('input[type="checkbox"]').css("visibility","visible");</script>
+
+<div class="col l6">
+  <%= form.check_box(:cuteness, {}, true, false) %>
+<label for="cuteness">Is this kitten exceptionally cute? </label>
+
+</div>
+ <div class="col l6 field">
+      <%= form.check_box :conversation, class:'ndeterminate-checkbox', allow_label_click: true %>
+    </div>
+    <div class="col l6 field">
+      <%= form.label :conversation %>
+    </div>
+   
+   
+    
+   </div>
+
+   
+
+  <div class="field">
+    <%= form.label :smoke %>
+    <%= form.check_box :smoke %>
+  </div>
+
+  <div class="field">
+    <%= form.label :animal %>
+    <%= form.check_box :animal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :music %>
+    <%= form.check_box :music %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

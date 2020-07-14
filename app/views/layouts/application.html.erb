@@ -5,8 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>   
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    
+<%= csrf_meta_tags %>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
@@ -21,25 +25,27 @@
 
     </main>
       <%= render "layouts/footer" %>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
      
-  </body>
+   
   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.sidenav');
-      var instances = M.Sidenav.init(elems, options);
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+   // var instances = M.Sidenav.init(elems, options);
+    var dateP = document.querySelectorAll('.datepicker');
+    var instancesP = M.Datepicker.init(dateP, 'mmm dd, yyyy');
+  });
 
-    // Or with jQuery
+  // Or with jQuery
 
-      $(document).ready(function(){
-        $('.sidenav').sidenav();
-      });  
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $(".dropdown-trigger").dropdown();
+     $('.datepicker').datepicker();
+     $('.timepicker').timepicker();
+  });
 
-      
-
-    // Or with jQuery
-
-    $('.dropdown-trigger').dropdown();
+    
     </script>
 </html>

@@ -36,6 +36,7 @@ end
 gem 'materialize-sass', '~> 1.0.0'
 gem 'devise' 
 gem "paperclip", "~> 6.0.0"
+gem 'jquery-rails', '~> 4.4'
  
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

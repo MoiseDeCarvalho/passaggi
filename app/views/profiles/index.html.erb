@@ -3,7 +3,7 @@
 <div class="row">   
   <% @profiles.each do |profile| %>
     <% if profile.user == current_user %>
-      <div class="col l12">
+      <div class="col l6">
         <div class="col l5 center">        
           <%= image_tag profile.avatar.url, class: "activator" %> 
         </div>
