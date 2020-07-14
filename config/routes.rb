@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'search' => 'pages#search'
   get 'message' => 'pages#message'
+  get 'edit_profile' => 'profiles#edit'
 end

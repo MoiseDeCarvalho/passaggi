@@ -1,45 +1,57 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">   
-  <% @profiles.each do |profile| %>
-    <% if profile.user == current_user %>
+  <% if @profile.nil? %>
+    <div class="col l6 offset-l3">
+      <h4>Non hai ancora registrato le tue informazioni personali</h4>
+      <br/>
+
+      
+        
+      <%= link_to 'Edit', new_profile_path %>
+    </div>
+  <% else %>
+  
+   <!-- @profiles.each do |profile| -->
+    <% if @profile.user == current_user %>
+    sono dentro
       <div class="col l6">
         <div class="col l5 center">        
-          <%= image_tag profile.avatar.url, class: "activator" %> 
+          <%= image_tag @profile.avatar.url, class: "activator" %> 
         </div>
 
         <div class="col l7">
           <div class="field">        
             <h5>Nome</h5>
-            <%= profile.name %>
+            <%= @profile.name %>
           </div>
           <div class="field">        
             <h5>Cognome</h5>
-            <%= profile.surname %>
+            <%= @profile.surname %>
           </div>
 
           <div class="field">        
             <h5>Indirizzo</h5>
-            <%= profile.address %>
+            <%= @profile.address %>
           </h5>
 
           <div class="field">        
             <h5>Città</h5>
-            <%= profile.city %>
+            <%= @profile.city %>
           </div>
 
           <div class="field">        
             <h5>Cellulare</h5>
-            <%= profile.mobile %>
+            <%= @profile.mobile %>
           </div>
 
           <div class="field">        
             <h5>Descrizione</h5>
-            <%= profile.description %>
+            <%= @profile.description %>
           </div>
 
           <div>
-            <%= link_to 'Edit', edit_profile_path(profile) %>
+            <%= link_to 'Edit', edit_profile_path(@profile) %>
           </div>
              
         </div>
@@ -47,4 +59,5 @@
        
     <% end %>  
   <% end %>
+ <!--  end   -->
 </div>
