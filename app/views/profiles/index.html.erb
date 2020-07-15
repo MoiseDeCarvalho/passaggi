@@ -1,63 +1,70 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">   
-  <% if @profile.nil? %>
-    <div class="col l6 offset-l3">
-      <h4>Non hai ancora registrato le tue informazioni personali</h4>
-      <br/>
+  <div class="col l6 offset-l3 form">
+    <% if @profile.nil? %>
+      <div class="col l6 offset-l3">
+        <h4>Non hai ancora registrato le tue informazioni personali</h4>
+        <br/>
 
-      
         
-      <%= link_to 'Edit', new_profile_path %>
-    </div>
-  <% else %>
-  
-   <!-- @profiles.each do |profile| -->
-    <% if @profile.user == current_user %>
-    sono dentro
-      <div class="col l6">
-        <div class="col l5 center">        
-          <%= image_tag @profile.avatar.url, class: "activator" %> 
-        </div>
-
-        <div class="col l7">
-          <div class="field">        
-            <h5>Nome</h5>
-            <%= @profile.name %>
-          </div>
-          <div class="field">        
-            <h5>Cognome</h5>
-            <%= @profile.surname %>
-          </div>
-
-          <div class="field">        
-            <h5>Indirizzo</h5>
-            <%= @profile.address %>
-          </h5>
-
-          <div class="field">        
-            <h5>Città</h5>
-            <%= @profile.city %>
-          </div>
-
-          <div class="field">        
-            <h5>Cellulare</h5>
-            <%= @profile.mobile %>
-          </div>
-
-          <div class="field">        
-            <h5>Descrizione</h5>
-            <%= @profile.description %>
-          </div>
-
-          <div>
-            <%= link_to 'Edit', edit_profile_path(@profile) %>
-          </div>
-             
-        </div>
+          
+        <%= link_to 'Edit', new_profile_path %>
       </div>
-       
-    <% end %>  
-  <% end %>
- <!--  end   -->
+    <% else %>
+    
+     <!-- @profiles.each do |profile| -->
+      <% if @profile.user == current_user %>
+        <div class="field">
+          <% if @profile.avatar.url != "/images/original/missing.png" %>
+            <%=  image_tag @profile.avatar.url %>
+          <% end %>        
+        </div>
+
+        <div class="col l6  field">
+          <%= label_tag 'Nome', nil %>
+          <br/>
+          <p class="testi-show"><%= @profile.name %></p>
+        </div >
+
+        <div class="col l6 field">
+          <%= label_tag 'Cognome' %>
+          <br/>
+          <p class="testi-show"><%= @profile.surname %></p>
+        </div>
+
+        <div class="col l6 field">
+          <%= label_tag 'Indirizzo' %>
+          <br/>
+          <p class="testi-show"><%= @profile.address %></p>
+        </div>
+
+        <div class="col l6 field">
+          <%= label_tag 'Città' %>
+          <br/>
+          <p class="testi-show"><%= @profile.city %></p>
+        </div>
+
+        <div class="col l6 field">
+          <%= label_tag 'Cellulare' %>
+          <br/>
+          <p class="testi-show"><%= @profile.mobile %></p>
+        </div>
+
+        <div class="col l6 field">
+          <%= label_tag 'Descrizione' %>
+          <br/>
+          <p class="testi-show"><%= @profile.description %></p>
+        </div>
+        <br/>
+        <div class="col l6 filed">
+           <%= link_to 'Edit', edit_profile_path(@profile) %>
+        </div>
+          
+         
+      <% end %>  
+    <% end %>
+   <!--  end   -->
+
+  
 </div>

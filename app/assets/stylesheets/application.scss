@@ -53,3 +53,16 @@ main {
   color: #ffffff;
 }
 
+.testi-show {
+    background-color: transparent;
+    
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: box-shadow .3s, border .3s;
+}
