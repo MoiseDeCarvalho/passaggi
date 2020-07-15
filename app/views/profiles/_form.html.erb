@@ -15,7 +15,9 @@
        
        
       <div class="field">
-        <%=  image_tag @profile.avatar.url %>
+        <% if @profile.avatar.url != "/images/original/missing.png" %>
+          <%=  image_tag @profile.avatar.url %>
+        <% end %> 
         <br/>
         <%= form.label :avatar %>Seleziona l'immagine del profile
         <br/>

@@ -5,7 +5,7 @@
 		  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 		  	<ul id="dropdown1" class="dropdown-content">
 		  		<li><%= link_to "Informazioni personali", profiles_path %></li>
-			  <li><a href="#!">preferenze</a></li>
+			  <li><%= link_to 'Preferenze', preferences_path, :style=>'color:@ffffff;' %> </li>
 			  
 			  <li class="divider"></li>
 			  <li><a href="#!">three</a></li>
@@ -16,11 +16,11 @@
 		      	<li><a style="color:#fff" href="/message"><i class="material-icons left">message</i>Messaggi</a></li> 
 		      	<% if user_signed_in? %>
 		      		<li><a class="dropdown-trigger" style="color:#fff"  href="#!" data-target="dropdown1">Profilo<i class="material-icons right">arrow_drop_down</i></a></li>
-		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
+		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>
 		    	
 	    	  	<% else %>
-			    	<li><%= link_to "Log in", new_user_session_path , :class=>"color-blank" %></li>
-			    	<li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank" %></li>
+			    	<li><%= link_to "Log in", new_user_session_path , :style=>'color:#FFFFFF;'  %></li>
+			    	<li><%= link_to "Registrazione", new_user_registration_path , :style=>'color:#FFFFFF;'  %></li>
 		     	<% end %>
 		  	</ul>
 
@@ -30,10 +30,10 @@
 			  	<li><a style="color:#fff" href="/message"><i class="material-icons left">message</i>Messaggi</a></li> 
 			    <% if user_signed_in? %>
 			    	/i></a></li>
-			    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :class=>"color-blank"%></li>
+			    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>
 		    	<% else %>
-				    <li><%= link_to "Log in", new_user_session_path , :class=>"color-blank"%></li>
-				    <li><%= link_to "Registrazione", new_user_registration_path , :class=>"color-blank"%></li>
+				    <li><%= link_to "Log in", new_user_session_path , :style=>'color:#FFFFFF;' %></li>
+				    <li><%= link_to "Registrazione", new_user_registration_path , :style=>'color:#FFFFFF;' %></li>
 			    <% end %>
 			</ul>
 

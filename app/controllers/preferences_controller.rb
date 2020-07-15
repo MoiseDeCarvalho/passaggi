@@ -1,5 +1,7 @@
 class PreferencesController < ApplicationController
   before_action :set_preference, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /preferences
   # GET /preferences.json
@@ -70,5 +72,12 @@ class PreferencesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def preference_params
       params.require(:preference).permit(:user_id, :conversation, :smoke, :animal, :music)
+    end
+
+    #checko l'utente per le modifiche cancellazioni
+    def check_user
+      if current_user != @profile.user
+        redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
+      end
     end
 end
