@@ -11,52 +11,28 @@
     </div>
   <% end %>
 
- <div>
-   <div class="col l12">
-    <div class="field col l6">
-      <%= form.label :user_id %>
-      cicciic
-    </div>
+  <br/>
+  <br/>
+  <div class="col l6  field">
+    <%= check_box_tag(:conversation, true, @preference.conversation)  %>
+    <%= label_tag(:conversation, "Amo la conversazione") %>
+  </div >
+  <div class="col l6  field">
+    <%= check_box_tag(:smoke, @preference.smoke, @preference.smoke)  %>
+    <%= label_tag(:smoke, "Amo la fumare") %>
+  </div >
+
+  <div class="col l6  field">
+    <%= check_box_tag(:animal, true, @preference.animal)  %>
+    <%= label_tag(:animal, "Amo gli animali") %>
+  </div >
   
-   
-    <div class="field col l6">
-      <%= form.number_field :user_id %>
-    </div>
-   
-  
+  <div class="col l6  field">
+    <%= check_box_tag(:music, true, @preference.music)  %>
+    <%= label_tag(:music, "Amo la musica") %>
+  </div >
 
-<div class="col l6">
-  <%= form.check_box(:cuteness, {}, true, false) %>
-<label for="cuteness">Is this kitten exceptionally cute? </label>
-
-</div>
- <div class="col l6 field">
-      <%= form.check_box :conversation, class:'indeterminate-checkbox', allow_label_click: true %>
-    
-      <%= form.label :conversation %>
-    </div>
-   
-   
-    
-   </div>
-
-   
-
-  <div class="field">
-    <%= form.label :smoke %>
-    <%= form.check_box :smoke %>
-  </div>
-
-  <div class="field">
-    <%= form.label :animal %>
-    <%= form.check_box :animal %>
-  </div>
-
-  <div class="field">
-    <%= form.label :music %>
-    <%= form.check_box :music %>
-  </div>
-
+  <% check_box_tag(:user_id, current_user.id, @preference.user_id) %>
   <div class="actions">
     <%= form.submit %>
   </div>
