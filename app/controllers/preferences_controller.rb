@@ -6,7 +6,7 @@ class PreferencesController < ApplicationController
   # GET /preferences
   # GET /preferences.json
   def index
-    @preferences = Preference.find_by(:id => current_user.id)
+    @preference = Preference.find_by(:id => current_user.id)
   end
 
   # GET /preferences/1

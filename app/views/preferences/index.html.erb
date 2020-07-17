@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Preferences</h1>
-
+<% if @preferences.nil? %>
+    è vuoto
+    <% end %>
 <table>
   <thead>
     <tr>
@@ -15,18 +17,18 @@
   </thead>
 
   <tbody>
-    <% @preferences.each do |preference| %>
+
       <tr>
-        <td><%= preference.user_id %></td>
-        <td><%= preference.conversation %></td>
-        <td><%= preference.smoke %></td>
-        <td><%= preference.animal %></td>
-        <td><%= preference.music %></td>
-        <td><%= link_to 'Show', preference %></td>
-        <td><%= link_to 'Edit', edit_preference_path(preference) %></td>
-        <td><%= link_to 'Destroy', preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= @preference.user_id %></td>
+        <td><%= @preference.conversation %></td>
+        <td><%= @preference.smoke %></td>
+        <td><%= @preference.animal %></td>
+        <td><%= @preference.music %></td>
+        <td><%= link_to 'Show', @preference %></td>
+        <td><%= link_to 'Edit', edit_preference_path(@preference) %></td>
+        <td><%= link_to 'Destroy', @preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    
   </tbody>
 </table>
 
