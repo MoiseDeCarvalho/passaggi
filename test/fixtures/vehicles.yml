@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  type_vechicle_id: 
+  brand: 
+  model: 
+  motor: 
+  colour: 
+
+two:
+  user_id: 
+  type_vechicle_id: 
+  brand: 
+  model: 
+  motor: 
+  colour: 
