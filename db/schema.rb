@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_092844) do
+ActiveRecord::Schema.define(version: 2020_07_18_125237) do
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 2020_07_18_092844) do
     t.string "colour"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo_1_file_name"
+    t.string "photo_1_content_type"
+    t.integer "photo_1_file_size"
+    t.datetime "photo_1_updated_at"
+    t.string "photo_2_file_name"
+    t.string "photo_2_content_type"
+    t.integer "photo_2_file_size"
+    t.datetime "photo_2_updated_at"
   end
 
 end
