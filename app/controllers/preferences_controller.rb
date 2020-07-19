@@ -6,16 +6,19 @@ class PreferencesController < ApplicationController
   # GET /preferences
   # GET /preferences.json
   def index
-    @preference = Preference.find_by(:id => current_user.id)
+    #@preferences = Preference.all
+    @preference = Preference.find_by(:user_id => current_user.id)
   end
 
   # GET /preferences/1
   # GET /preferences/1.json
   def show
+     @preference = Preference.find_by(:user_id => current_user.id)
   end
 
   # GET /preferences/new
   def new
+    #@preference = Preference.new
     @preference = current_user.build_preference
   end
 
@@ -26,6 +29,7 @@ class PreferencesController < ApplicationController
   # POST /preferences
   # POST /preferences.json
   def create
+    #@preference = Preference.new(preference_params)
     @preference = current_user.build_preference(preference_params)
 
     respond_to do |format|
@@ -70,13 +74,14 @@ class PreferencesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def preference_params
-      params.require(:preference).permit(:userd_id, :conversation, :smoke, :animal, :music)
+    def preference_params     
+      params.require(:preference).permit(:user_id, :conversation, :music, :smoke, :animal)
+    
     end
 
     #checko l'utente per le modifiche cancellazioni
     def check_user
-      if current_user != @preference.user
+      if current_user.id != @preference.user_id
         redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
       end
     end

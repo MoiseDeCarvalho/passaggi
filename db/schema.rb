@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_125237) do
+ActiveRecord::Schema.define(version: 2020_07_19_132906) do
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
-    t.boolean "conversation"
-    t.boolean "smoke"
-    t.boolean "animal"
-    t.boolean "music"
+    t.integer "conversation"
+    t.integer "music"
+    t.integer "smoke"
+    t.integer "animal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2020_07_18_125237) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "type_vehicles", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

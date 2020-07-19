@@ -1,37 +1,62 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Preferences</h1>
-<% if @preference.nil? %>
-    è vuoto
-    <% end %>
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Conversation</th>
-      <th>Smoke</th>
-      <th>Animal</th>
-      <th>Music</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-      <tr>
-        <td><%= @preference.user_id %></td>
-        <td><%= @preference.conversation %></td>
-        <td><%= @preference.smoke %></td>
-        <td><%= @preference.animal %></td>
-        <td><%= @preference.music %></td>
-        <td><%= link_to 'Show', @preference %></td>
-        <td><%= link_to 'Edit', edit_preference_path(@preference) %></td>
-        <td><%= link_to 'Destroy', @preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <div class="col l6 offset-l3">
+    <h4>Le tue preferenze</h4>
+    <% if @preference.nil? %>      
+      <p>Nessuna preferenza esistente </p>
+      <br/>
+      <%= link_to 'Inserisci preferenza', new_preference_path %>
+    <% else %>
     
-  </tbody>
-</table>
+      <br/>
+      <br/>
+      <div class="col l6 field">
+        <div >
+          <i class="material-icons left">message</i>
+          <% if @preference.conversation == 1%>
+            <p style="padding-bottom:0.5em;">Amo la conversazione</p>
+          <% else %>
+            <p style="padding-bottom:0.5em;">Non amo la conversazione</p>          
+          <% end %>
+        </div >
+      </div>
+      
+      <div class="col l6 field">
+        <div >
+          <i class="material-icons left">audiotrack</i>
+          <% if @preference.music == 1%>
+            <p style="padding-bottom:0.8em;">Amo la musica</p>
+          <% else %>
+            <p style="padding-bottom:0.8em;">Non amo la musica</p>          
+          <% end %>
+        </div >
+      </div>
 
-<br>
+       <div class="col l6 field">
+        <div >
+          <i class="material-icons left">smoking_rooms</i>
+          <% if @preference.smoke === 1%>
+            <p style="padding-bottom:0.8em;">Mi piace fumare</p>
+          <% else %>
+            <p style="padding-bottom:0.8em;">Non mi piace fumare</p>          
+          <% end %>
+        </div >
+      </div>
 
-<%= link_to 'New Preference', new_preference_path %>
+       <div class="col l6 field">
+        <div >
+          <i class="material-icons left">pets</i>
+          <% if @preference.animal == 1%>
+            <p style="padding-bottom:0.8em;">Amo gli animali</p>
+          <% else %>
+            <p style="padding-bottom:0.8em;">Non amo gli animali</p>          
+          <% end %>
+        </div >
+      </div>
+
+      <br/>
+      <%= link_to "Modifica preferenze", edit_preference_path(@preference) %>
+    <% end %>   
+  </div>
+</div>
+

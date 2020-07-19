@@ -3,13 +3,13 @@
 one:
   user_id: 1
   conversation: false
+  music: false
   smoke: false
   animal: false
-  music: false
 
 two:
   user_id: 1
   conversation: false
+  music: false
   smoke: false
   animal: false
-  music: false

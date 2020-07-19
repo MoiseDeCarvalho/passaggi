@@ -11,29 +11,56 @@
     </div>
   <% end %>
 
+ 
   <br/>
   <br/>
-  <div class="col l6  field">
-    <%= check_box_tag(:conversation, true, @preference.conversation)  %>
-    <%= label_tag(:conversation, "Amo la conversazione") %>
-  </div >
-  <div class="col l6  field">
-    <%= check_box_tag(:smoke, @preference.smoke, @preference.smoke)  %>
-    <%= label_tag(:smoke, "Amo la fumare") %>
-  </div >
-
-  <div class="col l6  field">
-    <%= check_box_tag(:animal, true, @preference.animal)  %>
-    <%= label_tag(:animal, "Amo gli animali") %>
-  </div >
+  <div class="col l6 field">
+    <div >
+      <i class="material-icons left">message</i>
+    </div>
+    <div class="col l10 ">    
+      <%= form.check_box(:conversation) %>
+      <%= form.label(:conversation, "Amo la conversazione", :style=>'padding-top:0.5em;') %>
+    </div >
+  </div>
   
-  <div class="col l6  field">
-    <%= check_box_tag(:music, true, @preference.music)  %>
-    <%= label_tag(:music, "Amo la musica") %>
-  </div >
 
-  <% check_box_tag(:user_id, current_user.id, @preference.user_id) %>
+  <div class="col l6 field">
+    <div>
+      <i class="material-icons left">audiotrack</i>
+    </div>
+    <div class="col l10">    
+      <%= form.check_box(:music) %>
+      <%= form.label(:music, "Amo la musica", :style=>'padding-top:0.5em;') %>
+    </div >
+  </div>
+
+  <br/>
+ 
+
+  <div class="col l6 field">
+    <div>
+      <i class="material-icons left">smoking_rooms</i>
+    </div>
+    <div class="col l10">    
+      <%= form.check_box(:smoke) %>
+      <%= form.label(:smoke, "Mi piace fumare", :style=>'padding-top:0.5em;') %>
+    </div >
+  </div>
+   
+
+  <div class="col l6 field">
+    <div>
+      <i class="material-icons left">pets</i>
+    </div>
+    <div class="col l10">    
+      <%= form.check_box(:animal) %>
+      <%= form.label(:animal, "Amo gli animali", :style=>'padding-top:0.5em;') %>
+    </div >
+  </div>
+
+  <% form.number_field :user_id %>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salva" , class:"waves-effect waves-light btn btn-devise" %>
   </div>
 <% end %>
