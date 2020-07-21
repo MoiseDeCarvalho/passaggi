@@ -1,34 +1,62 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col l6 offset-l3">
+    <% if @vehicle.user == current_user %>    
+      <div class="col l6 field">
+        <%= label_tag 'Tipo veicolo', nil %>
+        <br/>
+        <% if !@vehicle.typeVehicle.nil? %>
+          <% @vehicle.typeVehicle.each do |v| %>
+            <% if v.id == @vehicle.type_vehicle_id %>
+              <p class="testi-show">
+                <%= v.description %>
+              </p>  
+            <% end %>
+          <% end %> 
+        <% end %>  
 
-<p>
-  <strong>User:</strong>
-  <%= @vehicle.user_id %>
-</p>
+        <br/>
+        <br/>
+        <label>Marca</label>
+        <%= @vehicle.brand %>
 
-<p>
-  <strong>Type vechicle:</strong>
-  <%= @vehicle.type_vechicle_id %>
-</p>
+        <br/>
+        <br/>
+        <label>Modello</label>
+        <%= @vehicle.model %>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @vehicle.brand %>
-</p>
+        <br/>
+        <br/>
+        <label>Motore</label>
+        <%= @vehicle.motor %>
 
-<p>
-  <strong>Model:</strong>
-  <%= @vehicle.model %>
-</p>
+        <br/>
+        <br/>
+        <label>Colore</label>
+        <%= @vehicle.colour %>
+      </div>
 
-<p>
-  <strong>Motor:</strong>
-  <%= @vehicle.motor %>
-</p>
+      <div class="col l6 field">
+        <%=  image_tag @vehicle.photo_1.url %>
+        <br/>
+        <label>Foto 1</label>
+        <br/>
+         
 
-<p>
-  <strong>Colour:</strong>
-  <%= @vehicle.colour %>
-</p>
+        <br/>
+        <br/>
+        
+        <%=  image_tag @vehicle.photo_2.url %>
+        <br/>
+        <label>Foto 2</label>
+        
+      </div>
 
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'Back', vehicles_path %>
+      
+    <% end %>
+
+  <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+  <%= link_to 'Back', vehicles_path %>
+
+  </div>
+</div>
