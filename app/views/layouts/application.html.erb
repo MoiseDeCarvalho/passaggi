@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
    // var instances = M.Sidenav.init(elems, options);
     var dateP = document.querySelectorAll('.datepicker');
     var instancesP = M.Datepicker.init(dateP, 'mmm dd, yyyy');
+    var elemsSelect = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elemsSelect, options);
   });
 
   // Or with jQuery
@@ -42,8 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
-     $('.datepicker').datepicker();
-     $('.timepicker').timepicker();
+    $('.datepicker').datepicker();
+    $('.timepicker').timepicker();
+    $('select').formSelect();
   });
 
     

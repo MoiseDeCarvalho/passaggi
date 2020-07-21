@@ -1,30 +1,40 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
+  
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.all
+    #@vehicles = Vehicle.all
+    @vehicle = Vehicle.find_by(:user_id => current_user.id)
+    @typeVehicles = TypeVehicle.all
   end
 
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    @vehicle = Vehicle.find_by(:user_id => current_user.id)
+    @typeVehicles = TypeVehicle.all
   end
 
   # GET /vehicles/new
   def new
-    @vehicle = Vehicle.new
+    #@vehicle = Vehicle.new
+    @vehicle = current_user.build_vehicle
   end
 
   # GET /vehicles/1/edit
   def edit
+   # @typeVehicles = TypeVehicle.all
   end
 
   # POST /vehicles
   # POST /vehicles.json
   def create
-    @vehicle = Vehicle.new(vehicle_params)
+    #@vehicle = Vehicle.new(vehicle_params)
+    @vehicle = current_user.build_vehicle(vehicle_params)
 
     respond_to do |format|
       if @vehicle.save
@@ -69,6 +79,13 @@ class VehiclesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
-      params.require(:vehicle).permit(:user_id, :type_vechicle_id, :brand, :model, :motor, :colour)
+      params.require(:vehicle).permit(:user_id, :type_vehicle_id, :brand, :model, :motor, :colour, :photo_1, :photo_2)
+    end
+
+    #checko l'utente per le modifiche cancellazioni
+    def check_user
+      if current_user.id != @vehicle.user_id
+        redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
+      end
     end
 end

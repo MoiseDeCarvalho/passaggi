@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_132906) do
+ActiveRecord::Schema.define(version: 2020_07_20_203316) do
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_132906) do
 
   create_table "vehicles", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "type_vechicle_id"
+    t.integer "type_vehicle_id"
     t.string "brand"
     t.string "model"
     t.string "motor"
