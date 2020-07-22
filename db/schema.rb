@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_203316) do
+ActiveRecord::Schema.define(version: 2020_07_22_202012) do
+
+  create_table "path_offers", force: :cascade do |t|
+    t.integer "vehicle_id"
+    t.integer "user_id"
+    t.string "departure"
+    t.string "arrive"
+    t.datetime "date_departure"
+    t.datetime "date_arrive"
+    t.float "price"
+    t.integer "max_available"
+    t.boolean "booked"
+    t.boolean "full"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
