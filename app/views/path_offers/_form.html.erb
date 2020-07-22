@@ -1,0 +1,67 @@
+<%= form_with(model: path_offer, local: true) do |form| %>
+  <% if path_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(path_offer.errors.count, "error") %> prohibited this path_offer from being saved:</h2>
+
+      <ul>
+        <% path_offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vehicle_id %>
+    <%= form.number_field :vehicle_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :departure %>
+    <%= form.text_field :departure %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrive %>
+    <%= form.text_field :arrive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_departure %>
+    <%= form.datetime_select :date_departure %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_arrive %>
+    <%= form.datetime_select :date_arrive %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_available %>
+    <%= form.number_field :max_available %>
+  </div>
+
+  <div class="field">
+    <%= form.label :booked %>
+    <%= form.check_box :booked %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full %>
+    <%= form.check_box :full %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

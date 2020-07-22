@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_id: 1
+  user_id: 1
+  departure: MyString
+  arrive: MyString
+  date_departure: 2020-07-22 22:20:12
+  date_arrive: 2020-07-22 22:20:12
+  price: 
+  max_available: 1
+  booked: false
+  full: false
+
+two:
+  vehicle_id: 1
+  user_id: 1
+  departure: MyString
+  arrive: MyString
+  date_departure: 2020-07-22 22:20:12
+  date_arrive: 2020-07-22 22:20:12
+  price: 
+  max_available: 1
+  booked: false
+  full: false

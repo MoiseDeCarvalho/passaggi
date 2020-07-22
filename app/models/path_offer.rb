@@ -1,0 +1,2 @@
+class PathOffer < ApplicationRecord
+end
