@@ -53,12 +53,6 @@ ActiveRecord::Schema.define(version: 2020_07_22_202012) do
     t.datetime "avatar_updated_at"
   end
 
-  create_table "type_vehicles", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
