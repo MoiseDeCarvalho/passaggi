@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_202012) do
+ActiveRecord::Schema.define(version: 2020_07_22_210213) do
 
   create_table "path_offers", force: :cascade do |t|
     t.integer "vehicle_id"
     t.integer "user_id"
     t.string "departure"
     t.string "arrive"
-    t.datetime "date_departure"
-    t.datetime "date_arrive"
+    t.date "date_departure"
+    t.date "date_arrive"
     t.float "price"
     t.integer "max_available"
     t.boolean "booked"
