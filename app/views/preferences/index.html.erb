@@ -5,7 +5,7 @@
     <% if @preference.nil? %>      
       <p>Nessuna preferenza esistente </p>
       <br/>
-      <%= link_to 'Inserisci preferenza', new_preference_path %>
+      <%= link_to 'Inserisci preferenza', new_preference_path %><i class="material-icons right">create</i>
     <% else %>
     
       <br/>
@@ -55,7 +55,7 @@
       </div>
 
       <br/>
-      <%= link_to "Modifica preferenze", edit_preference_path(@preference) %>
+      <%= link_to "Modifica preferenze", edit_preference_path(@preference) %><i class="material-icons right">edit</i>
     <% end %>   
   </div>
 </div>

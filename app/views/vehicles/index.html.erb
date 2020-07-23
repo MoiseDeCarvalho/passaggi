@@ -5,7 +5,7 @@
     <% if @vehicle.nil? %>
       <div class="col  offset-l2">        
         <br/>
-        <%= link_to 'Inserisci veicolo', new_vehicle_path %>
+        <%= link_to 'Inserisci veicolo', new_vehicle_path %><i class="material-icons right">create</i>
       </div>
     <% else %>
       <% if @vehicle.user == current_user %>
