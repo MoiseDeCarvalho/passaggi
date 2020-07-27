@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_210213) do
+ActiveRecord::Schema.define(version: 2020_07_27_203450) do
 
   create_table "path_offers", force: :cascade do |t|
     t.integer "vehicle_id"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_210213) do
     t.date "date_arrive"
     t.float "price"
     t.integer "max_available"
-    t.boolean "booked"
-    t.boolean "full"
+    t.integer "booked"
+    t.integer "full"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,6 +51,12 @@ ActiveRecord::Schema.define(version: 2020_07_22_210213) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "type_vehicles", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
