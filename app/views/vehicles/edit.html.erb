@@ -3,9 +3,8 @@
 		<h4 class="center">Modifica Veicolo</h4>
 		<br/>
 		<%= render 'form', vehicle: @vehicle %>
-
-		<%= link_to 'Show', @vehicle %> |
-		<%= link_to 'Back', vehicles_path %>
+        <%= link_to 'Back', vehicles_path %> <i class="material-icons left">arrow_back</i>
+		<%= link_to 'Show', @vehicle %> <i class="material-icons right">description</i>|		
 	</div>
 </div>
 
