@@ -1,3 +1,4 @@
+
 <%= form_with(model: path_offer, local: true) do |form| %>
   <% if path_offer.errors.any? %>
     <div id="error_explanation">
@@ -34,7 +35,10 @@
     </div>
     <div class="col l3 field">
       <%= form.label :Mezzo %>
-      <p><%=  @typeVehicle.description  %>
+      <p>
+        <%  if !@typeVehicle.nil? %>
+          <%= @typeVehicle.description %>
+        <% end %>
     </div>
     <div class=" col l3 field">
       <%= form.label :prezzo %>

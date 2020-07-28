@@ -22,7 +22,9 @@ class PathOffersController < ApplicationController
   def new
     @path_offer = current_user.path_offers.build
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
-    @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
+    if !@vehicle.nil?
+      @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
+    end
     
   end
 

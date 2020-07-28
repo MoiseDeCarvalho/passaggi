@@ -1,10 +1,19 @@
 <div class="row">
 	<div class="col l6 offset-l3">
-		<h4>Nuovo pasaggio</h4>
+		<% if @vehicle.nil? %>
+		   
+		    <h5 class="center">Devi prima registrare un veicolo</h5>
+		    <br/>
+		    <br/>
+		    <p class="center"><%= link_to 'Registra un veicolo', new_vehicle_path %></p>
+	    <% else %>
+	    	<h4>Nuovo pasaggio</h4>
 
-		<%= render 'form', path_offer: @path_offer %>
+			<%= render 'form', path_offer: @path_offer %>
 
-		<%= link_to 'Back', path_offers_path %>
-	</div>
+			<%= link_to 'Back', path_offers_path %>
+	    <% end %>
+		 
+	</div>	
 </div>
-
+		
