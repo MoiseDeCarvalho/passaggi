@@ -1,45 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Path Offers</h1>
+<div class="row">
+  <h4 class="center">I tuoi passaggi</h4>
+  <% if !@path_offers.nil? %>
+    <table> 
+      <thead>
+        <tr>
+          <th>Vehicle</th>
+          <th>User</th>
+          <th>Departure</th>
+          <th>Arrive</th>
+          <th>Date departure</th>
+          <th>Date arrive</th>
+          <th>Price</th>
+          <th>Max available</th>
+          <th>Booked</th>
+          <th>Full</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+ 
+       <tbody>
+        <% @path_offers.each do |path_offer| %>
+          <tr>
+            <td><%= path_offer.vehicle_id %></td>
+            <td><%= path_offer.user_id %></td>
+            <td><%= path_offer.departure %></td>
+            <td><%= path_offer.arrive %></td>
+            <td><%= path_offer.date_departure %></td>
+            <td><%= path_offer.date_arrive %></td>
+            <td><%= path_offer.price %></td>
+            <td><%= path_offer.max_available %></td>
+            <td><%= path_offer.booked %></td>
+            <td><%= path_offer.full %></td>
+            <td><%= link_to 'Show', path_offer %></td>
+            <td><%= link_to 'Edit', edit_path_offer_path(path_offer) %></td>
+            <td><%= link_to 'Destroy', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Vehicle</th>
-      <th>User</th>
-      <th>Departure</th>
-      <th>Arrive</th>
-      <th>Date departure</th>
-      <th>Date arrive</th>
-      <th>Price</th>
-      <th>Max available</th>
-      <th>Booked</th>
-      <th>Full</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <br>
+  <% end %>
+    <%= link_to 'New Path Offer', new_path_offer_path %>
+</div>
 
-  <tbody>
-    <% @path_offers.each do |path_offer| %>
-      <tr>
-        <td><%= path_offer.vehicle_id %></td>
-        <td><%= path_offer.user_id %></td>
-        <td><%= path_offer.departure %></td>
-        <td><%= path_offer.arrive %></td>
-        <td><%= path_offer.date_departure %></td>
-        <td><%= path_offer.date_arrive %></td>
-        <td><%= path_offer.price %></td>
-        <td><%= path_offer.max_available %></td>
-        <td><%= path_offer.booked %></td>
-        <td><%= path_offer.full %></td>
-        <td><%= link_to 'Show', path_offer %></td>
-        <td><%= link_to 'Edit', edit_path_offer_path(path_offer) %></td>
-        <td><%= link_to 'Destroy', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Path Offer', new_path_offer_path %>

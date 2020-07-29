@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'about' => 'pages#about'
-  get 'search' => 'pages#search'
+ # get 'search' => 'pages#search'
+  get '/search' => 'path_offers#search', :as => 'search_path_offers'
   get 'message' => 'pages#message'
   get 'edit_profile' => 'profiles#edit'
 end

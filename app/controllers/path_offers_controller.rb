@@ -6,7 +6,7 @@ class PathOffersController < ApplicationController
   # GET /path_offers
   # GET /path_offers.json
   def index
-    @path_offers = PathOffer.find_by(:user_id => current_user.id)
+    @path_offers = PathOffer.where(:user_id => current_user.id)
     @typeVehicles = TypeVehicle.all
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
   end
@@ -14,6 +14,7 @@ class PathOffersController < ApplicationController
   # GET /path_offers/1
   # GET /path_offers/1.json
   def show
+    @path_offers = PathOffer.find_by(:user_id => current_user.id)
     @typeVehicles = TypeVehicle.all
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
   end
@@ -32,6 +33,10 @@ class PathOffersController < ApplicationController
   def edit
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
     @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
+  end
+
+  def search
+
   end
 
   # POST /path_offers
