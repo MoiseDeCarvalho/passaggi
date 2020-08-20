@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feedbacks
   resources :path_offers
   resources :type_vehicles
   resources :vehicles
