@@ -1,10 +1,14 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
 
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all
+    #/@feedbacks = Feedback.all
+    @feedbacks = Feedback.find_by(:user_id => current_user.id)
   end
 
   # GET /feedbacks/1
@@ -14,7 +18,8 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/new
   def new
-    @feedback = Feedback.new
+   #/ @feedback = Feedback.new
+    @feedback= current_user.build_feedback
   end
 
   # GET /feedbacks/1/edit
@@ -24,7 +29,7 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks
   # POST /feedbacks.json
   def create
-    @feedback = Feedback.new(feedback_params)
+    @feedback = current_user.build_feedback(feedback_params)
 
     respond_to do |format|
       if @feedback.save
@@ -69,6 +74,12 @@ class FeedbacksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def feedback_params
-      params.require(:feedback).permit(:id, :feedback, :score)
+      params.require(:feedback).permit(:user_id, :path_id,:feedback, :score)
+    end
+    #checko l'utente per le modifiche cancellazioni
+    def check_user
+      if current_user.id != @feedback.user_id
+        redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
+      end
     end
 end

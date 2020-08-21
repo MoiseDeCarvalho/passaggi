@@ -14,6 +14,10 @@
   </thead>
 
   <tbody>
+     <% if @feedback.nil? %>      
+      <p>Nessun feedback esistente </p>
+      <br/>
+      <% else %>
     <% @feedbacks.each do |feedback| %>
       <tr>
         <td><%= feedback.id %></td>
