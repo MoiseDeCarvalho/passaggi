@@ -8,18 +8,19 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     #/@feedbacks = Feedback.all
-    @feedbacks = Feedback.find_by(:user_id => current_user.id)
+    @feedback= Feedback.find_by(:user_id => current_user.id)
   end
 
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
+    @feedback= Feedback.find_by(:user_id => current_user.id)
   end
 
   # GET /feedbacks/new
   def new
-   #/ @feedback = Feedback.new
-    @feedback= current_user.build_feedback
+   #/@feedback = Feedback.new
+    @feedback= current_user.feedback.build 
   end
 
   # GET /feedbacks/1/edit
@@ -29,7 +30,7 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks
   # POST /feedbacks.json
   def create
-    @feedback = current_user.build_feedback(feedback_params)
+    @feedback = current_user.feedback.build(feedback_params)
 
     respond_to do |format|
       if @feedback.save

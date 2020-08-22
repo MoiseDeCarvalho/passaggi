@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Feedbacks</h1>
-
+<% if !@feedback.nil? %>      
 <table>
   <thead>
     <tr>
@@ -14,10 +14,6 @@
   </thead>
 
   <tbody>
-     <% if @feedback.nil? %>      
-      <p>Nessun feedback esistente </p>
-      <br/>
-      <% else %>
     <% @feedbacks.each do |feedback| %>
       <tr>
         <td><%= feedback.id %></td>
@@ -28,10 +24,9 @@
         <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
         <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <% end %>     
   </tbody>
 </table>
-
+<% end %>
 <br>
-
 <%= link_to 'New Feedback', new_feedback_path %> <i class="material-icons left">add</i>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one :preference
   has_one :vehicle
   has_many :path_offers
+  has_many :feedback
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
