@@ -75,7 +75,7 @@ class FeedbacksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def feedback_params
-      params.require(:feedback).permit(:user_id, :path_id,:feedback, :score)
+      params.require(:feedback).permit(:user_id, :path_offers_id,:feedback, :score, :id_feedback)
     end
     #checko l'utente per le modifiche cancellazioni
     def check_user
