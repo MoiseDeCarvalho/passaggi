@@ -8,7 +8,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     #/@feedbacks = Feedback.all
-    @feedback= Feedback.find_by(:user_id => current_user.id)
+    @feedback= Feedback.where(:user_id => current_user.id)
   end
 
   # GET /feedbacks/1
