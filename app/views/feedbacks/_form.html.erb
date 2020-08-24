@@ -10,17 +10,14 @@
       </ul>
     </div>
   <% end %>
-
- 
-
   <div class="field">
     <%= form.label :feedback %>
     <%= form.text_area :feedback %>
   </div>
-<div class="field">
-    <%= form.label :path_offers_id %>
-    <%= form.text_field :path_offers_id %>
-  </div>
+  <div class="col l2 field">
+      <%= form.label :path_offers_id %>
+      <%= form.check_box :path_offers_id %>
+    </div>
   <div class="field">
     <%= form.label :score %>
     <%= form.text_field :score %>
