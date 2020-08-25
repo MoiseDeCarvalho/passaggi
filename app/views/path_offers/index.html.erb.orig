@@ -96,7 +96,7 @@
     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
   </ul>
 =======
->>>>>>> eb4ef93b7bb7c92a8398eaa51df757c76d6bb293
+>>>>>>> afffad6e8acf8d5be09e5bb14d12e2d10dca232f
   <% end %>
     <%= link_to 'New Path Offer', new_path_offer_path %>
 </div>

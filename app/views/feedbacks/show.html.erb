@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @feedback.user_id %>
+</p>
+
+<p>
+  <strong>Feedback:</strong>
+  <%= @feedback.feedback %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @feedback.score %>
+</p>
+<p>
+  <strong>Id del path offers:</strong>
+  <%= @feedback.path_offers_id %>
+</p>
+<div class="col l2">
+<%= link_to 'Back', feedbacks_path %><i class="material-icons left">arrow_back</i>|
+</div>
+<div class="col l10">
+<%= link_to 'Edit', edit_feedback_path(@feedback) %><i class="material-icons left">description</i>
+</div>

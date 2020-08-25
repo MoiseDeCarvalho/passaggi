@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @feedback_path.user_id %>
+</p>
+
+<p>
+  <strong>Path offers:</strong>
+  <%= @feedback_path.path_offers_id %>
+</p>
+
+<%= link_to 'Edit', edit_feedback_path_path(@feedback_path) %> |
+<%= link_to 'Back', feedback_paths_path %>
