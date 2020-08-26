@@ -11,7 +11,7 @@ class PathOffersController < ApplicationController
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
 
      
-    @path_offers_founded = PathOffer.search(params[:departure])
+    
       
     
   end
@@ -41,14 +41,14 @@ class PathOffersController < ApplicationController
   end
 
   def search
-    respond_to do |format|
-    @path_offers_founded = PathOffer.search(params[:departure[0]])
-     format.html 
-    format.json { render json: @path_offers_founded }
-       
-    end
     
 
+  end
+
+  def search_result
+    #respond_to do |format|
+      @path_offers_founded = PathOffer.search(params)
+    #end
   end
 
   # POST /path_offers

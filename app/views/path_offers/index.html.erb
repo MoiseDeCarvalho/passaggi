@@ -2,14 +2,19 @@
 
 <div class="row">
   <div class="col l6 offset-l3">
-    <%= debug @path_offers_founded %>
+     <%= debug @path_offers_founded  %>
      
-      <%= form_tag path_offers_path, :method => 'get' do %>
+      form_tag search_path_offers_path, :method => 'get' do  
 
-      <p> <%= text_field_tag :departure, params[:departure] %>  
-        <%= submit_tag "Search", :name => nil %></p>
+      <p> 
+        text_field_tag :departure, params[:departure]  
+      </p>  
+      <p> 
+         text_field_tag :arrive, params[:arrive]   
+      </p> 
+        submit_tag "Search", :name => nil  
 
-      <% end %>
+       end  
      
       
   </div>
