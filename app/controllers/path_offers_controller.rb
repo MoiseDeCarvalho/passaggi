@@ -10,12 +10,10 @@ class PathOffersController < ApplicationController
     @typeVehicles = TypeVehicle.all
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
 
-    respond_to do |format|
-    @path_offers_founded = PathOffer.search(params[:departure[0]])
-     format.html 
-    format.json { render json: @path_offers_founded }
-       
-    end
+     
+    @path_offers_founded = PathOffer.search(params[:departure])
+      
+    
   end
 
   # GET /path_offers/1

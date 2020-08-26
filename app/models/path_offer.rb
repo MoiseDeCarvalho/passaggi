@@ -4,9 +4,12 @@ class PathOffer < ApplicationRecord
     has_many :feedback_path
 	def self.search(departure)
 	  if departure
-	    find(:all, :conditions => ['departure LIKE ?', "%#{departure}%"])
+	   # find_by(:all, :conditions => ['departure LIKE ?', "%#{departure}%"])
+	    like_keyword = "%#{departure}%"    
+#MyModel.where("description LIKE ?", like_keyword)
+	    where("departure LIKE ?", like_keyword)
 	  #else
-	    #find(:all)
+	   # find(:all)
 	  end
 	end
 end
