@@ -6,7 +6,7 @@ class PathOffersController < ApplicationController
   # GET /path_offers
   def index
     @path_offers = PathOffer.where(:user_id => current_user.id)
-    @profile = Profile.find(current_user.id);
+    @profile = Profile.find_by(:user_id => current_user.id);
 
      @vehicle = Vehicle.find_by(:user_id => current_user.id)
     if !@vehicle.nil?
@@ -48,6 +48,7 @@ class PathOffersController < ApplicationController
   def search_result
     #respond_to do |format|
       @path_offers_founded = PathOffer.search(params)
+      #trovo eventualemente percorsi gia prenotati dall'utente 
       @booked_for_user = FeedbackPath.find_by(:user_id => current_user.id)
     #end
   end
@@ -61,14 +62,14 @@ class PathOffersController < ApplicationController
 
   #GET /delete-path-booked
   def delete_path_booked
-    @p = PathOffer.path_booked(params)
-    render :json => "Prenotazione eseguita correttamente"
+    @p = PathOffer.path_delete_booked(params)
+    render :json => "Cancellazione eseguita correttamente"
   end
 
   #GET /used
   def used
     @t = FeedbackPath.find_by(:user_id => current_user.id)
-    @paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq).exclude()
+    @paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq)
   end
 
 

@@ -37,22 +37,33 @@
 			            <td><%= path_offer.max_available %></td>
 			            <td><%= path_offer.booked %></td>
 			            <td>
-			            	<% if (path_offer.id == @booked_for_user.path_offer_id) %>
-			            		<%=   path_offer.max_available-path_offer.booked %>
-			            		 
-			            	<% else %>
-			            		<%= select_tag 'reserved_'+path_offer.id.to_s, options_for_select((1..(path_offer.max_available-path_offer.booked)).step(1)), id: "reserved_"+path_offer.id.to_s %>
+			            	<% if !@booked_for_user.nil? %>
+				            	<% if (path_offer.id == @booked_for_user.path_offer_id) %>
+				            		<%=   path_offer.max_available-path_offer.booked %>
+				            		 
+				            	<% else %>
+				            		<%= select_tag 'reserved_'+path_offer.id.to_s, options_for_select((1..(path_offer.max_available-path_offer.booked)).step(1)), id: "reserved_"+path_offer.id.to_s %>
+				            	<% end %>
+
+				            <% else %>
+				            		<%= select_tag 'reserved_'+path_offer.id.to_s, options_for_select((1..(path_offer.max_available-path_offer.booked)).step(1)), id: "reserved_"+path_offer.id.to_s %>
+				            	 
+
 			            	<% end %>
-
-
 							
 			            </td>
 			            <td>
-			            	<% if (path_offer.id == @booked_for_user.path_offer_id) %>
-			            		<button onclick='deletePathBooked(<%= path_offer.id %>)'>Cancella</button>
-			            	<% else %>
-								<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>)">Prenota</button>
-							<% end%>
+			            	<% if !@booked_for_user.nil? %>
+				            	<% if (path_offer.id == @booked_for_user.path_offer_id) %>
+				            		<button onclick='deletePathBooked(<%= path_offer.id %>, <%= current_user.id %>)'>Cancella</button>
+				            	<% else %>
+									<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>)">Prenota</button>
+								<% end%>
+
+								<% else %>
+									<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>)">Prenota</button>
+
+							<% end %>
 			            </td>
 			            <td><%= path_offer.full %></td>
 			            <td><%= link_to 'Show', path_offer %></td>
@@ -65,8 +76,27 @@
 	      </tbody>
 	    </table>
 	 <script type="text/javascript">
-	 	function deletePathBooked(path_offer_id){
-	 		alert("Non puoi prenotare due volte lo stesso passaggio");
+	 	function deletePathBooked(path_offer_id, current_user_id){
+			xmlhttp = $.ajax({
+						  type:"GET",
+						  url:"/delete-path-booked",
+						  dataType:"json",
+						   async: false,
+						  data: {path_offer_id: path_offer_id, current_user_id: current_user_id},
+						  success:function(data){
+						    alert(data.responseText);
+						  }
+						}); 
+			       
+						if ( xmlhttp.status == 200 ) {
+							alert (xmlhttp.responseText);
+							window.location.href = '/used';
+						}
+						else
+							alert("Cencellazione fallita");
+			 	 	 
+
+	 		alert("Cancellazione eseguita correttamente");
 	 	}
 
 	 	function sendData(path_offer_id, old_value, reserved, current_user_id){	 			 
@@ -83,7 +113,7 @@
        
 			if ( xmlhttp.status == 200 ) {
 				alert (xmlhttp.responseText);
-				window.location.href = '/path_offers';
+				window.location.href = '/used';
 			}
 			else
 				alert("Prenotazione fallita");

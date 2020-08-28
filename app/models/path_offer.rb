@@ -20,9 +20,10 @@ class PathOffer < ApplicationRecord
 	  
 	end
 
+	#aggiornamento delle quantità di posti prenotati
 	def self.path_booked(params)
 
-		feedback_paths_obj = FeedbackPath.new(:user_id => params[:current_user_id], :path_offer_id => params[:path_offer_id])
+		feedback_paths_obj = FeedbackPath.new(:user_id => params[:current_user_id], :path_offer_id => params[:path_offer_id], :booked => params[:booked])
 		feedback_paths_obj.save!
 
 		data = PathOffer.find(params[:path_offer_id])
@@ -33,5 +34,15 @@ class PathOffer < ApplicationRecord
 		end
 		
 		data.update_attribute(:booked, value)
+	end
+
+	#cancellazione di una prenotazione
+	def self.path_delete_booked(params)
+		f_path = FeedbackPath.find_by(:path_offer_id => params[:path_offer_id], :user_id => params[:current_user_id])
+		path = PathOffer.find(params[:path_offer_id])
+		path.booked -= f_path.booked
+		path.save!
+		f_path.destroy
+
 	end
 end
