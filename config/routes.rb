@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
  # get 'search' => 'pages#search'
   get '/search' => 'path_offers#search', :as => 'search_path_offers'
+  get '/search-result' => 'path_offers#search_result', :as => 'search_result_path_offers'
+  get '/update-path-booked' => 'path_offers#update_path_booked' , :as => 'update_path_booked_path_offers'
+  get '/delete-path-booked' => 'path_offers#delete_path_booked' , :as => 'delete_path_booked_path_offers'
+  get '/used' => 'path_offers#used' , :as => 'used_path_offers'
   get 'message' => 'pages#message'
   get 'edit_profile' => 'profiles#edit'
 end

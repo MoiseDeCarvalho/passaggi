@@ -1,63 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col l6 offset-l3">
-    <%= debug @path_offers_founded %>
-      form_tag search_path_offers_path, :method => "post", class: 'navbar-form navbar-left' do  
-     
-      <%= form_tag(path_offers_path , method: "get", local: true) do %>
-        form_tag projects_path, :method => 'get' do
-
-        <div class="col l6 field">
-          <%= label :departure, 'Partenza' %>
-          <%= text_field :departure ,params[:departure]%>
-        </div>
-
-        <div class="col l6 field">
-          <%= label :arrive, 'Arrivo' %>
-          <%= text_field :arrive, params[:departure] %>
-        </div>
-
-        <div class="col l6 field">
-          <%= label :date_departure, 'Data di partenza' %>
-          <%= date_select :date_departure,params[:date_departure] %>
-        </div>
-
-        <div class="col l6 field">
-          <%= label :date_arrive, 'Data di arrivo' %>
-          <%= date_select :date_arrive,params[:date_arrive] %>
-        </div>
-        
-        <div class="col l2 field">
-          <%= label :max_available, 'Nr. posti' %>
-          <%= number_field :max_available,params[:max_available] %>
-        </div>
-                
-
-        <div class="actions">
-          <%= submit_tag "Salva" , class:"waves-effect waves-light btn btn-devise" %>
-        </div>
-     
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <h4 class="center">I tuoi passaggi</h4>
+  <h4 class="center">Passaggi offerti</h4>
   <% if !@path_offers.nil? %>
     <table> 
       <thead>
         <tr>
-          <th>Vehicle</th>
+          <th>Automezzo</th>
           <th>User</th>
-          <th>Departure</th>
-          <th>Arrive</th>
-          <th>Date departure</th>
-          <th>Date arrive</th>
-          <th>Price</th>
-          <th>Max available</th>
-          <th>Booked</th>
-          <th>Full</th>
+          <th>Partenza</th>
+          <th>Arrivo</th>
+          <th>Data di partenza</th>
+          <th>Data di arrivo</th>
+          <th>Prezzo</th>
+          <th>Nr posti</th>
+          <th>Nr prenotati</th>
+          <th>Completo</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -65,7 +23,19 @@
        <tbody>
         <% @path_offers.each do |path_offer| %>
           <tr>
-            <td><%= path_offer.vehicle_id %></td>
+            <td>
+              <%=  @typeVehicle.description  + " " + @vehicle.model%>
+              <% if !@vehicle.typeVehicle.nil? %>
+                <% @vehicle.typeVehicle.each do |v| %>
+                  <% if v.id == path_offer.vehicle_id  %>
+                    <p class="testi-show">
+                      <%= v.description %>
+                    </p>  
+                  <% end %>
+                <% end %> 
+              <% end %>
+
+              <%= path_offer.vehicle_id %></td>
             <td><%= path_offer.user_id %></td>
             <td><%= path_offer.departure %></td>
             <td><%= path_offer.arrive %></td>
@@ -75,13 +45,25 @@
             <td><%= path_offer.max_available %></td>
             <td><%= path_offer.booked %></td>
             <td><%= path_offer.full %></td>
-            <td><%= link_to 'Show', path_offer %></td>
-            <td><%= link_to 'Edit', edit_path_offer_path(path_offer) %></td>
-            <td><%= link_to 'Destroy', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Modifica', edit_path_offer_path(path_offer) %></td>
+            <td><%= link_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+ 
+    <br>
+
+    <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+ 
   <% end %>
     <%= link_to 'Nuovo Path Offer', new_path_offer_path %><i class="material-icons left">add</i>
 </div>

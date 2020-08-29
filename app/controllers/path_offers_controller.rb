@@ -4,22 +4,18 @@ class PathOffersController < ApplicationController
   before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /path_offers
-  # GET /path_offers.json
   def index
     @path_offers = PathOffer.where(:user_id => current_user.id)
-    @typeVehicles = TypeVehicle.all
-    @vehicle = Vehicle.find_by(:user_id => current_user.id)
+    @profile = Profile.find_by(:user_id => current_user.id);
 
-    respond_to do |format|
-    @path_offers_founded = PathOffer.search(params[:departure[0]])
-     format.html 
-    format.json { render json: @path_offers_founded }
-       
-    end
+     @vehicle = Vehicle.find_by(:user_id => current_user.id)
+    if !@vehicle.nil?
+      @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
+    end    
+          
   end
 
-  # GET /path_offers/1
-  # GET /path_offers/1.json
+ 
   def show
     @path_offers = PathOffer.find_by(:user_id => current_user.id)
     @typeVehicles = TypeVehicle.all
@@ -36,6 +32,7 @@ class PathOffersController < ApplicationController
     
   end
 
+
   # GET /path_offers/1/edit
   def edit
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
@@ -43,15 +40,38 @@ class PathOffersController < ApplicationController
   end
 
   def search
-    respond_to do |format|
-    @path_offers_founded = PathOffer.search(params[:departure[0]])
-     format.html 
-    format.json { render json: @path_offers_founded }
-       
-    end
     
 
   end
+
+#GET /serach
+  def search_result
+    #respond_to do |format|
+      @path_offers_founded = PathOffer.search(params)
+      #trovo eventualemente percorsi gia prenotati dall'utente 
+      @booked_for_user = FeedbackPath.find_by(:user_id => current_user.id)
+    #end
+  end
+
+  #GET /update-path-booked'
+  def update_path_booked
+    @p = PathOffer.path_booked(params)
+    render :json => "Prenotazione eseguita correttamente"    
+  end
+
+
+  #GET /delete-path-booked
+  def delete_path_booked
+    @p = PathOffer.path_delete_booked(params)
+    render :json => "Cancellazione eseguita correttamente"
+  end
+
+  #GET /used
+  def used
+    @t = FeedbackPath.find_by(:user_id => current_user.id)
+    @paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq)
+  end
+
 
   # POST /path_offers
   # POST /path_offers.json

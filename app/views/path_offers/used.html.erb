@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <h4 class="center">Passaggi prenotati</h4>
+  <% if !@paths.nil? %>
+    <table> 
+      <thead>
+        <tr>
+          <th>Partenza</th>
+          <th>Arrivo</th>
+          <th>Data di partenza</th>
+          <th>Data di arrivo</th>
+          <th>Prezzo</th>
+        </tr>
+      </thead>
+ 
+       <tbody>
+        <% @paths.each do |path_offer| %>        	
+          <tr>            
+            <td><%= path_offer.departure %></td>
+            <td><%= path_offer.arrive %></td>
+            <td><%= path_offer.date_departure %></td>
+            <td><%= path_offer.date_arrive %></td>
+            <td><%= path_offer.price %></td>            
+          </tr>	
+        <% end %>
+      </tbody>
+    </table>
+ 
+    <br>
+
+    <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+ 
+  <% end %>
+    <%= link_to 'New Path Offer', new_path_offer_path %>
+</div>
