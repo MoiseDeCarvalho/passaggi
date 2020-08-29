@@ -25,7 +25,16 @@ class PreferencesController < ApplicationController
   # GET /preferences/1/edit
   def edit
   end
+def search
+    
 
+  end
+  def search_result
+    #respond_to do |format|
+      @preferences_founded = Preference.search(params)
+     
+    #end
+  end
   # POST /preferences
   # POST /preferences.json
   def create

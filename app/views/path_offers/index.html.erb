@@ -45,8 +45,8 @@
             <td><%= path_offer.max_available %></td>
             <td><%= path_offer.booked %></td>
             <td><%= path_offer.full %></td>
-            <td><%= link_to 'Modifica', edit_path_offer_path(path_offer) %></td>
-            <td><%= link_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Modifica', edit_path_offer_path(path_offer) %><i class="material-icons left">edit</i></td>
+            <td><%= link_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
           </tr>
         <% end %>
       </tbody>
