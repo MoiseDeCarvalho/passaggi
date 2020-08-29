@@ -12,12 +12,19 @@ class PathOffer < ApplicationRecord
 	    	day = dateTmp["date_departure(3i)"]
 	    	@date_dep = Date.new(year.to_i, month.to_i, day.to_i)
 	    end
-
+        if params[:date_arrive].present?
+	    	dateTmp = params["date_arrive"]
+	    	year = dateTmp["date_arrive(1i)"]
+	    	month = dateTmp["date_arrive(2i)"]
+	    	day = dateTmp["date_arrive(3i)"]
+	    	@date_arr = Date.new(year.to_i, month.to_i, day.to_i)
+	    end
 	    where("departure LIKE ?", "%#{params[:departure]}%") if params[:departure].present?
 	    where("arrive LIKE ?", "%#{params[:arrive]}%") 		if params[:arrive].present?
 	    where("date_departure >= ?", "#{@date_dep}") 		if !@date_dep.nil?
-
-	  
+	    where("date_arrive >= ?", "#{@date_arr}") 		if !@date_arr.nil?
+        where("max_available LIKE ?", "%#{params[:max_available]}%") 		if params[:max_available].present?
+	    where("price LIKE ?", "%#{params[:price]}%") 		if params[:price].present?
 	end
 
 	#aggiornamento delle quantità di posti prenotati
