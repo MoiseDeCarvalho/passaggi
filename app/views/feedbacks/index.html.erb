@@ -1,31 +1,33 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col l8 offset-l2">
 
-<h1>Feedbacks</h1>
-<% if !@feedback.nil? %>      
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Feedback</th>
-      <th>Score</th>
-      <th>Path offers id</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @feedback.each do |feedback| %>
-      <tr>
-        <td><%= feedback.id %></td>
-        <td><%= feedback.feedback %></td>
-        <td><%= feedback.score %></td>
-        <td><%= feedback.path_offers_id %></td>
-        <td><%= link_to 'Mostra', feedback %><i class="material-icons left">description</i></td>
+    <h4>Feedback lasciati</h4>
+    <% if !@feedback.nil? %>      
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>          
+          <th>Passaggio</th>
+          <th>Feedback</th>
+          <th>Punteggio</th>
+          <th colspan="2">Azione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @feedback.each do |feedback| %>
+          <tr>
+            <td><%= feedback.id %></td>            
+            <td><%= feedback.title %></td>
+            <td><%= feedback.feedback %></td>
+            <td><%= feedback.score %></td>
         <td><%= link_to 'Modifica', edit_feedback_path(feedback) %><i class="material-icons left">edit</i></td>
         <td><%= link_to 'Cancella', feedback, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
-      </tr>
-    <% end %>     
-  </tbody>
-</table>
-<% end %>
-<br>
-<%= link_to 'Nuovo Feedback', new_feedback_path %> <i class="material-icons left">add</i>
+          </tr>
+        <% end %>     
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+</div>
+ 

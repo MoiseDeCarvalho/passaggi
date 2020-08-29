@@ -9,6 +9,7 @@ class FeedbacksController < ApplicationController
   def index
     #/@feedbacks = Feedback.all
     @feedback= Feedback.where(:user_id => current_user.id)
+
   end
 
   # GET /feedbacks/1
@@ -21,10 +22,14 @@ class FeedbacksController < ApplicationController
   def new
    #/@feedback = Feedback.new
     @feedback= current_user.feedback.build 
+
   end
 
   # GET /feedbacks/1/edit
   def edit
+    respond_to do |format|
+      format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback was successfully modified.' }
+    end
   end
 
   # POST /feedbacks
@@ -34,7 +39,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -75,7 +80,7 @@ class FeedbacksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def feedback_params
-      params.require(:feedback).permit(:user_id, :path_offers_id,:feedback, :score, :id_feedback)
+      params.require(:feedback).permit(:user_id, :path_offer_id,:feedback, :score, :title)
     end
     #checko l'utente per le modifiche cancellazioni
     def check_user

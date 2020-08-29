@@ -11,6 +11,7 @@
           <th>Data di partenza</th>
           <th>Data di arrivo</th>
           <th>Prezzo</th>
+          <th>Lascia un feedback</th>
         </tr>
       </thead>
  
@@ -21,7 +22,15 @@
             <td><%= path_offer.arrive %></td>
             <td><%= path_offer.date_departure %></td>
             <td><%= path_offer.date_arrive %></td>
-            <td><%= path_offer.price %></td>            
+            <td><%= path_offer.price %></td>     
+            <td>
+              <% if path_offer.date_arrive < Date.today  %>
+                <p><%= link_to "Lascia un feed!", new_feedback_path(:path_offer_id => path_offer.id, :departure => path_offer.departure, :arrive => path_offer.arrive, :date_departure => path_offer.date_departure.to_s) %></p>
+              <% else %>
+                <p></p>
+              <% end %>
+
+            </td>       
           </tr>	
         <% end %>
       </tbody>
