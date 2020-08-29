@@ -1,29 +1,34 @@
-<%= form_with(model: feedback, local: true) do |form| %>
-  <% if feedback.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+<div class="col l6 offset-l3">
+  <%= form_with(model: feedback, local: true) do |form| %>
+    <% if feedback.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
-      <ul>
-        <% feedback.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% feedback.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= form.label :Descrivi_il_viaggio %>
+      <%= form.text_area :feedback %>
+    </div>
+    
+    <!--passo l'id per fare calcoli -->
+    <%=  form.text_field :path_offer_id , :value => request.params[:path_offer_id] %>
+    <% title = request.params[:path_offer_id].to_s.concat(' - ').concat('(').concat(request.params[:date_departure]).concat(') ').concat(request.params[:departure]).concat(' - ').concat(request.params[:arrive])  %>
+    <%= form.text_field :title, :value => title %>
+        
+     
+    <div class="field">
+      <%= form.label :indica_un_punteggio %>
+      <%= form.select :score, options_for_select((1..5).step(1)), id: "score" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Salva", class:"waves-effect waves-light btn btn-devise" %>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :feedback %>
-    <%= form.text_area :feedback %>
-  </div>
-  <div class="col l2">
-      <%= form.check_box :path_offers_id %>
-      <%= form.label :path_offers_id %>
-    </div>
-  <div class="field">
-    <%= form.label :score %>
-    <%= form.text_field :score %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

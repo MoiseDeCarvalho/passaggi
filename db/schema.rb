@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_161044) do
+ActiveRecord::Schema.define(version: 2020_08_29_131907) do
 
   create_table "feedback_paths", force: :cascade do |t|
     t.integer "user_id"
@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 2020_08_28_161044) do
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.integer "path_offers_id"
+    t.integer "path_offer_id"
     t.integer "user_id"
     t.text "feedback"
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
   end
 
   create_table "path_offers", force: :cascade do |t|
