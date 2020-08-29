@@ -57,9 +57,12 @@
           <br/>
           <p class="testi-show"><%= @vehicle.colour %></p>
         </div >
-
-        <%= link_to 'Destroy', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> <i class="material-icons right">description</i>|  
+<div class="col l2">
+<%= link_to 'Cancella', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i>|
+</div>
+<div class="col 10">
+<%= link_to 'Modifica', edit_vehicle_path(@vehicle)%><i class="material-icons left">edit</i>
+</div>
       <% end %>
     <% end %>
 
