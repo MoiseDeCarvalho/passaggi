@@ -8,7 +8,7 @@
 	          	<th>Automezzo</th>
 	          	<th>Utente</th>
 	          	<th>Partenza</th>
-	          	<th>Parrivo</th>
+	          	<th>Arrivo</th>
 	          	<th>Data di partenza</th>
 	          	<th>Data di arrivo</th>
 	          	<th>Prezzo</th>
@@ -66,9 +66,9 @@
 							<% end %>
 			            </td>
 			            <td><%= path_offer.full %></td>
-			            <td><%= link_to 'Show', path_offer %></td>
-			            <td><%= link_to 'Edit', edit_path_offer_path(path_offer) %></td>
-			            <td><%= link_to 'PrenotA', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			            <td><%= link_to 'Show', path_offer %><i class="material-icons left">description</i></td>
+			            <td><%= link_to 'Edit', edit_path_offer_path(path_offer) %><i class="material-icons left">edit</i></td>
+			            <td><%= link_to 'PrenotA', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">book</i></td>
 			          </tr>
 			        <% end %>
 		        <% end %>

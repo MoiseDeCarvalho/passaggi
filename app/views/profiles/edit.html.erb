@@ -2,6 +2,12 @@
 	<div class="col l6 offset-l3">
 		<h4>Informazioni personali</h4>
 		<%= render 'form', profile: @profile %>
+		<div class="col l2">
+			<%= link_to 'Back', profiles_path %><i class="material-icons left">arrow_back</i>|
+		</div>
+		<div class="col 10">
+			<%= link_to 'Mostra', @profile %><i class="material-icons left">description</i>
+		</div>	 
 	</div>
 </div>
 

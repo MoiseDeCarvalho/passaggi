@@ -16,9 +16,9 @@
       <tr>
         <td><%= feedback_path.user_id %></td>
         <td><%= feedback_path.path_offers_id %></td>
-        <td><%= link_to 'Show', feedback_path %></td>
-        <td><%= link_to 'Edit', edit_feedback_path_path(feedback_path) %></td>
-        <td><%= link_to 'Destroy', feedback_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostra', feedback_path %><i class="material-icons left">description</i></td>
+        <td><%= link_to 'Modifica', edit_feedback_path_path(feedback_path) %><i class="material-icons left">edit</i></td>
+        <td><%= link_to 'Cancella', feedback_path, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 <% end %>
 <br>
 
-<%= link_to 'New Feedback Path', new_feedback_path_path %>
+<%= link_to 'Nuovo Feedback Path', new_feedback_path_path %><i class="material-icons left">add</i>

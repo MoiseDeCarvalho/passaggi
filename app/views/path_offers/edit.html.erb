@@ -3,9 +3,12 @@
 		<h4>Modifica passaggio</h4>
 
 		<%= render 'form', path_offer: @path_offer %>
-
-		<%= link_to 'Show', @path_offer %> |
-		<%= link_to 'Back', path_offers_path %>
+		<div class="col 12">
+        <%= link_to 'Back', path_offers_path %><i class="material-icons left">arrow_back</i>|
+        </div>
+         <div class="col 10">
+         <%= link_to 'Mostra', @path_offer %><i class="material-icons left">description</i>
+        </div>
 	</div>
 </div>
 

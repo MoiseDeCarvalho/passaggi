@@ -1,6 +1,10 @@
 <h1>Editing Type Vehicle</h1>
 
 <%= render 'form', type_vehicle: @type_vehicle %>
+<div class="col l2">
+<%= link_to 'Back', type_vehicles_path %><i class="material-icons left">arrow_back</i>|
+</div>
+<div class="col 10">
+<%= link_to 'Mostra', @type_vehicle %><i class="material-icons left">description</i>
+</div>	 
 
-<%= link_to 'Show', @type_vehicle %> |
-<%= link_to 'Back', type_vehicles_path %>

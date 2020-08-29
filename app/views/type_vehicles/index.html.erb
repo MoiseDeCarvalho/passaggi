@@ -14,9 +14,9 @@
     <% @type_vehicles.each do |type_vehicle| %>
       <tr>
         <td><%= type_vehicle.description %></td>
-        <td><%= link_to 'Show', type_vehicle %></td>
-        <td><%= link_to 'Edit', edit_type_vehicle_path(type_vehicle) %></td>
-        <td><%= link_to 'Destroy', type_vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', type_vehicle %><i class="material-icons left">description</i></td>
+        <td><%= link_to 'Edit', edit_type_vehicle_path(type_vehicle) %><i class="material-icons left">edit</i></td>
+        <td><%= link_to 'Destroy', type_vehicle, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Type Vehicle', new_type_vehicle_path %>
+<%= link_to 'Nuovo Type Vehicle', new_type_vehicle_path %><i class="material-icons left">add</i>
