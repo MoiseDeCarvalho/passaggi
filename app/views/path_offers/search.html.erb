@@ -16,27 +16,32 @@
 	      <%= label_tag :data_di_partenza %>
 	      <%= date_select( "date_departure" ,:date_departure ) %> 
 	    </div>
-         <div class="col l3 field">
+        
+        <div class="col l3 field">
 	      <%= label_tag :data_di_arrivo%>
-	      <%= date_select( "date_departure" ,:date_arrive) %> 
+	      <%= date_select( "date_arrive" ,:date_arrive) %> 
 	    </div>
 
 	    <div class="col l3 field">
 	      <%= label_tag :Nr_Posti %>
 	      <%= text_field_tag :max_available, params[:max_available] %> 
 	    </div>
-       <div class="col l3 field">
+       	
+       	<div class="col l3 field">
 	      <%= label_tag :Prezzo %>
 	      <%= text_field_tag :price, params[:price] %> 
 	    </div>
+	    
 	    <div class="col l3 field">
 	      <%= label_tag :Prenotato %>
 	      <%= radio_button_tag :booked, params[:booked] %> 
 	    </div>
+	    
 	    <div class="col l3 field">
 	      <%= label_tag :Disponibile %>
 	      <%= radio_button_tag :full, params[:full] %> 
 	    </div>
+       	
        	<br/>
         <div class="actions">
 		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>

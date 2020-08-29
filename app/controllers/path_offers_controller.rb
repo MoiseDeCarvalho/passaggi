@@ -50,12 +50,15 @@ class PathOffersController < ApplicationController
       @path_offers_founded = PathOffer.search(params)
       #trovo eventualemente percorsi gia prenotati dall'utente 
       @booked_for_user = FeedbackPath.find_by(:user_id => current_user.id)
-    #end
+  #  end
   end
 
   #GET /update-path-booked'
   def update_path_booked
     @p = PathOffer.path_booked(params)
+
+    #send email di conferma di prenotazione all'utente che ha creato il passaggio e all'utente che ha prenotato il passaggio
+    #UserMailer.path_offer_confirmation(current_user).deliver
     render :json => "Prenotazione eseguita correttamente"    
   end
 
