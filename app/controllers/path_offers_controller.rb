@@ -58,7 +58,7 @@ class PathOffersController < ApplicationController
     @p = PathOffer.path_booked(params)
 
     #send email di conferma di prenotazione all'utente che ha creato il passaggio e all'utente che ha prenotato il passaggio
-    #UserMailer.path_offer_confirmation(current_user).deliver
+    UserMailer.path_offer_confirmation(current_user, params).deliver
     render :json => "Prenotazione eseguita correttamente"    
   end
 
