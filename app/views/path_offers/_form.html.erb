@@ -24,11 +24,16 @@
       <%= form.text_field :arrive %>
     </div>
 
+    <div class="col  l12 field">
+      <%= form.label :luogo_di_ritrovo %>
+      <%= form.text_field :place %>
+    </div>
+
     <div class="col l6 field">
       <%= form.label :data_di_partenza %>
       <%= form.date_select :date_departure %>
     </div>
-
+    
     <div class="col l6 field">
       <%= form.label :data_di_arrivo %>
       <%= form.date_select :date_arrive %>
@@ -47,22 +52,9 @@
     <div class="col l2 field">
       <%= form.label :nr_posti %>
       <%= form.number_field :max_available %>
-    </div>
-    <div class="col l2 field">
-      <%= form.label :Pieno %>
-      <%= form.check_box :booked %>
-    </div>
-    <div class="col l6field">
-      <%= form.label :full %>
-      <%= form.check_box :full %>
-    </div>
-    <div class="col l12 field">
-      <%= form.label :id_veicolo %>      
-    </div>
-    
-
-    
-<%= form.number_field :vehicle_id, value:@vehicle.id  %>
+    </div>    
+        
+      <%= form.hidden_field :vehicle_id, value:@vehicle.id  %>
     
 
     <div class="actions">

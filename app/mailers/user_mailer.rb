@@ -11,4 +11,12 @@ class UserMailer < ApplicationMailer
 
     mail to: user.email, subject: "Conferma di prenotazione viaggio", reply_to: "passaggioruby@gmail.com"
   end
+
+  def path_offer_delete_confirmation(user, params)
+	@user = user
+    @params = params
+
+    mail to: user.email, subject: "Conferma di prenotazione viaggio", reply_to: "passaggioruby@gmail.com"
+  	
+  end
 end

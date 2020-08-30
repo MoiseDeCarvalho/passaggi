@@ -1,0 +1,9 @@
+Conferma cancellazione prenotazione
+
+Viaggio <%=@params["departure"].concat(' - ').concat(@params["arrive"]) %>
+
+
+Buongiorno,
+ti confermiamo la cancellazione della tua prenotazione al viaggio.
+
+Lo Staff.

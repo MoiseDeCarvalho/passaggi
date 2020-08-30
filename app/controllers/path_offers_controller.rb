@@ -66,6 +66,7 @@ class PathOffersController < ApplicationController
   #GET /delete-path-booked
   def delete_path_booked
     @p = PathOffer.path_delete_booked(params)
+    UserMailer.path_offer_delete_confirmation(current_user, params).deliver
     render :json => "Cancellazione eseguita correttamente"
   end
 
@@ -124,7 +125,7 @@ class PathOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def path_offer_params
-      params.require(:path_offer).permit(:vehicle_id, :user_id, :departure, :arrive, :date_departure, :date_arrive, :price, :max_available, :booked, :full)
+      params.require(:path_offer).permit(:vehicle_id, :user_id, :departure, :arrive, :date_departure, :date_arrive, :price, :max_available, :booked, :full, :place)
     end
 
     #checko l'utente per le modifiche cancellazioni
