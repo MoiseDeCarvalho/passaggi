@@ -1,6 +1,19 @@
+  <!-- Modal Structure -->
+  <div id="modal-message" class="modal">
+    <div class="modal-content">
+      <h4>Azione non permessa</h4>
+      <p>Prima di procedere a prenotare un passaggio, devi compilare le tue informazioni personali</p>
+    </div>
+    <div class="modal-footer">
+      <a href="/profiles/new" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
 <div class="row">
-	 
 	  <h4 class="center">Risultato della ricerca</h4>
+
+	  <br/>
+	  <div class="msg-error"><span id="result_message"></span></div>
 	  <% if !@path_offers_founded.nil? %>
 	    <table> 
 	      <thead>
@@ -108,24 +121,38 @@
 	 	}
 
 	 	function sendData(path_offer_id, old_value, reserved, current_user_id, departure, arrive){	  
-			xmlhttp = $.ajax({
-			  type:"GET",
-			  url:"/update-path-booked",
-			  dataType:"json",
-			   async: false,
-			  data: {path_offer_id: path_offer_id, old_value: old_value, booked: reserved.value, current_user_id: current_user_id, departure: departure, arrive: arrive},
-			  success:function(data){
-			    alert(data.responseText);
-			  }
-			}); 
-       
-			if ( xmlhttp.status == 200 ) {
-				alert (xmlhttp.responseText);
-				window.location.href = '/used';
-			}
-			else
-				alert("Prenotazione fallita");
+	 		var profile ;
+	 		<% if @profile.nil? %>
+	 			profile = 0;
+	 		<% end %>
+	 		if (profile == 0){ 			 
+	 			  $('#modal-message').modal('open');
+  
+	 			
+	 		}
+	 		else {
+	 			xmlhttp = $.ajax({
+				  type:"GET",
+				  url:"/update-path-booked",
+				  dataType:"json",
+				   async: false,
+				  data: {path_offer_id: path_offer_id, old_value: old_value, booked: reserved.value, current_user_id: current_user_id, departure: departure, arrive: arrive},
+				  success:function(data){
+				    alert(data.responseText);
+				  }
+				}); 
+	       
+				if ( xmlhttp.status == 200 ) {
+					alert (xmlhttp.responseText);
+					window.location.href = '/used';
+				}
+				else
+					alert("Prenotazione fallita");
+		 		}
+			
  	 	}
+
+
 
 	 </script>
 	    <br>

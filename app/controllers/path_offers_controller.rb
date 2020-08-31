@@ -46,6 +46,7 @@ class PathOffersController < ApplicationController
 
 #GET /serach
   def search_result
+    @profile = Profile.find_by(:user_id => current_user.id)
     #respond_to do |format|
       @path_offers_founded = PathOffer.search(params)
       #trovo eventualemente percorsi gia prenotati dall'utente 

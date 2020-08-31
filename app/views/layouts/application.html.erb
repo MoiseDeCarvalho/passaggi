@@ -37,6 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var instancesP = M.Datepicker.init(dateP, 'mmm dd, yyyy');
     var elemsSelect = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elemsSelect, options);
+    var elemsModal = document.querySelectorAll('.modal');
+    var instancesModal = M.Modal.init(elemsModal, options);
+   
+
   });
 
   // Or with jQuery
@@ -47,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
     $('.datepicker').datepicker();
     $('.timepicker').timepicker();
     $('select').formSelect();
+    $('.modal').modal();
+   
   });
 
     
