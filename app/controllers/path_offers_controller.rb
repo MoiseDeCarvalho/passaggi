@@ -82,6 +82,14 @@ class PathOffersController < ApplicationController
   def create
     @path_offer =  current_user.path_offers.build(path_offer_params)
 
+    if @path_offer.booked.nil?
+      @path_offer.booked = 0
+    end 
+
+    if @path_offer.full.nil?
+      @path_offer.full = 0
+    end 
+
     respond_to do |format|
       if @path_offer.save
         format.html { redirect_to @path_offer, notice: 'Path offer was successfully created.' }
