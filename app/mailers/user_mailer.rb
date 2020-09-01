@@ -16,7 +16,12 @@ class UserMailer < ApplicationMailer
 	@user = user
     @params = params
 
-    mail to: user.email, subject: "Conferma di prenotazione viaggio", reply_to: "passaggioruby@gmail.com"
-  	
+    mail to: user.email, subject: "Conferma di prenotazione viaggio", reply_to: "passaggioruby@gmail.com"  	
+  end
+
+  def path_offer_driver_info_path_booked(path_offer_creator, user, params, utente)
+  	@user = user
+  	@params = params
+   	mail to: path_offer_creator, subject: "Prenotazione viaggio", reply_to: "passaggioruby@gmail.com"  
   end
 end

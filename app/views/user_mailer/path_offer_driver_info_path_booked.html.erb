@@ -1,0 +1,10 @@
+<h1>Avviso di prenotazione viaggio</h1>
+
+<p>Gentile <%= @user.name =>, 
+<p>
+  ti informiamo che è stato prenotato il viaggio <%=@params["departure"].concat(' - ').concat(@params["arrive"]) %> da :
+  <br/>
+  <%= @nome %>
+<br/>
+  Lo Staff.
+</p>

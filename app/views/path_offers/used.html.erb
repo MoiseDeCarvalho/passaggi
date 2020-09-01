@@ -6,6 +6,7 @@
     <table> 
       <thead>
         <tr>
+          <th>Id</th>
           <th>Partenza</th>
           <th>Arrivo</th>
           <th>Data di partenza</th>
@@ -17,7 +18,8 @@
  
        <tbody>
         <% @paths.each do |path_offer| %>        	
-          <tr>            
+          <tr>   
+            <td><%= path_offer.id %></td>         
             <td><%= path_offer.departure %></td>
             <td><%= path_offer.arrive %></td>
             <td><%= path_offer.date_departure %></td>
@@ -29,7 +31,7 @@
               <% else %>
                 <p></p>
               <% end %>
-
+<%= button_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>       
           </tr>	
         <% end %>
