@@ -23,8 +23,8 @@ class PathOffer < ApplicationRecord
 	    where("arrive LIKE ?", "%#{params[:arrive]}%") 		if params[:arrive].present?
 	    where("date_departure >= ?", "#{@date_dep}") 		if !@date_dep.nil?
 	    where("date_arrive <= ?", "#{@date_arr}") 		if !@date_arr.nil?
-        #where("max_available LIKE ?", "%#{params[:max_available]}%") 		if params[:max_available].present?
-	    #where("price LIKE ?", "%#{params[:price]}%") 		if params[:price].present?
+        where("max_available >= ?", "%#{params[:max_available]}%") 		if params[:max_available].present?
+	    where("price >= ?", "%#{params[:price]}%") 		if params[:price].present?
 	end
 
 	#aggiornamento delle quantità di posti prenotati
