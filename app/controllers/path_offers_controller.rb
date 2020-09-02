@@ -79,7 +79,7 @@ class PathOffersController < ApplicationController
   #GET /used
   def used
     @t = FeedbackPath.find_by(:user_id => current_user.id)
-    @paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq).paginate(page: params[:page], per_page: 5)
+    @paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq)
   end
 
 
