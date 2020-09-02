@@ -36,7 +36,7 @@
 	    </div>
 	    <div class="col l3 field">
 	    <%= label_tag :Veicolo%>
-       <%= select_tag :type_vehicle options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
+       <%= select_tag :type_vehicle_id, options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
    </div>
        	<br/>
         <div class="actions">

@@ -5,28 +5,35 @@ class PathOffer < ApplicationRecord
     belongs_to :vehicle
 
 	def self.search(params)
-	    if params[:date_departure].present?
-	    	dateTmp = params["date_departure"]
-	    	year = dateTmp["date_departure(1i)"]
-	    	month = dateTmp["date_departure(2i)"]
-	    	day = dateTmp["date_departure(3i)"]
-	    	@date_dep = Date.new(year.to_i, month.to_i, day.to_i)
+
+		if !params["type_vehicle_id"].present?
+			#se non invio il parametro type_vehicle_id faccio questo
+		    if params[:date_departure].present?
+		    	dateTmp = params["date_departure"]
+		    	year = dateTmp["date_departure(1i)"]
+		    	month = dateTmp["date_departure(2i)"]
+		    	day = dateTmp["date_departure(3i)"]
+		    	@date_dep = Date.new(year.to_i, month.to_i, day.to_i)
+		    end
+	        if params[:date_arrive].present?
+		    	dateTmpArr = params["date_arrive"]
+		    	yearArr = dateTmpArr["date_arrive(1i)"]
+		    	monthArr = dateTmpArr["date_arrive(2i)"]
+		    	dayArr = dateTmpArr["date_arrive(3i)"]
+		    	@date_arr = Date.new(yearArr.to_i, monthArr.to_i, dayArr.to_i)
+		    end
+		    where("departure LIKE ?", "%#{params[:departure]}%") if params[:departure].present?
+		    where("arrive LIKE ?", "%#{params[:arrive]}%") 		if params[:arrive].present?
+		    where("date_departure >= ?", "#{@date_dep}") 		if !@date_dep.nil?
+		    #where("date_arrive <= ?", "#{@date_arr}") 		if !@date_arr.nil?
+	        where("(max_available-booked) >= ?", "%#{params[:max_available]}%") 		if params[:max_available].present?
+		    where("price >= ?", "%#{params[:price_min]}%") 		if params[:price_min].present?
+		    where("price <= ?", "%#{params[:price_max]}%") 		if params[:price_max].present?
+		    where("full = 0") 
+	    else
+	    	#se  invio il parametro type_vehicle_id faccio questo JOIN tra pathOffer e vehicle
+
 	    end
-        if params[:date_arrive].present?
-	    	dateTmpArr = params["date_arrive"]
-	    	yearArr = dateTmpArr["date_arrive(1i)"]
-	    	monthArr = dateTmpArr["date_arrive(2i)"]
-	    	dayArr = dateTmpArr["date_arrive(3i)"]
-	    	@date_arr = Date.new(yearArr.to_i, monthArr.to_i, dayArr.to_i)
-	    end
-	    where("departure LIKE ?", "%#{params[:departure]}%") if params[:departure].present?
-	    where("arrive LIKE ?", "%#{params[:arrive]}%") 		if params[:arrive].present?
-	    where("date_departure >= ?", "#{@date_dep}") 		if !@date_dep.nil?
-	    #where("date_arrive <= ?", "#{@date_arr}") 		if !@date_arr.nil?
-        where("(max_available-booked) >= ?", "%#{params[:max_available]}%") 		if params[:max_available].present?
-	    where("price >= ?", "%#{params[:price_min]}%") 		if params[:price_min].present?
-	    where("price <= ?", "%#{params[:price_max]}%") 		if params[:price_max].present?
-	     where("full = 0") 
 	end
 
 	#aggiornamento delle quantità di posti prenotati
