@@ -30,6 +30,7 @@ class PathOffer < ApplicationRecord
 		    where("price >= ?", "%#{params[:price_min]}%") 		if params[:price_min].present?
 		    where("price <= ?", "%#{params[:price_max]}%") 		if params[:price_max].present?
 		    where("full = 0") 
+		    .paginate(page: params[:page], per_page: 5)
 	    else
 	    	#se  invio il parametro type_vehicle_id faccio questo JOIN tra pathOffer e vehicle
 

@@ -37,6 +37,9 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'devise' 
 gem "paperclip", "~> 6.0.0"
 gem 'jquery-rails', '~> 4.4'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
+
  
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
