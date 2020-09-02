@@ -2,7 +2,7 @@ class PathOffer < ApplicationRecord
 	belongs_to :user
     has_many :feedback
     has_many :feedback_path
-
+    belongs_to :vehicle
 
 	def self.search(params)
 	    if params[:date_departure].present?
@@ -54,4 +54,7 @@ class PathOffer < ApplicationRecord
 		f_path.destroy
 
 	end
+	#def self.Vehicle
+     # return Vehicle.all #-> returns first instance of `OtherModel` & then displays "name"
+   	#end
 end

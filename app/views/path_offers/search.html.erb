@@ -28,12 +28,16 @@
        	
        	<div class="col l3 field">
 	      <%= label_tag :Prezzo_massimo %>
-	      <%= text_field_tag :price, params[:price_max] %> 
+	      <%= text_field_tag :price_max, params[:price_max] %> 
 	    </div>
        	<div class="col l3 field">
 	      <%= label_tag :Prezzo_minimo %>
-	      <%= text_field_tag :price, params[:price_min] %> 
+	      <%= text_field_tag :price_min, params[:price_min] %> 
 	    </div>
+	    <div class="col l3 field">
+	    <%= label_tag :Veicolo%>
+       <%= select_tag :type_vehicle options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
+   </div>
        	<br/>
         <div class="actions">
 		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>
