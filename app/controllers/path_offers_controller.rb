@@ -40,7 +40,7 @@ class PathOffersController < ApplicationController
   end
 
   def search
-    
+    @vehicles= TypeVehicle.all
 
   end
 

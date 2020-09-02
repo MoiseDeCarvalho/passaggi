@@ -1,5 +1,6 @@
 class Vehicle < ApplicationRecord
 	belongs_to :user
+	has_many :path_offer
 	def typeVehicle
       return TypeVehicle.all #-> returns first instance of `OtherModel` & then displays "name"
    	end
