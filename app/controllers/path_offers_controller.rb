@@ -5,7 +5,7 @@ class PathOffersController < ApplicationController
 
   # GET /path_offers
   def index
-    @path_offers = PathOffer.where(:user_id => current_user.id)
+    @path_offers = PathOffer.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
     @profile = Profile.find_by(:user_id => current_user.id);
 
      @vehicle = Vehicle.find_by(:user_id => current_user.id)
@@ -98,8 +98,8 @@ class PathOffersController < ApplicationController
 
     respond_to do |format|
       if @path_offer.save
-        format.html { redirect_to @path_offer, notice: 'Path offer was successfully created.' }
-        format.json { render :show, status: :created, location: @path_offer }
+        format.html { redirect_to path_offers_url, notice: "L'inserimento del passaggio è andato a buon fine ." }
+        format.json { render :index, status: :created, location: @path_offer }
       else
         format.html { render :new }
         format.json { render json: @path_offer.errors, status: :unprocessable_entity }
