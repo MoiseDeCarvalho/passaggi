@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profile = Profile.find_by(:id => current_user.id)
+    @profile = Profile.find_by(:user_id => current_user.id)
   end
 
   # GET /profiles/1
@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = current_user.build_profile
+    @profile = Profile.find_by(:user_id => current_user.id)
   end
 
   # GET /profiles/1/edit
@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        format.html { redirect_to profiles__url, notice: 'Profilo correttamente inserito' }
       else
         format.html { render :new }
       end
@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to profiles_url, notice: 'Profilo correttamente modificato.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
