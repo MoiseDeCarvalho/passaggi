@@ -1,4 +1,6 @@
+
 <div class="row">
+        
 	<div class="col l9 offset-l1">
 		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
 		
@@ -36,9 +38,9 @@
 	      <%= text_field_tag :price_min, params[:price_min] %> 
 	    </div>
        	<br/>
-        <div class="actions">
+        <div class="actions" style=” #ff0000”>
 		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>
 	    </div>
-      <% end %>
+      <<% end -%>
 	</div>
 </div>
