@@ -1,18 +1,4 @@
 // Place all the styles related to the path_offers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-#myHeader {
-   
-  border-collapse: collapse;
-  
-  background-color:blue;
-  animation-name: example;
-  animation-duration: 4s;
-} 
-@keyframes example {
-  0%   {background-color: blue;}
-  25%  {background-color: yellow;}
-  50%  {background-color: red;}
-  100% {background-color: blue;}
-}
 
