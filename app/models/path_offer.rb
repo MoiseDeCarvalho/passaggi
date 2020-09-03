@@ -32,7 +32,8 @@ class PathOffer < ApplicationRecord
 		    where("full = 0") 
 	    else
 	    	#se  invio il parametro type_vehicle_id faccio questo JOIN tra pathOffer e vehicle
-
+            PathOffer.where(vehicle_id: params[:type_vehicle_id])
+            Vehicle.joins(:type_vehicle_id).where(type_vehicle_id: { vehicle_id: params[:type_vehicle_id] })
 	    end
 	end
 

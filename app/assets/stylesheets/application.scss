@@ -78,15 +78,16 @@ main {
   cursor: pointer;
 }
 
-
-.box{
-  background: image-url('prova.jpg') no-repeat;
-
-}
-
 .select-wrapper{ 
      
     float: left;
     width: 30%;
 }
 
+.row{
+ 
+ 
+  border-radius: 2px;
+  padding: 50px;
+
+}
