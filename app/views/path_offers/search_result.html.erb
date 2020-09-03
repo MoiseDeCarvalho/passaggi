@@ -15,7 +15,8 @@
 	  <br/>
 	  <div class="msg-error"><span id="result_message"></span></div>
 	  <% if !@path_offers_founded.nil? %>
-	    <table> 
+	    <table class="responsive-table" id="myHeader"> 
+	    
 	      <thead>
 	        <tr>
 	        	<th>ID</th>
@@ -95,6 +96,7 @@
 		        <% end %>
 	        <% end %>
 	      </tbody>
+	  
 	    </table>
 	 <script type="text/javascript">
 	 	function deletePathBooked(path_offer_id, current_user_id, departure, arrive){
