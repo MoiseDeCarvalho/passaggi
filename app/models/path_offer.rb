@@ -6,7 +6,7 @@ class PathOffer < ApplicationRecord
 
 	def self.search(params)
 
-		if !params["type_vehicle_id"].present?
+		if params["type_vehicle_id"].present?
 			#se non invio il parametro type_vehicle_id faccio questo
 		    if params[:date_departure].present?
 		    	dateTmp = params["date_departure"]

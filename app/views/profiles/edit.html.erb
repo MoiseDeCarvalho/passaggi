@@ -2,11 +2,13 @@
 	<div class="col l6 offset-l3">
 		<h4>Informazioni personali</h4>
 		<%= render 'form', profile: @profile %>
-		<div class="col 1">
-			<%= link_to 'Back', profiles_path, class: "waves-effect light-blue " %><i class="material-icons left">arrow_back</i>|
+		<div class="col 11 ">
+			<%= link_to 'Back', profiles_path %><i class="material-icons left">arrow_back</i>
 		</div>
-		<div class="col 30">
-			<%= link_to 'Mostra', @profile, class: "waves-effect light-blue "%><i class="material-icons left">description</i></a>
+		<div class="col l1 offset-l3">
+		</div>
+		<div class="col 11">
+			<%= link_to 'Mostra', @profile%><i class="material-icons left">description</i></a>
 		</div>	 
 	</div>
 </div>
