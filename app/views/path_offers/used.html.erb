@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= debug @o %>
 <div class="row">
   <h4 class="center">Passaggi prenotati</h4>
   <% if !@paths.nil? %>
@@ -13,6 +13,7 @@
           <th>Data di arrivo</th>
           <th>Prezzo</th>
           <th>Lascia un feedback</th>
+          <th>Azione</th>
         </tr>
       </thead>
  
@@ -31,8 +32,11 @@
               <% else %>
                 <p></p>
               <% end %>
-              <%= button_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>       
+              
+            </td>  
+            <td>
+              <button onclick="deletePathBooked(<%= path_offer.id %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise">Cancella</button>
+            </td>     
           </tr>	
         <% end %>
       </tbody>
@@ -43,3 +47,30 @@
  
   <% end %>
 </div>
+
+<script type="text/javascript">
+    function deletePathBooked(path_offer_id, current_user_id, departure, arrive){
+      xmlhttp = $.ajax({
+              type:"GET",
+              url:"/delete-path-booked",
+              dataType:"json",
+               async: false,
+              data: {path_offer_id: path_offer_id, current_user_id: current_user_id, departure: departure, arrive: arrive},
+              success:function(data){
+                alert(data.responseText);
+              }
+            }); 
+             
+            if ( xmlhttp.status == 200 ) {
+              alert (xmlhttp.responseText);
+              window.location.href = '/used';
+            }
+            else
+              alert("Cencellazione fallita");
+           
+
+      alert("Cancellazione eseguita correttamente");
+    }
+
+
+   </script>

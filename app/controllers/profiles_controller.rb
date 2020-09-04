@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.find_by(:user_id => current_user.id)
+    @profile = current_user.build_profile
   end
 
   # GET /profiles/1/edit
@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to profiles__url, notice: 'Profilo correttamente inserito' }
+        format.html { redirect_to profiles_url, notice: 'Profilo correttamente inserito' }
       else
         format.html { render :new }
       end

@@ -57,15 +57,16 @@ class PathOffersController < ApplicationController
   #GET /update-path-booked'
   def update_path_booked
     PathOffer.path_booked(params)
-
+ 
     #send email di conferma di prenotazione all'utente che ha creato il passaggio e all'utente che ha prenotato il passaggio
     UserMailer.path_offer_confirmation(current_user, params).deliver
-
     #send mail di avviso prenotazione al creatore del passaggio
     @path_offer = PathOffer.find(params["path_offer_id"])
     @profile = Profile.find_by(:user_id => current_user.id)  #trovo il profilo di chi sta prenotando
     @path_offer_creator = User.find_by(:id => @path_offer.user_id)  # trovo l'utente che ha ceato il path_offer
 
+logger.info("creatore email " + @path_offer_creator.email)
+logger.info("Nome " + @profile.path_offer_driver_info_path_booked)
     UserMailer.path_offer_driver_info_path_booked(@path_offer_creator.email, @profile.name, params, current_user)
     render :json => "Prenotazione eseguita correttamente"    
   end
@@ -81,7 +82,12 @@ class PathOffersController < ApplicationController
   #GET /used
   def used
     @t = FeedbackPath.find_by(:user_id => current_user.id)
-    @paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq)
+     @paths = PathOffer.joins(:feedback_path).where(feedback_paths: { user_id: current_user.id })
+    begin 
+      #@paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq)
+    rescue ActiveRecord::RecordNotFound 
+     # @paths = nil
+    end
   end
 
 

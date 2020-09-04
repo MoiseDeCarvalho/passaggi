@@ -6,6 +6,7 @@
     <table> 
       <thead>
         <tr>
+          <th>ID</th>
           <th>Automezzo</th>
           <th>User</th>
           <th>Partenza</th>
@@ -24,6 +25,7 @@
        <tbody>
         <% @path_offers.each do |path_offer| %>
           <tr>
+            <td><%= path_offer.id %></td>
             <td>
               <%=  @typeVehicle.description  + " " + @vehicle.model%>
               <% if !@vehicle.typeVehicle.nil? %>
