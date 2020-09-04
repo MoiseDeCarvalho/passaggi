@@ -17,13 +17,13 @@
       <% if @profile.user == current_user %>
         <div class="field">
           <% if @profile.avatar.url != "/images/original/missing.png" %>
-            <%=  image_tag @profile.avatar.url, id: "myImg", height:'40'%>
+            <%=  image_tag @profile.avatar.url, id: "myImg", height:'20'%>
           <% end %>      
-          <div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-</div>  
+          <div id="myModal" class="modal" style="margin-top: 200px">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01" >
+          <div id="caption"></div>
+        </div>  
         </div>
 
         <div class="col l6  field">

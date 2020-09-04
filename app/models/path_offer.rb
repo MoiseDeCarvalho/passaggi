@@ -6,7 +6,7 @@ class PathOffer < ApplicationRecord
 
 	def self.search(params)
 
-		if params["type_vehicle_id"].present?
+		#if !params["type_vehicle_id"].present?
 			#se non invio il parametro type_vehicle_id faccio questo
 		    if params[:date_departure].present?
 		    	dateTmp = params["date_departure"]
@@ -31,11 +31,11 @@ class PathOffer < ApplicationRecord
 		    where("price <= ?", "%#{params[:price_max]}%") 		if params[:price_max].present?
 		    where("full = 0") 
 		    .paginate(page: params[:page], per_page: 5)
-	    else
+	    #else
 	    	#se  invio il parametro type_vehicle_id faccio questo JOIN tra pathOffer e vehicle
-            PathOffer.where(vehicle_id: params[:type_vehicle_id])
-            Vehicle.joins(:type_vehicle_id).where(type_vehicle_id: { vehicle_id: params[:type_vehicle_id] })
-	    end
+            #PathOffer.where(vehicle_id: params[:type_vehicle_id])
+            #Vehicle.joins(:type_vehicle_id).where(type_vehicle_id: { vehicle_id: params[:type_vehicle_id] })
+	    #end
 	end
 
 	#aggiornamento delle quantità di posti prenotati
