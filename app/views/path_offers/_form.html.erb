@@ -47,7 +47,7 @@
     </div>
     <div class=" col l3 field">
       <%= form.label :prezzo %>
-      <%= form.text_field :price, :onkeypress=>"return soloNumeri(event);", required: true %>
+      <%= form.text_field :price, :onkeypress=>"return soloNumeri(event);",  required: true %>
     </div>
     <div class="col l2 field">
       <%= form.label :nr_posti %>
@@ -72,4 +72,18 @@
     }
     return true;
   }
+
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var data = window.location.href.split("/");
+    var edit = data[data.length-1];
+    var a = <%= path_offer.id %>
+    if (edit == "edit"){
+      <% if !@utenti.nil? %>
+        document.getElementById("path_offer_price").setAttribute("disabled", true);
+      <% end %>
+    }
+
+    
+});
 </script>

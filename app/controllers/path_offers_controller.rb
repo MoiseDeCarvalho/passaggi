@@ -40,6 +40,7 @@ class PathOffersController < ApplicationController
   def edit
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
     @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
+    @utenti= FeedbackPath.where(:path_offer_id => params["id"])
   end
 
   def search
