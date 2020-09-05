@@ -18,7 +18,7 @@
           <th>Nr prenotati</th>
           <th>Completo</th>
           <th>Luogo di ritrovo</th>
-          <th colspan="3"></th>
+          <th colspan="2" class="center">Azioni</th>
         </tr>
       </thead>
  
@@ -49,17 +49,28 @@
             <td><%= path_offer.booked %></td>
             <td>
               <% if path_offer.full == 0 %>
-                      <i class="material-icons left">hourglass_empty
-</i>
+                      <i class="material-icons left">hourglass_empty</i>
                     <% else %>
-                      <i class="material-icons left">hourglass_full
-</i>
+                      <i class="material-icons left">hourglass_full</i>
                     <% end %>
 
             </td>
             <td><%= path_offer.place %>
-            <td><%= link_to 'Modifica', edit_path_offer_path(path_offer) %><i class="material-icons left">edit</i></td>
-            <td><%= link_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
+            <td>              
+              <% if Date.today < path_offer.date_departure   %>
+                 <i class="material-icons left">edit <%= link_to 'Modifica', edit_path_offer_path(path_offer) , class:"waves-effect waves-light btn btn-devise"%></i>
+              <% else %>  
+                  <i class="material-icons left">do_not_disturb_off</i>
+              <% end %> 
+            </td>
+            <td>
+              <% if Date.today < path_offer.date_departure %>
+                 <i class="material-icons left">delete <%= link_to 'Cancella', path_offer, method: :delete, data: { confirm: 'Sei sicuro?' } , class:"waves-effect waves-light btn btn-devise"%></i>
+              
+              <% else %>  
+                  <i class="material-icons left">do_not_disturb_off</i>
+              <% end %>              
+            </td>
           </tr>
         <% end %>
       </tbody>

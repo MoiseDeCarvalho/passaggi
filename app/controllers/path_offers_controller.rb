@@ -3,6 +3,8 @@ class PathOffersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, only: [:edit, :update, :destroy]
 
+
+
   # GET /path_offers
   def index
     @path_offers = PathOffer.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
@@ -26,6 +28,7 @@ class PathOffersController < ApplicationController
   def new
     @path_offer = current_user.path_offers.build
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
+    @profile = Profile.find_by(:user_id => current_user.id)
     if !@vehicle.nil?
       @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
     end
@@ -119,9 +122,27 @@ class PathOffersController < ApplicationController
   # PATCH/PUT /path_offers/1
   # PATCH/PUT /path_offers/1.json
   def update
+    prenotati = FeedbackPath.where(:path_offer_id => params["id"])
+    
+    #se non è nil
+    if !prenotati.nil?
+      path_offer = PathOffer.find(params["id"])
+    
+      #se ci sono prenotati li avviso tramite email della cancellazione
+      @creator_email = User.find_by(:id => path_offer.user_id)
+      prenotati.each do | a |
+      utente = User.find(a.user_id)
+      
+      UserMailer.path_offer_modified(@creator_email.email, utente.email, path_offer.departure, path_offer.arrive).deliver
+    end
+  end
+    
+
+      
+    
     respond_to do |format|
       if @path_offer.update(path_offer_params)
-        format.html { redirect_to @path_offer, notice: 'Path offer was successfully updated.' }
+        format.html { redirect_to path_offer_url, notice: 'Path offer was successfully updated.' }
         format.json { render :show, status: :ok, location: @path_offer }
       else
         format.html { render :edit }

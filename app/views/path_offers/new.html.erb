@@ -1,11 +1,19 @@
 <div class="row">
 	<div class="col l6 offset-l3">
-		<% if @vehicle.nil? %>
-		   
-		    <h5 class="center">Devi prima registrare un veicolo</h5>
+		<% if @vehicle.nil? || @profile.nil? %>
+		   <% if @vehicle.nil? %>
+		   	<h5 class="center">Devi prima registrare un veicolo</h5>
 		    <br/>
 		    <br/>
 		    <p class="center"><%= link_to 'Registra un veicolo', new_vehicle_path %><i class="material-icons left">add</i></p>
+		   <% end %>
+
+		    <% if @profile.nil? %>
+		   	<h5 class="center">Completa le informazioni personali</h5>
+		    <br/>
+		    <br/>
+		    <p class="center"><%= link_to 'Compila le informazioni personali', new_profile_path %><i class="material-icons left">add</i></p>
+		   <% end %>
 	    <% else %>
 	    	<h4>Nuovo pasaggio</h4>
 

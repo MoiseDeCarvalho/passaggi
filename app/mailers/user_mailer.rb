@@ -36,4 +36,12 @@ class UserMailer < ApplicationMailer
     @path_offer = path_offer
     mail to: creator_email, subject: "Cancellazione prenotazione viaggio", reply_to: "passaggioruby@gmail.com"  
   end
+
+  def path_offer_modified(creator_email, user_email, departure, arrive)
+    @creator_email = creator_email
+    @user_email = user_email
+    @departure = departure
+    @arrive = arrive
+    mail to: user_email, subject: "Modifica del  viaggio prenotato", reply_to: "passaggioruby@gmail.com" 
+  end
 end
