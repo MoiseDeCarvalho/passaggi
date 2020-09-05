@@ -28,7 +28,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1/edit
   def edit
     respond_to do |format|
-      format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback was successfully modified.' }
+      format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback modificato correttamente.' }
     end
   end
 
@@ -39,7 +39,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback was successfully created.' }
+        format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback creato correttamente.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
+        format.html { redirect_to @feedback, notice: 'Feedback cancelalto correttamente.' }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }

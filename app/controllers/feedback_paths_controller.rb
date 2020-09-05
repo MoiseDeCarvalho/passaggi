@@ -31,7 +31,7 @@ class FeedbackPathsController < ApplicationController
 
     respond_to do |format|
       if @feedback_path.save
-        format.html { redirect_to @feedback_path, notice: 'Feedback path was successfully created.' }
+        format.html { redirect_to @feedback_path, notice: 'Feedback creato correttamente.' }
         format.json { render :show, status: :created, location: @feedback_path }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class FeedbackPathsController < ApplicationController
   def update
     respond_to do |format|
       if @feedback_path.update(feedback_path_params)
-        format.html { redirect_to @feedback_path, notice: 'Feedback path was successfully updated.' }
+        format.html { redirect_to @feedback_path, notice: 'Feedback modificato correttamente.' }
         format.json { render :show, status: :ok, location: @feedback_path }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class FeedbackPathsController < ApplicationController
   def destroy
     @feedback_path.destroy
     respond_to do |format|
-      format.html { redirect_to feedback_paths_url, notice: 'Feedback path was successfully destroyed.' }
+      format.html { redirect_to feedback_paths_url, notice: 'Feedback cancelalto correttamente.' }
       format.json { head :no_content }
     end
   end

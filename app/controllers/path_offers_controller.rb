@@ -71,6 +71,7 @@ class PathOffersController < ApplicationController
     profileCreator = Profile.find_by(:user_id => @path_offer.user_id)  #trovo il profilo di chi ha creato il viaggio
     
     UserMailer.path_offer_driver_info_path_booked(path_offer_creator, profile.name, params, current_user, profileCreator).deliver
+
     render :json => "Prenotazione eseguita correttamente"    
   end
 
@@ -143,7 +144,7 @@ class PathOffersController < ApplicationController
     
     respond_to do |format|
       if @path_offer.update(path_offer_params)
-        format.html { redirect_to path_offer_url, notice: 'Path offer was successfully updated.' }
+        format.html { redirect_to path_offer_url, notice: 'Passaggio modificato correttamente.' }
         format.json { render :show, status: :ok, location: @path_offer }
       else
         format.html { render :edit }
@@ -157,7 +158,7 @@ class PathOffersController < ApplicationController
   def destroy
     @path_offer.destroy
     respond_to do |format|
-      format.html { redirect_to path_offers_url, notice: 'Path offer was successfully destroyed.' }
+      format.html { redirect_to path_offers_url, notice: 'Passaggio cancellato correttamente.' }
       format.json { head :no_content }
     end
   end
