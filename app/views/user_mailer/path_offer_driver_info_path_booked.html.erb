@@ -1,10 +1,10 @@
 <h1>Avviso di prenotazione viaggio</h1>
 
-<p>Gentile <%= @user.name %>, 
+<p>Gentile <%= @profileCreator.name %>, 
 <p>
-  ti informiamo che è stato prenotato il viaggio <%=@params["departure"].concat(' - ').concat(@params["arrive"]) %> da :
+  ti informiamo che è stato prenotato il viaggio  da :<%=@params["departure"].concat(' - ').concat(@params["arrive"]) %>
   <br/>
-   
+   da <%= @name %>
 <br/>
   Lo Staff.
 </p>

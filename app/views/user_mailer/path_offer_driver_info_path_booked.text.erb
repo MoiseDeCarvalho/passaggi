@@ -1,7 +1,9 @@
 Avviso di prenotazione viaggio
 
-Gentile <%= @user.name %>, 
-ti informiamo che è stato prenotato il viaggio  da :
-<%= @user.name %>
+Gentile <%= @profileCreator.name %>, 
+ti informiamo che è stato prenotato il viaggio  da :<%=@params["departure"].concat(' - ').concat(@params["arrive"]) %>
+
+da <%= @name %>
+
 
 Lo Staff.

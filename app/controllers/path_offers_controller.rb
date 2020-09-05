@@ -48,9 +48,9 @@ class PathOffersController < ApplicationController
   def search_result
     @profile = Profile.find_by(:user_id => current_user.id)
     #respond_to do |format|
-      @path_offers_founded = PathOffer.search(params)
-      #trovo eventualemente percorsi gia prenotati dall'utente 
-      @booked_for_user = FeedbackPath.find_by(:user_id => current_user.id)
+    @path_offers_founded = PathOffer.search(params)
+    #trovo eventualemente percorsi gia prenotati dall'utente 
+    @booked_for_user = FeedbackPath.find_by(:user_id => current_user.id)
   #  end
   end
 
@@ -62,32 +62,33 @@ class PathOffersController < ApplicationController
     UserMailer.path_offer_confirmation(current_user, params).deliver
     #send mail di avviso prenotazione al creatore del passaggio
     @path_offer = PathOffer.find(params["path_offer_id"])
-    @profile = Profile.find_by(:user_id => current_user.id)  #trovo il profilo di chi sta prenotando
-    @path_offer_creator = User.find_by(:id => @path_offer.user_id)  # trovo l'utente che ha ceato il path_offer
-
-logger.info("creatore email " + @path_offer_creator.email)
-logger.info("Nome " + @profile.path_offer_driver_info_path_booked)
-    UserMailer.path_offer_driver_info_path_booked(@path_offer_creator.email, @profile.name, params, current_user)
+    profile = Profile.find_by(:user_id => current_user.id)  #trovo il profilo di chi sta prenotando
+    path_offer_creator = User.find(@path_offer.user_id)
+    profileCreator = Profile.find_by(:user_id => @path_offer.user_id)  #trovo il profilo di chi ha creato il viaggio
+    
+    UserMailer.path_offer_driver_info_path_booked(path_offer_creator, profile.name, params, current_user, profileCreator).deliver
     render :json => "Prenotazione eseguita correttamente"    
   end
 
 
   #GET /delete-path-booked
   def delete_path_booked
-    @p = PathOffer.path_delete_booked(params)
+    PathOffer.path_delete_booked(params)
+    p = PathOffer.find_by(:id => params["path_offer_id"])
     UserMailer.path_offer_delete_confirmation(current_user, params).deliver
+    path_offer_creator = User.find_by(:id => p.user_id)
+    user_delete_path = Profile.find_by(:user_id => current_user.id) # trovo il profilo di chi è collegato
+    profileCreator = Profile.find_by(:user_id => p.user_id)  #trovo il profilo di chi ha creato il viaggio
+
+    UserMailer.path_offer_notify_delete_confirmation(path_offer_creator.email, profileCreator, user_delete_path, p).deliver
     render :json => "Cancellazione eseguita correttamente"
   end
 
   #GET /used
   def used
     @t = FeedbackPath.find_by(:user_id => current_user.id)
-     @paths = PathOffer.joins(:feedback_path).where(feedback_paths: { user_id: current_user.id })
-    begin 
-      #@paths = PathOffer.find(Array(@t).map(&:path_offer_id).uniq)
-    rescue ActiveRecord::RecordNotFound 
-     # @paths = nil
-    end
+    @paths = PathOffer.joins(:feedback_path).where(feedback_paths: { user_id: current_user.id })
+   
   end
 
 
