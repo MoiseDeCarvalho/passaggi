@@ -14,42 +14,58 @@
     
 
     <div class="col l6 field">
-      <%= form.label :partenza %>
+       <div class="black-text text-lighten-3"> 
+          Partenza
+        </div>
       <%= form.text_field :departure %>
     </div>
 
     <div class="col l6 field">
-      <%= form.label :Arrivo %>
+       <div class="black-text text-lighten-3"> 
+          Arrivo 
+        </div>
       <%= form.text_field :arrive %>
     </div>
 
     <div class="col  l12 field">
-      <%= form.label :luogo_di_ritrovo %>
+       <div class="black-text text-lighten-3"> 
+          Luogo_di_ritrovo
+        </div>
       <%= form.text_field :place %>
     </div>
 
     <div class="col l6 field">
-      <%= form.label :data_di_partenza %>
+       <div class="black-text text-lighten-3"> 
+          Data_di_partenza
+        </div>
       <%= form.date_select :date_departure %>
     </div>
     
     <div class="col l6 field">
-      <%= form.label :data_di_arrivo %>
+       <div class="black-text text-lighten-3"> 
+          Data_di_arrivo 
+        </div>
       <%= form.date_select :date_arrive %>
     </div>
     <div class="col l3 field">
-      <%= form.label :Mezzo %>
+       <div class="black-text text-lighten-3"> 
+          Mezzo
+        </div>
       <p>
         <%  if !@typeVehicle.nil? %>
           <%= @typeVehicle.description %>
         <% end %>
     </div>
     <div class=" col l3 field">
-      <%= form.label :prezzo %>
+       <div class="black-text text-lighten-3"> 
+          Prezzo 
+        </div>
       <%= form.text_field :price, :onkeypress=>"return soloNumeri(event);",  required: true %>
     </div>
     <div class="col l2 field">
-      <%= form.label :nr_posti %>
+      <div class="black-text text-lighten-3"> 
+          Nr_posti
+        </div>
       
       <%= form.select 'max_available', options_for_select((1..10).step(1)) %>
     </div>    

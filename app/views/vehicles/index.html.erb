@@ -11,7 +11,7 @@
       <% if @vehicle.user == current_user %>
 
         <div class="col l6  field">
-          <%= label_tag 'Tipo veicolo', nil %>
+          <%= label_tag 'Tipo veicolo', nil, class:"black-text text-lighten-3" %>
           <br/>
           <% if !@vehicle.typeVehicle.nil? %>
             <% @vehicle.typeVehicle.each do |v| %>
@@ -24,8 +24,9 @@
           <% end %>                
         </div >
 
+         
         <div class="field">
-          <%= label_tag 'Foto 1', nil %>
+          <%= label_tag 'Foto 1', nil , class:"black-text text-lighten-3"%>
           <br/>
 
           
@@ -35,25 +36,25 @@
         </div>
 
         <div class="col l6  field">
-          <%= label_tag 'Marca', nil %>
+          <%= label_tag 'Marca', nil, class:"black-text text-lighten-3" %>
           <br/>
           <p class="testi-show"><%= @vehicle.brand %></p>
         </div >
 
         <div class="col l6  field">
-          <%= label_tag 'Modello', nil %>
+          <%= label_tag 'Modello', nil, class:"black-text text-lighten-3" %>
           <br/>
           <p class="testi-show"><%= @vehicle.model %></p>
         </div >
 
         <div class="col l6  field">
-          <%= label_tag 'Motore', nil %>
+          <%= label_tag 'Motore', nil, class:"black-text text-lighten-3" %>
           <br/>
           <p class="testi-show"><%= @vehicle.motor %></p>
         </div >
 
         <div class="col l6  field">
-          <%= label_tag 'Colore', nil %>
+          <%= label_tag 'Colore', nil, class:"black-text text-lighten-3" %>
           <br/>
           <p class="testi-show"><%= @vehicle.colour %></p>
         </div >
