@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :t1s
+  resources :ts
   resources :feedback_paths
   resources :feedbacks
   resources :path_offers

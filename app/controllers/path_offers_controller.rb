@@ -13,12 +13,12 @@ class PathOffersController < ApplicationController
      @vehicle = Vehicle.find_by(:user_id => current_user.id)
     if !@vehicle.nil?
       @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
-    end    
-          
+     end              
   end
 
  
   def show
+
     @path_offers = PathOffer.find_by(:user_id => current_user.id)
     @typeVehicles = TypeVehicle.all
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
@@ -31,8 +31,7 @@ class PathOffersController < ApplicationController
     @profile = Profile.find_by(:user_id => current_user.id)
     if !@vehicle.nil?
       @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
-    end
-    
+    end    
   end
 
 
@@ -41,6 +40,7 @@ class PathOffersController < ApplicationController
     @vehicle = Vehicle.find_by(:user_id => current_user.id)
     @typeVehicle = TypeVehicle.find_by(:id => @vehicle.type_vehicle_id)
     @utenti= FeedbackPath.where(:path_offer_id => params["id"])
+
   end
 
   def search
@@ -48,7 +48,7 @@ class PathOffersController < ApplicationController
 
   end
 
-#GET /serach
+  #GET /serach
   def search_result
     @profile = Profile.find_by(:user_id => current_user.id)
     #respond_to do |format|
@@ -100,8 +100,19 @@ class PathOffersController < ApplicationController
   # POST /path_offers
   # POST /path_offers.json
   def create
+    # costruisco date_departure
+    date_departure = path_offer_params["data_partenza"] + " " + path_offer_params["ora_partenza"]
+    conversione = DateTime.parse(date_departure).to_s(:db)   
+    
     @path_offer =  current_user.path_offers.build(path_offer_params)
+    @path_offer.date_departure = conversione
 
+    #costruisco date_arrive
+    date_arrive = path_offer_params["data_arrivo"] + " " + path_offer_params["ora_arrivo"]
+    conversione = DateTime.parse(date_arrive).to_s(:db)    
+    @path_offer.date_arrive = conversione
+
+    
     if @path_offer.booked.nil?
       @path_offer.booked = 0
     end 
@@ -113,8 +124,7 @@ class PathOffersController < ApplicationController
     respond_to do |format|
       if @path_offer.save
         format.html { redirect_to path_offers_url, notice: "L'inserimento del passaggio è andato a buon fine ." }
-        format.json { render :index, status: :created, location: @path_offer }
-      else
+       else
         format.html { render :new }
         format.json { render json: @path_offer.errors, status: :unprocessable_entity }
       end
@@ -136,22 +146,24 @@ class PathOffersController < ApplicationController
       utente = User.find(a.user_id)
       
       UserMailer.path_offer_modified(@creator_email.email, utente.email, path_offer.departure, path_offer.arrive).deliver
+      end
     end
+
+    respond_to do |format|
+      if @path_offer.update(path_offer_params)
+        format.html { redirect_to path_offer_url, notice: 'Passaggio modificato correttamente.' }
+       else
+        format.html { render :edit }
+       end
+    end
+
   end
     
 
       
     
-    respond_to do |format|
-      if @path_offer.update(path_offer_params)
-        format.html { redirect_to path_offer_url, notice: 'Passaggio modificato correttamente.' }
-        format.json { render :show, status: :ok, location: @path_offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @path_offer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+    
+ 
 
   # DELETE /path_offers/1
   # DELETE /path_offers/1.json
@@ -171,7 +183,7 @@ class PathOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def path_offer_params
-      params.require(:path_offer).permit(:vehicle_id, :user_id, :departure, :arrive, :date_departure, :date_arrive, :price, :max_available, :booked, :full, :place)
+      params.require(:path_offer).permit(:data_arrivo, :ora_arrivo, :data_partenza, :ora_partenza, :vehicle_id, :user_id, :departure, :arrive, :date_departure, :date_arrive, :price, :max_available, :booked, :full, :place)
     end
 
     #checko l'utente per le modifiche cancellazioni

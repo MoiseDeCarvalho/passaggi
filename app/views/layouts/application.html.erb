@@ -34,19 +34,17 @@
       <%= render "layouts/footer" %>
        
   </body>
-     
    
   <script>
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
    // var instances = M.Sidenav.init(elems, options);
-    var dateP = document.querySelectorAll('.datepicker');
-    var instancesP = M.Datepicker.init(dateP, 'mmm dd, yyyy');
+ 
+ 
     var elemsSelect = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elemsSelect, options);
+    var instances = M.FormSelect.init(elemsSelect);
     var elemsModal = document.querySelectorAll('.modal');
-    var instancesModal = M.Modal.init(elemsModal, options);
-   
+    var instancesModal = M.Modal.init(elemsModal);
 
   });
 
@@ -55,13 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
-    $('.datepicker').datepicker();
-    $('.timepicker').timepicker();
+    
     $('select').formSelect();
     $('.modal').modal();
-   
+
   });
 
-    
+ 
     </script>
+
 </html>

@@ -4,6 +4,7 @@ class PathOffer < ApplicationRecord
     has_many :feedback_path
     belongs_to :vehicle
 
+
 	def self.search(params)
 
 		#if !params["type_vehicle_id"].present?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_184134) do
+ActiveRecord::Schema.define(version: 2020_09_06_203116) do
 
   create_table "feedback_paths", force: :cascade do |t|
     t.integer "user_id"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_184134) do
     t.integer "user_id"
     t.string "departure"
     t.string "arrive"
-    t.date "date_departure"
-    t.date "date_arrive"
+    t.datetime "date_departure"
+    t.datetime "date_arrive"
     t.float "price"
     t.integer "max_available"
     t.integer "booked"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 2020_09_01_184134) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "place"
+    t.string "data_partenza"
+    t.string "ora_partenza"
+    t.string "data_arrivo"
+    t.string "ora_arrivo"
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -70,6 +74,19 @@ ActiveRecord::Schema.define(version: 2020_09_01_184134) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "t1s", force: :cascade do |t|
+    t.datetime "tep"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ts", force: :cascade do |t|
+    t.time "tep"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "a"
   end
 
   create_table "type_vehicles", force: :cascade do |t|

@@ -30,13 +30,22 @@
 
     <div class="col l6 field">
       <%= form.label :data_di_partenza %>
-      <%= form.date_select :date_departure %>
+      <input type="text" name= "path_offer[data_partenza]" id= "path_offer[data_partenza]"class="datepicker">
+    </div>
+    <div class="col l6 field">
+      <%= form.label :ora_di_partenza %>
+      <input type="text" name ="path_offer[ora_partenza]" id="path_offer[ora_partenza]" class="timepicker">
     </div>
     
     <div class="col l6 field">
       <%= form.label :data_di_arrivo %>
-      <%= form.date_select :date_arrive %>
+      <input type="text" name= "path_offer[data_arrivo]" id= "path_offer[data_arrivo]"class="datepicker">
     </div>
+    <div class="col l6 field">
+      <%= form.label :ora_di_arrivo %>
+      <input type="text" name ="path_offer[ora_arrivo]" id="path_offer[ora_arrivo]" class="timepicker">
+    </div>
+
     <div class="col l3 field">
       <%= form.label :Mezzo %>
       <p>
@@ -63,6 +72,7 @@
   <% end %>
 <% end %>
 
+
 <script type="text/javascript">
   function soloNumeri(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
@@ -70,19 +80,41 @@
       return false;
     }
     return true;
-  }
-
+ }
+ 
 
   document.addEventListener("DOMContentLoaded", function(){
     var data = window.location.href.split("/");
     var edit = data[data.length-1];
-    var a = <%= path_offer.id %>
+    
     if (edit == "edit"){
-      <% if !@utenti.nil? %>
-        document.getElementById("path_offer_price").setAttribute("disabled", true);
+       
+       <% if !@utenti.nil? %>
+       document.getElementById("path_offer_price").setAttribute("disabled", true);
+       document.getElementById('path_offer[data_partenza]').value = '<%= @path_offer.data_partenza %>';
+       document.getElementById('path_offer[ora_partenza]').value = '<%= @path_offer.ora_partenza %>';
+       document.getElementById('path_offer[data_arrivo]').value = '<%= @path_offer.data_arrivo %>';
+       document.getElementById('path_offer[ora_arrivo]').value = '<%= @path_offer.ora_arrivo %>';
+        
       <% end %>
     }
 
-    
-});
+ 
+    var elemsDate = $('.datepicker').datepicker();
+    var instances = M.Datepicker.init(elemsDate, {
+                format:  'yyyy-mm-dd',
+                selectMonths: true,
+                dismissable: false,
+                autoClose: true
+      });
+   
+
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {
+      twelveHour:false
+    });
+ 
+
+    });
 </script>
+
