@@ -2,40 +2,56 @@
 	<div class="col l9 offset-l1">
 		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
 		<div class="col l3 field">
-	      <%= label_tag :Partenza %>
+	       <div class="black-text text-lighten-3"> 
+	      	Partenza 
+	      </div>
 	      <%= text_field_tag :departure, params[:departure] %> 
 	    </div>
 
 	    <div class="col l3 field">
-	      <%= label_tag :Arrivo %>
+	       <div class="black-text text-lighten-3"> 
+	      	Arrivo 
+	      </div>
 	      <%= text_field_tag :arrive, params[:arrive] %> 
 	    </div>
 
 	    <div class="col l3 field">
-	      <%= label_tag :data_di_partenza %>
+	       <div class="black-text text-lighten-3"> 
+	      	Data_di_partenza
+	      </div>
 	      <%= date_select( "date_departure" ,:date_departure ) %> 
 	    </div>
         
         <div class="col l3 field">
-	      <%= label_tag :data_di_arrivo%>
+	       <div class="black-text text-lighten-3"> 
+	      	Data_di_arrivo
+	      </div>
 	      <%= date_select( "date_arrive" ,:date_arrive) %> 
 	    </div>
 
 	    <div class="col l3 field">
-	      <%= label_tag :Nr_Posti %>
+	       <div class="black-text text-lighten-3"> 
+	      	Nr_posti 
+	      </div>
 	      <%= text_field_tag :max_available, params[:max_available] %> 
 	    </div>
        	
        	<div class="col l3 field">
-	      <%= label_tag :Prezzo_massimo %>
+	       <div class="black-text text-lighten-3"> 
+	      	Prezzo_massimo
+	      </div>
 	      <%= text_field_tag :price_max, params[:price_max] %> 
 	    </div>
        	<div class="col l3 field">
-	      <%= label_tag :Prezzo_minimo %>
+	       <div class="black-text text-lighten-3"> 
+	      	Prezzo_minimo
+	      </div>
 	      <%= text_field_tag :price_min, params[:price_min] %> 
 	    </div>
 	    <div class="col l3 field">
-	    <%= label_tag :Veicolo%>
+	     <div class="black-text text-lighten-3"> 
+	      	Veicolo 
+	      </div>
        <%= select_tag :type_vehicle_id, options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
    </div>
        	<br/>

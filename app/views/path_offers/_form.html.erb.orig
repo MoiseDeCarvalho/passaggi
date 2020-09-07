@@ -35,7 +35,8 @@
     </div>
 
     <div class="col l6 field">
-       <div class="black-text text-lighten-3"> 
+<<<<<<< HEAD
+      <%= form.label :data_di_partenza %>
       <input type="text" name= "path_offer[data_partenza]" id= "path_offer[data_partenza]"class="datepicker">
     </div>
     <div class="col l6 field">
@@ -44,13 +45,25 @@
     </div>
     
     <div class="col l6 field">
-       <div class="black-text text-lighten-3"> 
+      <%= form.label :data_di_arrivo %>
       <input type="text" name= "path_offer[data_arrivo]" id= "path_offer[data_arrivo]"class="datepicker">
-        </div>
     </div>
     <div class="col l6 field">
       <%= form.label :ora_di_arrivo %>
       <input type="text" name ="path_offer[ora_arrivo]" id="path_offer[ora_arrivo]" class="timepicker">
+=======
+       <div class="black-text text-lighten-3"> 
+          Data_di_partenza
+        </div>
+      <%= form.date_select :date_departure %>
+    </div>
+    
+    <div class="col l6 field">
+       <div class="black-text text-lighten-3"> 
+          Data_di_arrivo 
+        </div>
+      <%= form.date_select :date_arrive %>
+>>>>>>> 4aaa4548d1b001c2d58f52a5797c13ecbf223c0f
     </div>
 
     <div class="col l3 field">

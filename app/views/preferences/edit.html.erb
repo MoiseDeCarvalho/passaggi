@@ -3,11 +3,13 @@
 		<h4>Modifica le tue preferenze</h4> 
 		<%= render 'form', preference: @preference %>
 		<br/>
-		<div class="col l2">
-			<%= link_to 'Back', preferences_path %><i class="material-icons left">arrow_back</i>|
+		<div class="col 11 ">
+			<%= link_to 'Back', preferences_path %><i class="material-icons left">arrow_back</i>
 		</div>
-		<div class="col 10">
-			<%= link_to 'Mostra', @preference %><i class="material-icons left">description</i>
+		<div class="col l1 offset-l3">
+		</div>
+		<div class="col 11">
+			<%= link_to 'Mostra', @preference%><i class="material-icons left">description</i></a>
 		</div>	 
 	</div>
 </div>
