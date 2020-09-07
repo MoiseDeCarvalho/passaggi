@@ -1,67 +1,107 @@
-<div class="row">
-  <div class="col l6 offset-l3">
-    <div>
-        <div class="col l6 field">
-          <%=  image_tag @profile.avatar.url %>          
+<div class="row">   
+  <div class="col l6 offset-l3 form">
+    <% if @profile.nil? %>
+      <div class="col l8 offset-l2">
+        <h4>Non hai ancora registrato le tue informazioni personali</h4>
+        <br/>
+
+        
+          
+        <%= link_to 'Modifica', new_profile_path %><i class="material-icons right">edit</i>
+      </div>
+    <% else %>
+    
+     <!-- @profiles.each do |profile| -->
+      <% if @profile.user == current_user %>
+        <div class="field">
+          <% if @profile.avatar.url != "/images/original/missing.png" %>
+            <%=  image_tag @profile.avatar.url, id: "myImg", height:'20'%>
+          <% end %>      
+          <div id="myModal" class="modal" style="margin-top: 100px">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01" >
+        </div>  
         </div>
 
-        <div class="col l6 field">
-           <div class="black-text text-lighten-3"> 
-          Nome 
-        </div>
-          <%= @profile.name %>
+        <div class="col l6  field">
+          
+          <%= label_tag 'Nome', nil, class:"black-text text-darken-2" %>
+          <br/>
+          <p class="testi-show"><%= @profile.name %></p>
         </div >
 
         <div class="col l6 field">
-           <div class="black-text text-lighten-3"> 
-         Cognome
-        </div>
-          <%= @profile.surname %>
-        </div>
-      </div>
-      
-      <div>
-        <div class="col l6 field">
-           <div class="black-text text-lighten-3"> 
-          Indirizzo 
-        </div>
-          <%= @profile.address %>
+          
+          <div class="black-text text-darken-2">
+              Cognome
+          </div>
+          <br/>
+          <p class="testi-show"><%= @profile.surname %></p>
         </div>
 
         <div class="col l6 field">
-           <div class="black-text text-lighten-3"> 
-          Citta
+          <div class="black-text text-darken-2">
+              Indirizzo
+          </div>
+          <br/>
+          <p class="testi-show"><%= @profile.address %></p>
         </div>
-          <%= @profile.city %>
+
+        <div class="col l6 field">
+          <div class="black-text text-darken-2">
+              Citta'
+          </div>
+          <br/>
+          <p class="testi-show"><%= @profile.city %></p>
         </div>
-      </div>
 
-      <div class="col l6 field">
-         <div class="black-text text-lighten-3"> 
-          Cellulare
+        <div class="col l6 field">
+          <div class="black-text text-darken-2">
+              Cellulare
+          </div>
+          <br/>
+          <p class="testi-show"><%= @profile.mobile %></p>
         </div>
-        <%= @profile.mobile %>
-      </div>
 
-      <div class="col l6 field">
-         <div class="black-text text-lighten-3"> 
-          Descrizione 
+        <div class="col l6 field">
+          <div class="black-text text-darken-2">
+              Descrizione
+          </div>
+          <br/>
+          <p class="testi-show"><%= @profile.description %></p>
         </div>
-        <%= @profile.description %>
-      </div>
+        <br/>
+        <div class="col l6 filed">
+           <%= link_to 'Modifica', edit_profile_path(@profile) %><i class="material-icons right">edit</i>
+        </div>
+          
+         
+      <% end %>  
+    <% end %>
+   <!--  end   -->
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
 
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
 
-  </div>   
-<div class="col l1">
-<%= link_to 'Back', profiles_path   %><i class="material-icons left">arrow_back</i>|
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+  
 </div>
-<div class="col l1 offset-l3">
-</div>
-<div class="col 11">
-<%= link_to 'Modifica', edit_profile_path(@profile)%><i class="material-icons left">edit</i>
-</div>
-  </div>  
-</div>
+
   
 
 
