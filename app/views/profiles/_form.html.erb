@@ -13,9 +13,13 @@
        
        
       <div class="field">
-        <% if @profile.avatar.url != "/images/original/missing.png" %>
-          <%=  image_tag @profile.avatar.url %>
-        <% end %> 
+       <% if @profile.avatar.url != "/images/original/missing.png" %>
+            <%=  image_tag @profile.avatar.url, id: "myImg", height:'20'%>
+          <% end %>      
+          <div id="myModal" class="modal" style="margin-top: 100px">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01" >
+        </div>  
         <br/>
         <%= form.label :avatar %>Seleziona l'immagine del profilo
         <br/>
@@ -79,6 +83,26 @@
       <div class="actions">
         <%= form.submit "Salva", class:"waves-effect waves-light btn btn-devise" %>
       </div>
+    <script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
     <% end %>
  
  

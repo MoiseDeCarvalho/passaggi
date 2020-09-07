@@ -16,22 +16,30 @@
 
         <br/>
         <br/>
-        <label>Marca</label>
+        <div class="black-text text-lighten-3"> 
+         Marca
+        </div>
         <%= @vehicle.brand %>
 
         <br/>
         <br/>
-        <label>Modello</label>
+        <div class="black-text text-lighten-3"> 
+         Modello
+        </div>
         <%= @vehicle.model %>
 
         <br/>
         <br/>
-        <label>Motore</label>
+        <div class="black-text text-lighten-3"> 
+         Motore
+        </div>
         <%= @vehicle.motor %>
 
         <br/>
         <br/>
-        <label>Colore</label>
+        <div class="black-text text-lighten-3"> 
+         Colore
+        </div>
         <%= @vehicle.colour %>
 
         
@@ -56,10 +64,12 @@
 
       
     <% end %>
-<div class="col l2">
+<div class="col l1">
 <%= link_to 'Back', vehicles_path   %><i class="material-icons left">arrow_back</i>|
 </div>
-<div class="col 10">
+<div class="col l1 offset-l3">
+</div>
+<div class="col 11">
 <%= link_to 'Modifica', edit_vehicle_path(@vehicle)%><i class="material-icons left">edit</i>
 </div>
   </div>
