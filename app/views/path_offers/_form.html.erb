@@ -13,65 +13,52 @@
   <% if @path_offer.user == current_user %> 
     
 
-    <div class="col l6 field">
-       <div class="black-text text-lighten-3"> 
-          Partenza
-        </div>
+    <div class="col l6 field ">
+      <%= form.label :partenza , class:"label-custom"%>
       <%= form.text_field :departure %>
     </div>
 
     <div class="col l6 field">
-       <div class="black-text text-lighten-3"> 
-          Arrivo 
-        </div>
+      <%= form.label :Arrivo , class:"label-custom" %>
       <%= form.text_field :arrive %>
     </div>
 
     <div class="col  l12 field">
-       <div class="black-text text-lighten-3"> 
-          Luogo_di_ritrovo
-        </div>
+      <%= form.label :luogo_di_ritrovo , class:"label-custom" %>
       <%= form.text_field :place %>
     </div>
 
     <div class="col l6 field">
-       <div class="black-text text-lighten-3"> 
+      <%= form.label :data_di_partenza , class:"label-custom" %>
       <input type="text" name= "path_offer[data_partenza]" id= "path_offer[data_partenza]"class="datepicker">
     </div>
     <div class="col l6 field">
-      <%= form.label :ora_di_partenza %>
+      <%= form.label :ora_di_partenza , class:"label-custom" %>
       <input type="text" name ="path_offer[ora_partenza]" id="path_offer[ora_partenza]" class="timepicker">
     </div>
     
     <div class="col l6 field">
-       <div class="black-text text-lighten-3"> 
+      <%= form.label :data_di_arrivo , class:"label-custom" %>
       <input type="text" name= "path_offer[data_arrivo]" id= "path_offer[data_arrivo]"class="datepicker">
-        </div>
     </div>
     <div class="col l6 field">
-      <%= form.label :ora_di_arrivo %>
+      <%= form.label :ora_di_arrivo , class:"label-custom" %>
       <input type="text" name ="path_offer[ora_arrivo]" id="path_offer[ora_arrivo]" class="timepicker">
     </div>
 
     <div class="col l3 field">
-       <div class="black-text text-lighten-3"> 
-          Mezzo
-        </div>
+      <%= form.label :Mezzo , class:"label-custom" %>
       <p>
         <%  if !@typeVehicle.nil? %>
           <%= @typeVehicle.description %>
         <% end %>
     </div>
     <div class=" col l3 field">
-       <div class="black-text text-lighten-3"> 
-          Prezzo 
-        </div>
+      <%= form.label :prezzo , class:"label-custom" %>
       <%= form.text_field :price, :onkeypress=>"return soloNumeri(event);",  required: true %>
     </div>
     <div class="col l2 field">
-      <div class="black-text text-lighten-3"> 
-          Nr_posti
-        </div>
+      <%= form.label :nr_posti , class:"label-custom" %>
       
       <%= form.select 'max_available', options_for_select((1..10).step(1)) %>
     </div>    
