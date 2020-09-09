@@ -1,0 +1,96 @@
+<div class="row" style="margin-top:100px;">        
+	<div class="col l9 offset-l1">
+		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
+		
+		<div class="col l6 field">
+			<%= label(:partenza , 'Partenza', '',class:"label-custom" )%> 	 
+	    	<%= text_field_tag :departure, params[:departure] %>   
+	    </div>
+
+	    <div class="col l6 field">
+	      <%= label(:arrivo , 'Arrivo', '', class:"label-custom")%>
+	      <%= text_field_tag :arrive, params[:arrive] %> 
+	    </div>
+
+	    <div class="col l3 field">
+			<%= label(:data_di_partenza, 'Data di partenza', '', class:"label-custom") %>
+	      	<input type="text" name= "data_partenza" id= "[data_partenza]"class="datepicker" placeholder="'2020-12-31'">
+	    </div>
+        
+        <div class="col l3 field">
+			<%= label( :ora_di_partenza, 'Ora di partenza', '' , class:"label-custom") %>
+			<input type="text" name= "ora_partenza" id= "[ora_partenza]"class="timepicker" placeholder="'12:30'"> 
+	    </div>
+
+	    <div class="col l3 field">
+			<%= label(:data_di_arrivo, 'Data di arrivo', '', class:"label-custom") %>
+	      	<input type="text" name= "data_arrivo" id= "[data_arrivo]"class="datepicker" placeholder="'2020-12-31'">
+	    </div>
+        
+        <div class="col l3 field">
+			<%= label( :ora_di_arrivo, 'Ora di arrivo', '' , class:"label-custom") %>
+			<input type="text" name= "ora_arrivo" id= "[ora_arrivo]"class="timepicker" placeholder="'12:30'"> 
+	    </div>
+
+	    <div class="col l3 field">
+	    	<%= label(:nr_posti , 'Nr posti', '', class:"label-custom") %>
+	     	<%= text_field_tag :max_available, params[:max_available] , :onkeypress=>"return soloNumeri(event);"%> 
+	    </div>
+       	
+       	<div class="col l3 field">
+	     	<%= label(:prezzo_max, 'Prezzo max', '' , class:"label-custom") %>
+	     	<%= text_field_tag :price_max, params[:price_max] , :onkeypress=>"return soloNumeri(event);"%> 
+	    </div>
+
+       	<div class="col l3 field">
+			<%= label( :prezzo_min , 'Prezzo min', '', class:"label-custom") %>	     
+			<%= text_field_tag :price_min, params[:price_min] , :onkeypress=>"return soloNumeri(event);"%> 
+	    </div>
+
+	    <div class="col l3 field">
+	      	<%= label( :vehicle_id , 'Veicolo', '', class:"label-custom") %>
+       		<%= select_tag :type_vehicle_id, options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
+   		</div>
+
+       	<br/>
+       	
+        <div class="actions" >
+        	 
+		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>
+		 
+	    
+	</div>
+      <% end -%>
+	</div>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(){    	
+ 
+	    var elemsDate = $('.datepicker').datepicker();
+	    var instances = M.Datepicker.init(elemsDate, {
+	                format:  'yyyy-mm-dd',
+	                selectMonths: true,
+	                dismissable: false,
+	                autoClose: true
+	      });
+	   
+
+	    var elems = document.querySelectorAll('.timepicker');
+	    var instances = M.Timepicker.init(elems, {
+	      twelveHour:false
+	    });
+ 
+
+  	});
+
+
+  	function soloNumeri(evt) {
+    	var charCode = (evt.which) ? evt.which : event.keyCode
+    	if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      		return false;
+   		}
+    	return true;
+ 	}
+
+</script>

@@ -30,20 +30,45 @@
 
     <div class="col l6 field">
       <%= form.label :data_di_partenza , class:"label-custom" %>
-      <input type="text" name= "path_offer[data_partenza]" id= "path_offer[data_partenza]"class="datepicker">
+      <input type="text" name= "path_offer[data_partenza]" id= "path_offer[data_partenza]"class="datepicker" placeholder="'2020-12-31'"
+      <% if !@path_offer.data_partenza.nil? %>
+        value='<%= @path_offer.data_partenza %> '
+        <% else %>
+        value = ''
+      <% end %> 
+
+      >
     </div>
     <div class="col l6 field">
       <%= form.label :ora_di_partenza , class:"label-custom" %>
-      <input type="text" name ="path_offer[ora_partenza]" id="path_offer[ora_partenza]" class="timepicker">
+      <input type="text" name ="path_offer[ora_partenza]" id="path_offer[ora_partenza]" class="timepicker" placeholder="'12:30'" 
+      <% if !@path_offer.ora_partenza.nil? %>
+        value='<%= @path_offer.ora_partenza %> '
+        <% else %>
+        value = ''
+      <% end %> 
+      >
     </div>
     
     <div class="col l6 field">
       <%= form.label :data_di_arrivo , class:"label-custom" %>
-      <input type="text" name= "path_offer[data_arrivo]" id= "path_offer[data_arrivo]"class="datepicker">
+      <input type="text" name= "path_offer[data_arrivo]" id= "path_offer[data_arrivo]"class="datepicker" placeholder="'2020-12-31'" 
+      <% if !@path_offer.data_arrivo.nil? %>
+        value='<%= @path_offer.data_arrivo %> '
+        <% else %>
+        value = ''
+      <% end %> 
+      >
     </div>
     <div class="col l6 field">
       <%= form.label :ora_di_arrivo , class:"label-custom" %>
-      <input type="text" name ="path_offer[ora_arrivo]" id="path_offer[ora_arrivo]" class="timepicker">
+      <input type="text" name ="path_offer[ora_arrivo]" id="path_offer[ora_arrivo]" class="timepicker" placeholder="'12:30'" 
+      <% if !@path_offer.ora_arrivo.nil? %>
+        value='<%= @path_offer.ora_arrivo %> '
+        <% else %>
+        value = ''
+      <% end %> 
+      >
     </div>
 
     <div class="col l3 field">
@@ -91,11 +116,7 @@
        
        <% if !@utenti.nil? %>
        document.getElementById("path_offer_price").setAttribute("disabled", true);
-       document.getElementById('path_offer[data_partenza]').value = '<%= @path_offer.data_partenza %>';
-       document.getElementById('path_offer[ora_partenza]').value = '<%= @path_offer.ora_partenza %>';
-       document.getElementById('path_offer[data_arrivo]').value = '<%= @path_offer.data_arrivo %>';
-       document.getElementById('path_offer[ora_arrivo]').value = '<%= @path_offer.ora_arrivo %>';
-        
+       
       <% end %>
     }
 

@@ -36,15 +36,15 @@
   </body>
    
   <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
    // var instances = M.Sidenav.init(elems, options);
  
  
     var elemsSelect = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elemsSelect);
-    var elemsModal = document.querySelectorAll('.modal');
-    var instancesModal = M.Modal.init(elemsModal);
+    var instances = M.FormSelect.init(elemsSelect, options);
+    //var elemsModal = document.querySelectorAll('.modal');
+    //var instancesModal = M.Modal.init(elemsModal, options);
 
   });
 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $(".dropdown-trigger").dropdown();
     
     $('select').formSelect();
-    $('.modal').modal();
+   // $('.modal').modal();
 
   });
 

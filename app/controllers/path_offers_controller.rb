@@ -48,6 +48,7 @@ class PathOffersController < ApplicationController
 
   end
 
+
   #GET /serach
   def search_result
     @profile = Profile.find_by(:user_id => current_user.id)
