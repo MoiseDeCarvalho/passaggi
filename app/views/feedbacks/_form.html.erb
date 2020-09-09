@@ -12,9 +12,7 @@
       </div>
     <% end %>
     <div class="field">
-       <div class="black-text text-lighten-3"> 
-          Descrivi_il_viaggio
-        </div>
+       <%= form.label :descrivi_il_viaggio , class:"label-custom"%>
       <%= form.text_area :feedback %>
     </div>
     
@@ -25,9 +23,7 @@
         
      
     <div class="field">
-       <div class="black-text text-lighten-3"> 
-          indica_un_punteggio
-        </div>
+       <%= form.label :indica_un_punteggio , class:"label-custom"%>
       <%= form.select :score, options_for_select((1..5).step(1)), id: "score" %>
     </div>
 

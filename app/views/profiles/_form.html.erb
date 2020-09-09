@@ -21,7 +21,7 @@
           <img class="modal-content" id="img01" >
         </div>  
         <br/>
-        <%= form.label :avatar %>Seleziona l'immagine del profilo
+        <%= form.label :avatar , class:"label-custom" %>Seleziona l'immagine del profilo
         <br/>
         <%= form.file_field :avatar %>
       </div>
@@ -29,54 +29,40 @@
       <br/>
        <div class="col l6 field ">
       
-        <div class="black-text text-darken-2">
-       Nome
-     </div>
+        <%= form.label :nome , class:"label-custom"%>
         <%= form.text_field :name %>
       </div >
 
       <div class="col l6 field">
           
-          <div class="black-text text-darken-2">
-              Cognome
-          </div>
+         <%= form.label :cognome, class:"label-custom"%>
         <%= form.text_field :surname %>
       </div>
             
       <div class="col l6 field">
        
-        <div class="black-text text-darken-2">
-            Cellulare
-            </div>
+        <%= form.label :cellulare , class:"label-custom"%>
         <%= form.text_field :mobile %>
       </div>
 
       <div class="col l6 field">
-        <div class="black-text text-darken-2">
-          Data_di_nascita
-         </div> 
+        <%= form.label :data_di_nascita , class:"label-custom"%>
         <input type="text" class="datepicker">
 
       </div>
       
       <div class="col l6 field">
-        <div class="black-text text-darken-2">
-           Indirizzo
-         </div>
+        <%= form.label :indirizzo , class:"label-custom"%>
         <%= form.text_field :address %>
       </div>
 
       <div class="col l6 field">
-        <div class="black-text text-darken-2">
-           Citta
-           </div>
+        <%= form.label :citta , class:"label-custom"%>
         <%= form.text_field :city %>
       </div> 
 
       <div class="field">
-        <div class="black-text text-darken-2">
-         Descrizione_Personale
-        </div>
+        <%= form.label :descrizione, class:"label-custom"%>
         <%= form.text_area :description %>
       </div>
 
