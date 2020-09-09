@@ -3,7 +3,7 @@
 		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
 		<div class="col l3 field">
 			<%= form.label :user_id, class:"label-custom" %>
-			<%= select_tag :user_id, options_from_collection_for_select(@users 'id', 'id'), id: 'ty' %>
+			<%= select_tag :user_id, options_from_collection_for_select(@users, 'id', 'id'), id: 'ty' %>
 	    </div>
 
 	    <div class="col l3 field">

@@ -39,7 +39,11 @@ class FeedbackPathsController < ApplicationController
       end
     end
   end
+def search
+    @users= Profile.all
+    @path_offers= PathOffers.all 
 
+  end
   # PATCH/PUT /feedback_paths/1
   # PATCH/PUT /feedback_paths/1.json
   def update
