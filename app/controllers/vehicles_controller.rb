@@ -27,7 +27,7 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
-   # @typeVehicles = TypeVehicle.all
+   @typeVehicles = TypeVehicle.all
   end
 
   # POST /vehicles

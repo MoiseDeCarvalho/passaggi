@@ -14,7 +14,7 @@
   <% if @vehicle.user == current_user %>    
     <div class="col l6 field">
        <%= form.label :type_vehicle_id %>
-       <%= form.select 'type_vehicle_id', options_from_collection_for_select(@vehicle.typeVehicle, 'id', 'description'), id: 'ty' %>
+       <%= form.select 'type_vehicle_id', options_from_collection_for_select(@typeVehicles, 'id', 'description'), id: 'ty' %>
 
       <br/>
       <br/>
