@@ -1,0 +1,35 @@
+<div class="row">
+	  <h4 class="center">Risultato della ricerca</h4>
+
+	  <br/>
+	  <div class="msg-error"><span id="result_message"></span></div>
+	  <% if !@vehicles_founded.nil? %>
+	    <table class="striped highlight centered"> 
+	    
+	      <thead>
+	        <tr>
+	        	<th>ID</th>
+	          	<th>Marchio</th>
+	          	<th>Modello</th>
+	          	<th>Colore</th>
+	          	<th>Motore</th>
+	          	<th>Id del tipo di veicolo</th>
+	          	<th colspan="3"></th>
+	        </tr>
+	      </thead>
+	 
+	       <tbody>
+	        <% @vehicles_founded.each do |path_offer| %>
+			          <tr>
+			          	<td><%= vehicle.id %>
+			            <td><%= vehicle.brand %></td>
+			            <td><%= vehicle.model %></td>
+			            <td><%= vehicle.colour %></td>
+			            <td><%=vehicle.motor %></td>
+			            <td><%= vehicle.type_vehicle_id %></td>
+			          </tr>
+			       
+	      </tbody>
+	  
+	    </table>
+	</div>
