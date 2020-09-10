@@ -32,36 +32,49 @@
 
         <div class="col l6 field">
           
-          <%= label_tag 'Cognome' , class:"label-custom"%>
+          <%= label_tag 'Cognome' , nil, class:"black-text text-darken-2"%>
           <br/>
           <p class="testi-show"><%= @profile.surname %></p>
         </div>
 
         <div class="col l6 field">
-          <%= label_tag 'Indirizzo' , class:"label-custom"%>
+          <%= label_tag 'Indirizzo' , nil, class:"black-text text-darken-2"%>
           <br/>
           <p class="testi-show"><%= @profile.address %></p>
         </div>
 
         <div class="col l6 field">
-          <%= label_tag 'Citta' , class:"label-custom"%>
+          <%= label_tag 'Citta' , nil, class:"black-text text-darken-2"%>
           <br/>
           <p class="testi-show"><%= @profile.city %></p>
         </div>
 
         <div class="col l6 field">
-          <%= label_tag 'Cellulare' , class:"label-custom"%>
+          <%= label_tag 'Cellulare' , nil, class:"black-text text-darken-2"%>
           <br/>
           <p class="testi-show"><%= @profile.mobile %></p>
         </div>
 
         <div class="col l6 field">
-         <%= label_tag 'Descrizione' , class:"label-custom"%>
+         <%= label_tag 'Descrizione' , nil, class:"black-text text-darken-2"%>
           <br/>
           <p class="testi-show"><%= @profile.description %></p>
         </div>
+
+        <div class="col 112 field">
+         <%= label_tag 'Score' , nil, class:"black-text text-darken-2"%>
+          <br/>
+          <p class="testi-show">
+            <% if !@score.nil? %>
+              <%= @score.score %>
+            <% else %>
+              0
+            <% end %>
+
+          </p>
+        </div>
         <br/>
-        <div class="col l6 filed">
+        <div class="col l12 filed">
            <%= link_to 'Modifica', edit_profile_path(@profile) %><i class="material-icons right">edit</i>
         </div>
           

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :scores
   resources :t1s
   resources :ts
   resources :feedback_paths

@@ -8,7 +8,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     #/@feedbacks = Feedback.all
-    @feedback= Feedback.where(:user_id => current_user.id)
+    @feedback= Feedback.where(:user_id => current_user.id).order(id: :desc).paginate(page: params[:page], per_page: 5)
+
 
   end
 
@@ -36,10 +37,12 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = current_user.feedback.build(feedback_params)
+    
+    calculate_user_score(feedback_params)
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback creato correttamente.' }
+        format.html { redirect_to feedbacks_url, notice: 'Feedback creato correttamente.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -65,6 +68,9 @@ class FeedbacksController < ApplicationController
   # DELETE /feedbacks/1
   # DELETE /feedbacks/1.json
   def destroy
+    logger.info("path offer " + @feedback.path_offer_id.to_s)
+    calculate_minus_score(@feedback)
+
     @feedback.destroy
     respond_to do |format|
       format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
@@ -86,6 +92,37 @@ class FeedbacksController < ApplicationController
     def check_user
       if current_user.id != @feedback.user_id
         redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
-      end
     end
+    
+    end
+
+
+    def calculate_minus_score(params)
+      path = PathOffer.where(:id => params.path_offer_id.to_i).to_ary
+      @score = Score.find_by(:user_id => path[0].user_id)
+      @score.count -= 1
+      @score.total -= params.score
+      @score.score = @score.total / @score.count
+      @score.save!
+    end
+
+
+   def calculate_user_score(params)
+ 
+      path = PathOffer.where(:id => feedback_params["path_offer_id"].to_i).to_ary
+
+      score = Score.find_by(:user_id => path[0].user_id)
+
+      if score.nil?
+        score = Score.new(:user_id => path[0].user_id.to_i, :score => 0, :count => 1, :total => params["score"].to_i)
+        score.save!
+      else
+        logger.info("sono denro")
+        score.count += 1
+        score.total += params["score"].to_i
+        score.score = score.total / score.count
+        score.save!
+    end
+
+  end
 end
