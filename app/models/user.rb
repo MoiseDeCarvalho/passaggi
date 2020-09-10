@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :path_offers
   has_many :feedback
   has_many :feedback_path
-  has_many :score
+  has_one :score
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

@@ -52,6 +52,11 @@
        		<%= select_tag :type_vehicle_id, options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
    		</div>
 
+   		<div class="col   l3 field">
+			<%= label( :score , 'Score autista', '', class:"label-custom") %>	     
+			<%= text_field_tag :score, params[:score] , :onkeypress=>"return soloNumeri(event); "%> 
+	    </div>
+
        	<br/>
        	
         <div class="actions" >

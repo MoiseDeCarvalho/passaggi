@@ -4,6 +4,7 @@ class PathOffer < ApplicationRecord
     has_many :feedback_path
     belongs_to :vehicle
     has_one :type_vehicle, :through => :vehicle
+    has_one :score, :through => :user
 
 
 	def self.search(params)
@@ -116,15 +117,32 @@ class PathOffer < ApplicationRecord
     		end    			
     	end
 
+    	#score users_path_offers_join
+    	if params["score"]
+    		if params["score"].to_i > 0
+    			if conditions.length == 0
+    				conditions << "scores.score  = ? "
+    			else
+					conditions << "and scores.score  = ? "
+    			end
+    			wheres << params["score"].to_i
+    		end    			
+    	end
+
+
     	if wheres.length > 0
     		wheres.insert(0, conditions)
     		joins(:vehicle)
     		.joins(:type_vehicle)
+    		.joins(:user)
+    		.joins(:score)
 		 	.where(wheres)
 	    	.paginate(page: params[:page], per_page: 5)
     	else
     		joins(:vehicle)
     		.joins(:type_vehicle)
+    		joins(:user)
+    		.joins(:score)
     		.paginate(page: params[:page], per_page: 5)
     	end
 		
