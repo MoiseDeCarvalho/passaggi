@@ -1,6 +1,6 @@
 class PathOffer < ApplicationRecord
 	belongs_to :user
-    has_many :feedback
+    has_many :feedbacks
     has_many :feedback_path
     belongs_to :vehicle
     has_one :type_vehicle, :through => :vehicle
@@ -127,26 +127,7 @@ class PathOffer < ApplicationRecord
     		.joins(:type_vehicle)
     		.paginate(page: params[:page], per_page: 5)
     	end
-		#TypeVehicle.joins(vehicle: :path_offer)
-		#vehicles = Vehicle.new 
-		#vehicles = 
-		#Vehicle.joins(:type_vehicle) #.where(type_vehicles: { type_vehicle_id: current_user.id })
-	    
-		    #where("departure LIKE ?", "%#{params[:departure]}%")  
-		    #.where("arrive LIKE ?", "%#{params[:arrive]}%") 		 
-		    #.where("date_departure >= ?", "#{date_dep}") 		 
-		    #.where("date_arrive <= ?" , "#{date_arr}")	 		
-		    
- 	        #where("(max_available-booked) >= ?", "%#{params[:max_available]}%") 		if params[:max_available].present?
-		    #where("price >= ?", "%#{params[:price_min]}%") 		if params[:price_min].present?
-		    #where("price <= ?", "%#{params[:price_max]}%") 		if params[:price_max].present?
-		    #where("full = 0") 
-		   
-	    #else
-	    	#se  invio il parametro type_vehicle_id faccio questo JOIN tra pathOffer e vehicle
-            #PathOffer.where(vehicle_id: params[:type_vehicle_id])
-            #Vehicle.joins(:type_vehicle_id).where(type_vehicle_id: { vehicle_id: params[:type_vehicle_id] })
-	    #end
+		
 	end
 
 	#aggiornamento delle quantità di posti prenotati

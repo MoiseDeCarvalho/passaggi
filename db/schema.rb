@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_203116) do
+ActiveRecord::Schema.define(version: 2020_09_10_192321) do
 
   create_table "feedback_paths", force: :cascade do |t|
     t.integer "user_id"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(version: 2020_09_06_203116) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.string "user_id"
+    t.float "score"
+    t.integer "count"
+    t.integer "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "t1s", force: :cascade do |t|

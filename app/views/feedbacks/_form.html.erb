@@ -11,15 +11,24 @@
         </ul>
       </div>
     <% end %>
+
+    <% if !request.params[:departure].nil? %>
+        <% title = request.params[:departure] + ' - ' + request.params[:arrive]   %>
+    <% end %>
+
+    <h5>Viaggio da <%= title %></h5>
+
+    <div class="field">
+      <%= form.text_field :title, :value => title %>
+    </div>
+    
+
+    
     <div class="field">
        <%= form.label :descrivi_il_viaggio , class:"label-custom"%>
       <%= form.text_area :feedback %>
     </div>
-    
-    <!--passo l'id per fare calcoli -->
-    <%=  form.text_field :path_offer_id , :value => request.params[:path_offer_id] %>
-    <% title = request.params[:path_offer_id].to_s.concat(' - ').concat('(').concat(request.params[:date_departure]).concat(') ').concat(request.params[:departure]).concat(' - ').concat(request.params[:arrive])  %>
-    <%= form.text_field :title, :value => title %>
+   
         
      
     <div class="field">
@@ -27,8 +36,16 @@
       <%= form.select :score, options_for_select((1..5).step(1)), id: "score" %>
     </div>
 
+    <%= form.hidden_field :path_offer_id, value:request.params[:path_offer_id]  %>
     <div class="actions">
       <%= form.submit "Salva", class:"waves-effect waves-light btn btn-devise" %>
     </div>
   <% end %>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("feedback_title").setAttribute("disabled", true);
+  });
+
+</script>
