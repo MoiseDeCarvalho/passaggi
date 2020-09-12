@@ -1,0 +1,50 @@
+<div class="row" style="margin-top: 5%;">
+  <div class="col l6 offset-l3">
+    <div class="field">
+      <h6>
+        <strong>Ricevuto da: </strong>
+        <% if !request.params["issender"].nil? %>
+          <% if request.params["issender"] == true %>
+            <%= @message.receiver_name %>
+          <% else %>
+            <%= @message.sender_name %>
+          <% end %>
+
+        <% end %>
+        
+      </h6>
+    </div>
+    
+    <div class="field">
+      <p>
+        <strong>Viaggio: </strong>
+        <%= @message.path_offer_id %>
+      </p>
+    </div>
+
+    <div class="field">
+      <h6>
+        <strong>Titolo</strong>
+        <p><%= @message.title %></p>
+      </h6>
+    </div>
+
+    <div class="field">
+      <p>
+        <strong>Message:</strong>
+        <%= @message.message %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>
+        <strong>Risposndi a :</strong>
+        <%= @message.dest_user_id %>
+      </p>
+    </div>
+  </div>
+  <%= link_to 'Back', messages_path %>
+</div>
+
+
+>
