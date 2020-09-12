@@ -1,0 +1,72 @@
+<div class="row" style="margin-top:100px;">        
+	<div class="col l9 offset-l1">
+		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
+		
+		<div class="col l6 field">
+			<%= label(:name , 'Nome', '',class:"label-custom" )%> 	 
+	    	<%= text_field_tag :name, params[:name] %>   
+	    </div>
+
+	    <div class="col l6 field">
+	      <%= label(:surname , 'Cognome', '', class:"label-custom")%>
+	      <%= text_field_tag :surname, params[:surname] %> 
+	    </div>
+ <div class="col l6 field">
+	      <%= label(:address , 'Indirizzo', '', class:"label-custom")%>
+	      <%= text_field_tag :address, params[:address] %> 
+	    </div>
+	    <div class="col l6 field">
+	      <%= label(:city , 'Citta', '', class:"label-custom")%>
+	      <%= text_field_tag :city, params[:city] %> 
+	    </div>
+	    <div class="col l3 field">
+			<%= label(:data_di_nascita, 'Data di nascita', '', class:"label-custom") %>
+	      	<input type="text" name= "data_nascita" id= "[data_nascita]"class="datepicker" placeholder="'2020-12-31'">
+	    </div>
+
+	    <div class="col l3 field">
+	    	<%= label(:mobile , 'Cellulare', '', class:"label-custom") %>
+	     	<%= text_field_tag :mobile, params[:mobile] , :onkeypress=>"return soloNumeri(event);"%> 
+	    </div>
+       	<br/>
+       	
+        <div class="actions" >
+        	 
+		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>
+		 
+	    
+	</div>
+      <% end -%>
+	</div>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(){    	
+ 
+	    var elemsDate = $('.datepicker').datepicker();
+	    var instances = M.Datepicker.init(elemsDate, {
+	                format:  'yyyy-mm-dd',
+	                selectMonths: true,
+	                dismissable: false,
+	                autoClose: true
+	      });
+	   
+
+	    var elems = document.querySelectorAll('.timepicker');
+	    var instances = M.Timepicker.init(elems, {
+	      twelveHour:false
+	    });
+ 
+
+  	});
+
+
+  	function soloNumeri(evt) {
+    	var charCode = (evt.which) ? evt.which : event.keyCode
+    	if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      		return false;
+   		}
+    	return true;
+ 	}
+
+</script>

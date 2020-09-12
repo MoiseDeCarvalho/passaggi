@@ -37,7 +37,11 @@ class ProfilesController < ApplicationController
       end
     end
   end
-
+ #GET /search
+  #def search_result
+  #  @profiles_founded = Profiles.search(params)
+   
+  #end
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update

@@ -32,7 +32,11 @@ class FeedbacksController < ApplicationController
       format.html { redirect_to :controller => 'feedbacks', :action => 'index', notice: 'Feedback modificato correttamente.' }
     end
   end
-
+ #GET /search
+  #def search_result
+  #  @feedbacks_founded = Feedbacks.search(params)
+   
+  #end
   # POST /feedbacks
   # POST /feedbacks.json
   def create
