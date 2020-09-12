@@ -1,0 +1,22 @@
+<div class="row" style="margin-top:100px;">        
+	<div class="col l9 offset-l1">
+		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
+	    <div class="col l3 field">
+	      	<%= label( :user_id, 'Id utente', '', class:"label-custom") %>
+       		<%= select_tag :user_id, options_from_collection_for_select(@users, 'id', 'id'), id: 'ty' %>
+   		</div>
+   		<div class="col l3 field">
+	      	<%= label( :path_offer_id, 'Id del path offer', '', class:"label-custom") %>
+       		<%= select_tag :path_offer_id, options_from_collection_for_select(@pathoffers, 'id', 'id'), id: 'ty' %>
+   		</div>
+       	<br/>
+       	
+        <div class="actions" >
+        	 
+		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>
+		 
+	    
+	</div>
+      <% end -%>
+	</div>
+</div>

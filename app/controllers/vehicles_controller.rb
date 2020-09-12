@@ -52,7 +52,7 @@ class VehiclesController < ApplicationController
 #  end
 
 
-  #GET /serach
+  #GET /search
   #def search_result
   #  @vehicles_founded = Vehicles.search(params)
    

@@ -1,0 +1,25 @@
+<div class="row" style="margin-top:100px;">        
+	<div class="col l9 offset-l1">
+		<%= form_tag search_result_path_offers_path, :method => 'get' do %>
+		
+		<div class="col l3 field">
+			<%= label(:path_offer_id , 'Path offer', '',class:"label-custom" )%> 	
+			<% title = request.params[:path_offer_id].to_s.concat(' - ').concat('(').concat(request.params[:date_departure]).concat(') ').concat(request.params[:departure]).concat(' - ').concat(request.params[:arrive])  %> 
+	    	<%= text_field_tag :title, :value => title  %>   
+	    </div>
+	    <div class="col l3 field">
+	      	<%= label(:indica_un_punteggio , 'Punteggio', '', class:"label-custom") %>
+       		<%= select_tag :score, options_for_select((1..5).step(1)), id: "score" %>
+   		</div>
+       	<br/>
+       	
+        <div class="actions" >
+        	 
+		      <%= submit_tag "Cerca" , class:"waves-effect waves-light btn btn-devise" %>
+		 
+	    
+	</div>
+      <% end -%>
+	</div>
+</div>
+
