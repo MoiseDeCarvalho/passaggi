@@ -39,11 +39,7 @@
 		      	</li> 
 		      	<% if user_signed_in? %>
 		      		<li><a class="dropdown-trigger" style="color:#fff"  href="#!" data-target="dropdownProfilo">Profilo<i class="material-icons right">arrow_drop_down</i></a></li>
-		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>
-		    	
-	    	  	<% else %>
-			    	<li><%= link_to "Log in", new_user_session_path , :style=>'color:#FFFFFF;'  %></li>
-			    	<li><%= link_to "Registrazione", new_user_registration_path , :style=>'color:#FFFFFF;'  %></li>
+		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>		    	
 		     	<% end %>
 		  	</ul>
 

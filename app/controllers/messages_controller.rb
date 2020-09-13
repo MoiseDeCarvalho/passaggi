@@ -10,9 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def message_received
-    logger.info("sono qui")
-   #messageReceived()
-    
+ 
     @messages = Message.where(:dest_user_id => current_user.id).paginate(page: params[:page], per_page: 5)
 
   end
@@ -38,6 +36,14 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+
+    @path = PathOffer.find_by(:id => message_params["path_offer_id"])
+    @sender = Profile.find_by(:user_id => current_user.id)
+    @receiver = Profile.find_by(:user_id => @path.user_id)
+    @user = User.find_by(:id => @path.user_id)
+
+   # logger.info("emai " + message_params["dest"])
+    UserMailer.send_message(@user.email, @sender.name, @path.departure, @path.arrive, @path.date_departure, message_params["title"], message_params["message"]).deliver
 
     respond_to do |format|
       if @message.save

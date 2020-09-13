@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_103810) do
+ActiveRecord::Schema.define(version: 2020_09_13_194753) do
 
   create_table "feedback_paths", force: :cascade do |t|
     t.integer "user_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_103810) do
     t.integer "path_offer_id"
     t.string "sender_name"
     t.string "receiver_name"
+    t.integer "read"
   end
 
   create_table "path_offers", force: :cascade do |t|

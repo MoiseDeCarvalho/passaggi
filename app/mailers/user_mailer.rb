@@ -44,4 +44,15 @@ class UserMailer < ApplicationMailer
     @arrive = arrive
     mail to: user_email, subject: "Modifica del  viaggio prenotato", reply_to: "passaggioruby@gmail.com" 
   end
+
+  def send_message(dest, name, departure, arrive, date_departure, title, message)
+    @dest = dest
+    @name = name
+    @departure = departure
+    @arrive = arrive
+    @date_departure = date_departure
+    @title = title
+    @message = message
+     mail to: dest, subject: "Hai ricevuto un nuovo messaggio", reply_to: "passaggioruby@gmail.com" 
+  end
 end
