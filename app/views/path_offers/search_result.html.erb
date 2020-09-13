@@ -1,14 +1,3 @@
-  <!-- Modal Structure -->
-  <div id="modal-message" class="modal">
-    <div class="modal-content">
-      <h4>Azione non permessa</h4>
-      <p>Prima di procedere a prenotare un passaggio, devi compilare le tue informazioni personali</p>
-    </div>
-    <div class="modal-footer">
-      <a href="/profiles/new" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
 <div class="row">
 	  <h4 class="center">Risultato della ricerca</h4>
 
@@ -33,7 +22,8 @@
 	          	<th>Luogo di ritrovo</th>
 	          	<th>Azione</th>
 	          	<th>Completo</th>
-	          	<th colspan="3"></th>
+	          	<th>Info</th>
+	          	<th colspan="3"></th>	          	
 	        </tr>
 	      </thead>
 	 
@@ -69,6 +59,11 @@
 							
 			            </td>
 			            <td><%= path_offer.place %></td>
+
+			            <td>
+			            	<button onclick="sendMessage(<%= path_offer.id %> , '<%= path_offer.departure %>', '<%= path_offer.arrive %>', '<%= path_offer.date_departure %>', '<%= path_offer.date_arrive %>')" class="waves-effect waves-light btn btn-devise">Messaggio</button>
+			            </td>
+
 			            <td>
 			            	<% if !@booked_for_user.nil? %>
 				            	<% if (path_offer.id == @booked_for_user.path_offer_id) %>
@@ -84,13 +79,13 @@
 			            </td>
 			            <td>
 			            	<% if path_offer.full == 0 %>
-			            		<i class="material-icons left">hourglass_empty
-</i>
+			            		<i class="material-icons left">hourglass_empty</i>
 			            	<% else %>
-			            		<i class="material-icons left">hourglass_full
-</i>
+			            		<i class="material-icons left">hourglass_full</i>
 			            	<% end %>
 			            </td>
+
+			            
 			          </tr>
 			        <% end %>
 		        <% end %>
@@ -99,6 +94,9 @@
 	  
 	    </table>
 	 <script type="text/javascript">
+
+
+
 	 	function deletePathBooked(path_offer_id, current_user_id, departure, arrive){
 			xmlhttp = $.ajax({
 						  type:"GET",
@@ -121,6 +119,14 @@
 
 	 		alert("Cancellazione eseguita correttamente");
 	 	}
+
+
+	 	function sendMessage(path_offer_id, departure, arrive, date_departure, date_arrive){	  
+	 		var profile ;
+	 		window.location.href = '/messages/new?path_offer_id='+path_offer_id+'&departure='+departure+'&arrive='+arrive+'&date_departure='+date_departure+'&date_arrive='+date_arrive;		
+		}
+
+
 
 	 	function sendData(path_offer_id, old_value, reserved, current_user_id, departure, arrive){	  
 	 		var profile ;

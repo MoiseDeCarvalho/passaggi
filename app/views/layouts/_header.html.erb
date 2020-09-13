@@ -7,7 +7,13 @@
 			<% end %>
 		  	<%= link_to "Passaggi", root_path, class:"brand-logo"%>
 		  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-		  	<ul id="dropdown1" class="dropdown-content">
+		  	<ul id="dropdownMessaggi" class="dropdown-content">
+		  		<li><%= link_to "Messaggi ricevuti", message_received_path, :style=>'color:@ffffff;' %></li>
+			  	<li><%= link_to 'Messaggi inviati', messages_path, :style=>'color:@ffffff;' %> </li>
+			  <li class="divider"></li>
+			  
+		  	</ul>
+		  	<ul id="dropdownProfilo" class="dropdown-content">
 		  		<li><%= link_to "Informazioni personali", profiles_path %></li>
 			  	<li><%= link_to 'Preferenze', preferences_path, :style=>'color:@ffffff;' %> </li>
 			  	<li><%= link_to 'Veicolo', vehicles_path, :style=>'color:@ffffff;' %> </li>
@@ -18,24 +24,29 @@
 			  <li class="divider"></li>
 			  
 		  	</ul>
-		    <ul class="right hide-on-med-and-down ul-header id="dropdown1" class="dropdown-content" >
+		    <ul class="right hide-on-med-and-down ul-header  class="dropdown-content" >
 		     	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
 		      	<li><a style="color:#fff" href="/path_offers/new"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>    
-		      	<li><a style="color:#fff" href="/message"><i class="material-icons left">message</i>Messaggi</a></li> 
-		      	<% if user_signed_in? %>
-		      		<li><a class="dropdown-trigger" style="color:#fff"  href="#!" data-target="dropdown1">Profilo<i class="material-icons right">arrow_drop_down</i></a></li>
+		      	<li> 
+		      		<% if user_signed_in? %>
+		      		<li><a class="dropdown-trigger" style="color:#fff"  href="#!" data-target="dropdownMessaggi"><i class="material-icons left">message</i>Messaggi<i class="material-icons right">arrow_drop_down</i></a></li>
 		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>
 		    	
 	    	  	<% else %>
 			    	<li><%= link_to "Log in", new_user_session_path , :style=>'color:#FFFFFF;'  %></li>
 			    	<li><%= link_to "Registrazione", new_user_registration_path , :style=>'color:#FFFFFF;'  %></li>
 		     	<% end %>
+		      	</li> 
+		      	<% if user_signed_in? %>
+		      		<li><a class="dropdown-trigger" style="color:#fff"  href="#!" data-target="dropdownProfilo">Profilo<i class="material-icons right">arrow_drop_down</i></a></li>
+		    		<li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>		    	
+		     	<% end %>
 		  	</ul>
 
 			<ul class="sidenav id=mobile-demo">
 				<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
 			  	<li><a style="color:#fff" href="badges.html"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>
-			  	<li><a style="color:#fff" href="/message"><i class="material-icons left">message</i>Messaggi</a></li> 
+			  	<li><a style="color:#fff" href="/messages"><i class="material-icons left">message</i>Messaggi</a></li> 
 			    <% if user_signed_in? %>
 			    	/i></a></li>
 			    	<li><%= link_to "Log out" , destroy_user_session_path, method: :delete, data: { confirm: 'Sei sicuro?' }, :style=>'color:#FFFFFF;' %></li>
