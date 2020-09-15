@@ -10,7 +10,6 @@
           <th>Destinatario</th>
           <th>Titolo</th>
           <th>Messaggio</th>
-          <th>Rispondi</th>
           <th>Azione</th>
         </tr>
       </thead>
@@ -22,7 +21,13 @@
             <td><%= message.dest_user_id %></td>
             <td><%= message.title %></td>
             <td><%= message.message %></td>
-            <td><a href="/messages/<%= message.id%>?issender=true">Leggi</a></td>
+            <td>
+              <% if message.read.nil? || message.read == 0%>
+                <button onclick="leggiMessaggio(<%= message.id %>,)" class="waves-effect waves-light btn btn-devise">Leggi</button>
+              <% else %>
+                <button onclick="leggiMessaggio(<%= message.id %>,)" class="waves-effect waves-light btn btn-devise">Letto</button>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -33,3 +38,40 @@
     </div>  
   </div>
 </div>
+
+<script>
+  
+  function replyMessage(reply, path_offer_id){          
+      window.location.href = '/messages/new?reply=' + reply + '&path_offer_id='+path_offer_id;    
+    }
+
+  function leggiMessaggio(id){
+    window.location.href = '/messages/' + id + '?issender=true&id='+id; 
+    //updateMessaggioRead(id);
+     //window.location.href = '/messages/' + id + '?issender=true';    
+  }
+
+
+
+  function updateMedssaggioRead(id){
+      xmlhttp = $.ajax({
+              type:"GET",
+              url:"/update-messaggio-read",
+              dataType:"json",
+               async: false,
+              data: {id: id},
+              success:function(data){
+                alert(data.responseText);
+              }
+            }); 
+             
+            if ( xmlhttp.status == 200 ) {
+              alert (xmlhttp.responseText);
+              window.location.href = '/messages/' + id + '?issender=true'; 
+            }
+            else
+              alert("Aggiornamento messaggio fallita");
+           
+
+    }
+</script>

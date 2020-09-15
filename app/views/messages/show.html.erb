@@ -15,36 +15,52 @@
       </h6>
     </div>
     
-    <div class="field">
+    <div class="field">      
+      <b><%= label(:viaggio, 'Viaggio', '', class:"label-custom") %></b>
       <p>
-        <strong>Viaggio: </strong>
-        <%= @message.path_offer_id %>
+        <%= @path.departure + ' - '  + @path.arrive%>
+      </p>
+    </div>
+
+    <div class="field">      
+      <b><%= label(:date_departure, 'Data di partenza', '', class:"label-custom") %></b>
+      <p>
+        <%= @path.date_departure %>
       </p>
     </div>
 
     <div class="field">
-      <h6>
-        <strong>Titolo</strong>
+        <b><%= label(:titolo, 'Titolo', '', class:"label-custom") %></b>
         <p><%= @message.title %></p>
-      </h6>
+       
     </div>
 
     <div class="field">
+      <b><%= label(:message, 'Messaggio', '', class:"label-custom") %></b>
       <p>
-        <strong>Message:</strong>
         <%= @message.message %>
       </p>
     </div>
 
     <div class="field">
-      <p>
-        <strong>Risposndi a :</strong>
-        <%= @message.dest_user_id %>
-      </p>
+      <div class="col l11">
+      
+        <button onclick="replyMessage(<%= @message.id %>, '<%= @message.path_offer_id %>', '<%= params["id"] %>')" class="waves-effect waves-light btn btn-devise">Rispondi</button> 
+      </div>
+      <div class="col l1">
+        <%= link_to 'Back', messages_path %>
+      </div>
+      
     </div>
   </div>
-  <%= link_to 'Back', messages_path %>
+  
 </div>
 
 
->
+<script>
+  
+  function replyMessage(reply, path_offer_id,id){    
+   // alert("id <%= params['id'] %>")
+      window.location.href = '/messages/new?reply=' + reply + '&path_offer_id='+path_offer_id+'&id='+id    
+    }
+</script>

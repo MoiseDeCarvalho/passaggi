@@ -1,4 +1,5 @@
-<%= form_with(model: message, local: true) do |form| %>
+<%= debug @reply %>
+<%= form_with(model: message,  local: true) do |form| %>
   <% if message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -10,34 +11,99 @@
       </ul>
     </div>
   <% end %>
-
+  <% if request.params["departure"] != nil %>
+    <% titolo = request.params["departure"] + ' ' + request.params["arrive"] %>
+    <% data_partenza = request.params["date_departure"] %>
+    <% data_arrivo = request.params["date_arrive"] %>
+  <% else %>
+    <% titolo = @path.departure + ' ' + @path.arrive %>
+    <% data_partenza = @path.date_departure %>
+    <% data_arrivo = @path.date_arrive %>
+  <% end %>
   <div class="field">
-        <h5>Viaggio <%= request.params["departure"] + ' ' + request.params["arrive"] %></h5>
+        <h5>Viaggio <%= titolo %></h5>
         <br/>
-        <h6>Data di partenza: <%= request.params["date_departure"] %></h6>
+        <h6>Data di partenza: <%= data_partenza %></h6>
         <br/>
-        <h6>Data di arrivo: <%= request.params["date_arrive"] %></h6>
+        <h6>Data di arrivo: <%= data_arrivo %></h6>
       </div>
 
+      <% if !@reply.nil? %>
+        <% title = "Re: "+ @mess.message %>
+      <% else %>
+        <% title = "" %>
+      <% end %>
   <div class="field">
-    <%= form.label :title, class:"label-custom" %>
-    <%= form.text_field :title %>
+    <%= form.label :title ,class:"label-custom" %>
+    <% if !@reply.nil? %>
+      <%= form.text_field :title , :value => title, :disabled=> true%>
+    <% else %>
+      <%= form.text_field :title , :value => title%>
+    <% end %>
+    
   </div>
 
   <div class="field">
-    <%= form.label :message, class:"label-custom" %>
-    <%= form.text_field :message %>
+    <%= form.text_field :message   %>
   </div>
 
+  <% if !@reply.nil? %>
+  <!-- sto rispondendo -->
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :dest_user_id, :value => @mess.user_id %>
+    <%= form.hidden_field :sender_name, :value => @sender.name %>
+    <%= form.hidden_field :receiver_name, :value => @receiver.name %>
+    <%= form.hidden_field :path_offer_id, :value => request.params[:path_offer_id] %>
+    <%= form.hidden_field :read , :value => 0 %>
+    <%= form.hidden_field :title, :value => title %>
+    <%= form.hidden_field :id, :value => params["id"] %>
+  <% else %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :dest_user_id, :value => @path.user_id %>
+    <%= form.hidden_field :sender_name, :value => @sender.name %>
+    <%= form.hidden_field :receiver_name, :value => @receiver.name %>
+    <%= form.hidden_field :path_offer_id, :value => request.params[:path_offer_id] %>
+  <% end %>
   
-  <%= form.hidden_field :user_id, :value => current_user.id %>
-  <%= form.hidden_field :dest_user_id, :value => @path.user_id %>
-  <%= form.hidden_field :sender_name, :value => @sender.name %>
-  <%= form.hidden_field :receiver_name, :value => @receiver.name %>
-  <%= form.hidden_field :path_offer_id, :value => request.params[:path_offer_id] %>
 
-
+   
   <div class="actions">
-    <%= form.submit "Invia" , class:"waves-effect waves-light btn btn-devise" %>
+    <%= form.submit "Invia" , class:"waves-effect waves-light btn btn-devise" , :onclick => "invia("+ request.params["id"] +" )" %>
   </div>
 <% end %>
+<script>
+  function invia(id){
+  //  alert ("ciao sono io "+id)
+    if (id != undefined){
+      updateMedssaggioRead(id)
+    }
+   // document.document.forms[0].submit();
+
+  }
+  function replyMessage(reply, path_offer_id,id){    
+   // alert("id <%= params['id'] %>")
+      window.location.href = '/messages/new?reply=' + reply + '&path_offer_id='+path_offer_id+'&id='+id    
+    }
+
+    function updateMedssaggioRead(id){
+      xmlhttp = $.ajax({
+              type:"GET",
+              url:"/update-messaggio-read",
+              dataType:"json",
+               async: false,
+              data: {id: id},
+              success:function(data){
+                alert(data.responseText);
+              }
+            }); 
+             
+            if ( xmlhttp.status == 200 ) {
+           //   alert (xmlhttp.responseText);
+             // window.location.href = '/messages/' + id + '?issender=true'; 
+            }
+            else
+              alert("Aggiornamento messaggio fallita");
+           
+
+    }
+</script>
