@@ -46,17 +46,18 @@ class VehiclesController < ApplicationController
       end
     end
   end
-#def search
- #   @typevehicles= TypeVehicle.all
+  
+  def vehicles_search
+    @typevehicles= TypeVehicle.all
 
-#  end
+  end
 
 
   #GET /search
-  #def search_result
-  #  @vehicles_founded = Vehicles.search(params)
+  def search_result
+    @vehicles_founded = Vehicles.search(params)
    
-  #end
+  end
   # PATCH/PUT /vehicles/1
   # PATCH/PUT /vehicles/1.json
   def update

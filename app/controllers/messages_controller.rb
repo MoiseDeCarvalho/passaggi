@@ -19,10 +19,17 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @path = PathOffer.find_by(:id => @message.path_offer_id)
+    if request.params["id"]
+      @id = request.params["id"]
+    else
+      @id = -1
+    end
   end
 
   # GET /messages/new
   def new
+    
+
     @reply = params["reply"]
     @path = PathOffer.find_by(:id => params["path_offer_id"])
     if @reply == nil      

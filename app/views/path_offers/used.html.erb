@@ -1,51 +1,54 @@
- <div class="row">
-  <h4 class="center">Passaggi prenotati</h4>
-  <% if !@paths.nil? %>
-    <table class="striped highlight centered"> 
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Partenza</th>
-          <th>Arrivo</th>
-          <th>Data di partenza</th>
-          <th>Data di arrivo</th>
-          <th>Prezzo</th>
-          <th>Lascia un feedback</th>
-          <th>Azione</th>
-        </tr>
-      </thead>
- 
-       <tbody>
-        <% @paths.each do |path_offer| %>        	
-          <tr>   
-            <td><%= path_offer.id %></td>         
-            <td><%= path_offer.departure %></td>
-            <td><%= path_offer.arrive %></td>
-            <td><%= path_offer.date_departure %></td>
-            <td><%= path_offer.date_arrive %></td>
-            <td><%= path_offer.price %></td>     
-            <td> 
-              <% if Date.today  >= path_offer.date_arrive  %>
-                <p><%= link_to "Lascia un feed!", new_feedback_path(:path_offer_id => path_offer.id, :departure => path_offer.departure, :arrive => path_offer.arrive, :date_departure => path_offer.date_departure.to_s), class:"waves-effect waves-light btn btn-devise" %></p>
-              <% else %>
-                <p></p>
-              <% end %>
-              
-            </td>  
-            <td>
-              <% if Date.today  < path_offer.date_departure %>
-                <button onclick="deletePathBooked(<%= path_offer.id %>, '<%= current_user.id %>, <%= path_offer.departure %>', <'%= path_offer.arrive %>')"  class="waves-effect waves-light btn btn-devise">Cancella</button>
-              <% end %>
-            </td>     
-          </tr>	
-        <% end %>
-      </tbody>
-    </table>
- 
-    <br>
+ <div class="row row-home">
+  <div class="col l12 white">
+    <h4 class="center">Passaggi prenotati</h4>
+    <% if !@paths.nil? %>
+      <table class="striped highlight centered"> 
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Partenza</th>
+            <th>Arrivo</th>
+            <th>Data di partenza</th>
+            <th>Data di arrivo</th>
+            <th>Prezzo</th>
+            <th>Lascia un feedback</th>
+            <th>Azione</th>
+          </tr>
+        </thead>
+   
+         <tbody>
+          <% @paths.each do |path_offer| %>         
+            <tr>   
+              <td><%= path_offer.id %></td>         
+              <td><%= path_offer.departure %></td>
+              <td><%= path_offer.arrive %></td>
+              <td><%= path_offer.date_departure %></td>
+              <td><%= path_offer.date_arrive %></td>
+              <td><%= path_offer.price %></td>     
+              <td> 
+                <% if Date.today  >= path_offer.date_arrive  %>
+                  <p><%= link_to "Lascia un feed!", new_feedback_path(:path_offer_id => path_offer.id, :departure => path_offer.departure, :arrive => path_offer.arrive, :date_departure => path_offer.date_departure.to_s), class:"waves-effect waves-light btn btn-devise" %></p>
+                <% else %>
+                  <p></p>
+                <% end %>
+                
+              </td>  
+              <td>
+                <% if Date.today  < path_offer.date_departure %>
+                  <button onclick="deletePathBooked(<%= path_offer.id %>, '<%= current_user.id %>, <%= path_offer.departure %>', <'%= path_offer.arrive %>')"  class="waves-effect waves-light btn btn-devise">Cancella</button>
+                <% end %>
+              </td>     
+            </tr> 
+          <% end %>
+        </tbody>
+      </table>
+   
+      <br>
 
- 
-  <% end %>
+   
+    <% end %>
+  </div>
+  
 </div>
 
 <script type="text/javascript">

@@ -1,11 +1,13 @@
-<div class="row">
-	<h4 class="center">Inserisci il feedback per il viaggio</h4>
-	<br/>
-	<%= render 'form', feedback: @feedback %>
+<div class="row row-home">
+	<div class="col l12 white">
+		<h4 class="center">Inserisci il feedback per il viaggio</h4>
+		<br/>
+		<%= render 'form', feedback: @feedback %>
 
-	<br/>
-	<div class="col l6 offset-l3">
-		<%= link_to 'Feedbacks', feedbacks_path %> <i class="material-icons left">arrow_back</i>
+		<br/>
+		<div class="col l6 offset-l3">
+			<%= link_to 'Feedbacks', feedbacks_path %> <i class="material-icons left">arrow_back</i>
+		</div>
 	</div>
 </div>
 

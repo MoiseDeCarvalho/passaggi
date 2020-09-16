@@ -1,59 +1,64 @@
-<p>
-  <strong>Vehicle:</strong>
-  <%= @path_offer.vehicle_id %>
-</p>
+<div class="row row-home">
+  <div class="col l6 offset-l3 white">
+    <p>
+    <strong>Vehicle:</strong>
+    <%= @path_offer.vehicle_id %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @path_offer.user_id %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <%= @path_offer.user_id %>
+  </p>
 
-<p>
-  <strong>Departure:</strong>
-  <%= @path_offer.departure %>
-</p>
+  <p>
+    <strong>Departure:</strong>
+    <%= @path_offer.departure %>
+  </p>
 
-<p>
-  <strong>Arrive:</strong>
-  <%= @path_offer.arrive %>
-</p>
+  <p>
+    <strong>Arrive:</strong>
+    <%= @path_offer.arrive %>
+  </p>
 
-<p>
-  <strong>Date departure:</strong>
-  <%= @path_offer.date_departure %>
-</p>
+  <p>
+    <strong>Date departure:</strong>
+    <%= @path_offer.date_departure %>
+  </p>
 
-<p>
-  <strong>Date arrive:</strong>
-  <%= @path_offer.date_arrive %>
-</p>
+  <p>
+    <strong>Date arrive:</strong>
+    <%= @path_offer.date_arrive %>
+  </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @path_offer.price %>
-</p>
+  <p>
+    <strong>Price:</strong>
+    <%= @path_offer.price %>
+  </p>
 
-<p>
-  <strong>Max available:</strong>
-  <%= @path_offer.max_available %>
-</p>
+  <p>
+    <strong>Max available:</strong>
+    <%= @path_offer.max_available %>
+  </p>
 
-<p>
-  <strong>Booked:</strong>
-  <%= @path_offer.booked %>
-</p>
+  <p>
+    <strong>Booked:</strong>
+    <%= @path_offer.booked %>
+  </p>
 
-<p>
-  <strong>Full:</strong>
-  <%= @path_offer.full %>
-</p>
-<div class="col 11 ">
-<%= link_to 'Back', path_offers_path %><i class="material-icons left">arrow_back</i>
+  <p>
+    <strong>Full:</strong>
+    <%= @path_offer.full %>
+  </p>
+  <div class="col 11 ">
+  <%= link_to 'Back', path_offers_path %><i class="material-icons left">arrow_back</i>
+  </div>
+  <div class="col l1 offset-l3">
+  </div>
+  <div class="col 11">
+  <%= link_to 'Modifica', edit_path_offer_path(@path_offer)%><i class="material-icons left">edit</i></a>
+  </div> 
+  </div>
 </div>
-<div class="col l1 offset-l3">
-</div>
-<div class="col 11">
-<%= link_to 'Modifica', edit_path_offer_path(@path_offer)%><i class="material-icons left">edit</i></a>
-</div> 
+
 
 

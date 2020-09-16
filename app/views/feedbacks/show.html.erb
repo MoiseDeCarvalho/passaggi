@@ -1,28 +1,32 @@
 <p id="notice"><%= notice %></p>
+<div class="row row-home">
+	<div class="col l6 offeset-l3 white">
+		<p>
+		  <strong>Id:</strong>
+		  <%= @feedback.user_id %>
+		</p>
 
-<p>
-  <strong>Id:</strong>
-  <%= @feedback.user_id %>
-</p>
+		<p>
+		  <strong>Feedback:</strong>
+		  <%= @feedback.feedback %>
+		</p>
 
-<p>
-  <strong>Feedback:</strong>
-  <%= @feedback.feedback %>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @feedback.score %>
-</p>
-<p>
-  <strong>Id del path offers:</strong>
-  <%= @feedback.path_offer_id %>
-</p>
-<div class="col 11 ">
-<%= link_to 'Back', feedbacks_path %><i class="material-icons left">arrow_back</i>
+		<p>
+		  <strong>Score:</strong>
+		  <%= @feedback.score %>
+		</p>
+		<p>
+		  <strong>Id del path offers:</strong>
+		  <%= @feedback.path_offer_id %>
+		</p>
+		<div class="col 11 ">
+		<%= link_to 'Back', feedbacks_path %><i class="material-icons left">arrow_back</i>
+		</div>
+		<div class="col l1 offset-l3">
+		</div>
+		<div class="col 11">
+		<%= link_to 'Modifica', edit_feedback_path(@feedback) %><i class="material-icons left">edit</i></a>
+		</div>	
+	</div>
 </div>
-<div class="col l1 offset-l3">
-</div>
-<div class="col 11">
-<%= link_to 'Modifica', edit_feedback_path(@feedback) %><i class="material-icons left">edit</i></a>
-</div>	 
+ 

@@ -83,17 +83,20 @@ main {
     float: left;
  }
 
+.white{
+  background-color: #e6f3ff !important;
+  border-radius: 5px;
+}
 
 .row-home{ 
- margin-top: 10%;
- background-color:#FFFFFF;
- 
- 
+ margin-top: 10%; 
 }
 
-.moise{
+.backgroung-car{
+  background-image: url("background.jpg");
 
 }
+
 .year{
   width:12%;
   color:#d43333;

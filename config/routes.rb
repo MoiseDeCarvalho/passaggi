@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   get '/update-messaggio-read' => 'messages#update_messaggio_read' , :as => 'update_messaggio_read_messages'
   get '/used' => 'path_offers#used' , :as => 'used_path_offers'
   get 'edit_profile' => 'profiles#edit'
+
+  get '/vehicles_search' => 'vehicles#vehicles_search', :as => 'vehicles_search'
+  #get '/search-result' => 'path_offers#search_result', :as => 'search_result_path_offers'
 end
