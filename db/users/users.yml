@@ -1,0 +1,8 @@
+test:
+  customer_id: 7
+  name: "Test Guy"
+  email: "test@example.com"
+  encrypted_password: "$2a$12$/Ky6zqRB87.a9lHnf1A9WeKLefp2bwAZmKXoczHGEWy.u8.qxvPIG"
+  created_at: "2020-09-04 19:09:43"
+  updated_at: "2020-09-05 07:52:21"
+  type_user: 1
