@@ -33,7 +33,7 @@
 		  	</ul>
 		    <ul class="right hide-on-med-and-down ul-header  class="dropdown-content" >
 		     	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
-		      	<% if !current_user %>
+		      	<% if current_user && current_user.active == 0%>
 		      		<li><a style="color:#fff" href="/path_offers/new"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>    
 		      	<% end %>
 
