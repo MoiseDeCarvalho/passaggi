@@ -37,6 +37,20 @@ class ProfilesController < ApplicationController
       end
     end
   end
+
+  def disattiva
+    logger.info("disattiva " + params["id"])
+    @user = User.find(params["id"])
+    @user.active = 1
+    @user.save!
+  end
+
+  def riattiva
+    logger.info("riattiva " + params["id"])
+    @user = User.find(params["id"])
+    @user.active = 0
+    @user.save!
+  end
  #GET /search
   #def search_result
   #  @profiles_founded = Profiles.search(params)

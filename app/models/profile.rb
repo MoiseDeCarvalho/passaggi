@@ -1,5 +1,8 @@
 class Profile < ApplicationRecord
 	belongs_to :user
+
+    
+
 	#def self.search(params)
 		#conditions = String.new
     	#wheres = Array.new

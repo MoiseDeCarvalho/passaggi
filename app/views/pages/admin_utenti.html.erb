@@ -1,0 +1,79 @@
+<div class="row row-home">
+	<div class="col l12 white">
+		<% @users = User.all.joins(:profile).where(:admin => false) %>
+		<table>			
+			<th>ID</th>
+			<th>Email</th>
+			<th>Nome</th>
+			<th>Cognome</th>
+			<th>Città>
+			<th>Indirizzo</th>
+			<th>Stato</th>
+			<th>Azioni</th>
+			<tbody>	
+				<% @users.each do |user| %>
+					<tr>
+			  			<td><%= user.id %></td>
+			  			<td><%= user.email %></td>
+			  			<td><%= user.profile.name %></td>
+			  			<td><%= user.profile.surname %></td>
+			  			<td><%= user.profile.city %></td>
+			  			<td><%= user.profile.address %></td>
+			  			<td>
+			  				<% if user.active == 1 %>
+			  					Disattivato
+			  				<% else %>
+			  					Attivo
+			  				<% end %>
+			  			</td>
+			  			<td>
+			  				<% if user.active == 0 %>
+				  				<% user.active = 1 %>
+				  				<button onclick="disattiva(<%= user.id %>)" class="waves-effect waves-light btn btn-devise">Disattiva</button>
+				  			<% else %>
+				  				<button onclick="riattiva(<%= user.id %>)" class="waves-effect waves-light btn btn-devise">Riattiva</button>
+			  				<% end %>
+			  			</td>
+			  		</tr>
+				<% end %>
+			</tbody>
+			
+		</table>
+			
+	</div>
+
+</div>
+
+<script type="text/javascript">
+ 	function disattiva(id){
+		xmlhttp = $.ajax({
+					  type:"GET",
+					  url:"/disattiva",
+					  dataType:"json",
+					   async: false,
+					  data: {id:id},
+					  success:function(data){
+					  }
+					}); 
+		       
+					if ( xmlhttp.status == 200 ) {
+						window.location.href = '/admin-utenti';
+					}
+		 	}
+
+ 	function riattiva(id){
+		xmlhttp = $.ajax({
+					  type:"GET",
+					  url:"/riattiva",
+					  dataType:"json",
+					   async: false,
+					  data: {id:id},
+					  success:function(data){
+					  }
+					}); 
+		       
+					if ( xmlhttp.status == 200 ) {
+						window.location.href = '/admin-utenti';
+					}
+		 	}
+</script>

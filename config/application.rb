@@ -18,5 +18,4 @@ module Passaggi
   end
 end
 
-Rails.application.load_tasks # <-- MISSING LINE
-Rake::Task['app'].invoke
+ 

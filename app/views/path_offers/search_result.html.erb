@@ -62,19 +62,35 @@
 				            <td><%= path_offer.place %></td>
 
 				            <td>
-				            	<button onclick="sendMessage(<%= path_offer.id %> , '<%= path_offer.departure %>', '<%= path_offer.arrive %>', '<%= path_offer.date_departure %>', '<%= path_offer.date_arrive %>')" class="waves-effect waves-light btn btn-devise">Messaggio</button>
+				            	<button onclick="sendMessage(<%= path_offer.id %> , '<%= path_offer.departure %>', '<%= path_offer.arrive %>', '<%= path_offer.date_departure %>', '<%= path_offer.date_arrive %>')" class="waves-effect waves-light btn btn-devise"
+			            			<% if current_user.admin %>
+			            				disabled=true 
+			            			<% end %>	
+				            		>Messaggio</button>
 				            </td>
 
 				            <td>
 				            	<% if !@booked_for_user.nil? %>
 					            	<% if (path_offer.id == @booked_for_user.path_offer_id) %>
-					            		<button onclick="deletePathBooked(<%= path_offer.id %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise">Cancella</button>
+					            		<button onclick="deletePathBooked(<%= path_offer.id %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise"
+					            			<% if current_user.admin %>
+					            				disabled=true
+					            			<% end %>
+					            			>Cancella</button>
 					            	<% else %>
-										<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise">Prenota</button>
+										<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise"
+											<% if current_user.admin %>
+					            				disabled=true
+					            			<% end %>
+											>Prenota</button>
 									<% end%>
 
 									<% else %>
-										<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise">Prenota</button>
+										<button onclick="sendData(<%= path_offer.id %> , <%= path_offer.booked %>, <%= 'reserved_'+path_offer.id.to_s %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')" class="waves-effect waves-light btn btn-devise"
+											<% if current_user.admin %>
+					            				disabled=true
+					            			<% end %>
+											>Prenota</button>
 
 								<% end %>
 				            </td>

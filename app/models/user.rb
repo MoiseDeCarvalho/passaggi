@@ -10,5 +10,7 @@ class User < ApplicationRecord
   has_one :score
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+ 
+  
 
 end

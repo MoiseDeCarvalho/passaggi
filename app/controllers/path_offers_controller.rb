@@ -97,6 +97,16 @@ class PathOffersController < ApplicationController
    
   end
 
+  def admin_paths
+    @path_offers = PathOffer.all.joins(:vehicle).joins(:type_vehicle).paginate(page: params[:page], per_page: 5)
+    #@profile = Profile.find_by(:user_id => current_user.id);
+
+     #@vehicle = Vehicle.find_by(:user_id => current_user.id)
+    if !@vehicle.nil?
+      @typeVehicles = TypeVehicle.all
+     end  
+  end
+
 
   # POST /path_offers
   # POST /path_offers.json
