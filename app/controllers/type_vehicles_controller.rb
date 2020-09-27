@@ -4,7 +4,7 @@ class TypeVehiclesController < ApplicationController
   # GET /type_vehicles
   # GET /type_vehicles.json
   def index
-    @type_vehicles = TypeVehicle.all.paginate(page: params[:page], per_page: 5)
+    @type_vehicles = TypeVehicle.all.order("description ASC").paginate(page: params[:page], per_page: 5)
   end
 
   # GET /type_vehicles/1
@@ -28,7 +28,7 @@ class TypeVehiclesController < ApplicationController
 
     respond_to do |format|
       if @type_vehicle.save
-        format.html { redirect_to @type_vehicle, notice: 'Type vehicle was successfully created.' }
+        format.html { redirect_to type_vehicles_path, notice: 'Type vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @type_vehicle }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TypeVehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @type_vehicle.update(type_vehicle_params)
-        format.html { redirect_to @type_vehicle, notice: 'Type vehicle was successfully updated.' }
+        format.html { redirect_to type_vehicles_path, notice: 'Type vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @type_vehicle }
       else
         format.html { render :edit }
@@ -54,11 +54,20 @@ class TypeVehiclesController < ApplicationController
   # DELETE /type_vehicles/1
   # DELETE /type_vehicles/1.json
   def destroy
-    @type_vehicle.destroy
+    @vehicles = Vehicle.find_by(:type_vehicle => @type_vehicle.id)
+    if @vehicles.nil?
+      @type_vehicle.destroy
+      respond_to do |format|
+        format.html { redirect_to type_vehicles_url, notice: 'Type vehicle was NOT successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
     respond_to do |format|
       format.html { redirect_to type_vehicles_url, notice: 'Type vehicle was successfully destroyed.' }
       format.json { head :no_content }
     end
+    end
+    
   end
 
   private
