@@ -1,4 +1,6 @@
-<h1>Type Vehicles</h1>
+<div class="row row-home">
+  <div class="col l8 offset-l2 white">
+    <h4 class="center">Gestione tipologia dei veicoli</h4>
 
 <table class="striped highlight centered">
   <thead>
@@ -19,7 +21,14 @@
     <% end %>
   </tbody>
 </table>
+<br/>
+<div class="center">
+  <%= will_paginate @type_vehicles %>
+</div>
 
-<br>
+<br/>
 
-<%= link_to 'Nuovo Type Vehicle', new_type_vehicle_path %><i class="material-icons left">add</i>
+<%= link_to 'Aggiungi nuova tipologia', new_type_vehicle_path %><i class="material-icons left">add</i>
+  </div>
+</div>
+
