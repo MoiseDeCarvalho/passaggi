@@ -16,22 +16,22 @@
 
         <br/>
         <br/>
-        <%= label_tag 'Marchio', class:"label-custom"%>
+        <%= label_tag 'Marchio', nil, class:"label-custom"%>
         <%= @vehicle.brand %>
 
         <br/>
         <br/>
-        <%= label_tag 'Modello', class:"label-custom"%>
+        <%= label_tag 'Modello', nil, class:"label-custom"%>
         <%= @vehicle.model %>
 
         <br/>
         <br/>
-        <%= label_tag 'Motore', class:"label-custom"%>
+        <%= label_tag 'Motore', nil, class:"label-custom"%>
         <%= @vehicle.motor %>
 
         <br/>
         <br/>
-        <%= label_tag 'Colore', class:"label-custom"%>
+        <%= label_tag 'Colore', nil, class:"label-custom"%>
         <%= @vehicle.colour %>
 
         
@@ -39,7 +39,9 @@
       </div>
 
       <div class="col l6 field">
+        <% if @vehicle.avatar.url != "/images/original/missing.png" %>
         <%=  image_tag @vehicle.photo_1.url %>
+        <% end %>
         <br/>
         <label>Foto 1</label>
         <br/>
@@ -47,8 +49,9 @@
 
         <br/>
         <br/>
-        
+         <% if @vehicle.avatar.url != "/images/original/missing.png" %>
         <%=  image_tag @vehicle.photo_2.url %>
+        <% end %>
         <br/>
         <label>Foto 2</label>
         
