@@ -1,6 +1,7 @@
 class Feedback < ApplicationRecord
 	belongs_to :user
 	belongs_to :path_offer 
+    has_one :profile, :through => :path_offer
 #def self.search(params)
 		#conditions = String.new
     	#wheres = Array.new

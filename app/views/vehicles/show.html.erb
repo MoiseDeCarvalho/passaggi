@@ -16,22 +16,22 @@
 
         <br/>
         <br/>
-        <%= label_tag 'Marchio', class:"label-custom"%>
+        <%= label( 'Marchio', '', class:"black-text text-lighten-3")%>
         <%= @vehicle.brand %>
 
         <br/>
         <br/>
-        <%= label_tag 'Modello', class:"label-custom"%>
+        <%= label('Modello', '', class:"black-text text-lighten-3")%>
         <%= @vehicle.model %>
 
         <br/>
         <br/>
-        <%= label_tag 'Motore', class:"label-custom"%>
+        <%= label('Motore', '', class:"black-text text-lighten-3")%>
         <%= @vehicle.motor %>
 
         <br/>
         <br/>
-        <%= label_tag 'Colore', class:"label-custom"%>
+        <%= label('Colore','', class:"black-text text-lighten-3")%>
         <%= @vehicle.colour %>
 
         
@@ -39,25 +39,28 @@
       </div>
 
       <div class="col l6 field">
-        <%=  image_tag @vehicle.photo_1.url %>
-        <br/>
-        <label>Foto 1</label>
+        <% if !@vehicle.photo_1.url.nil? %>
+            <label class="black-text text-lighten-3">Foto 1</label>
+            <%=  image_tag @vehicle.photo_1.url %>
+          <% end %>
         <br/>
          
 
         <br/>
         <br/>
-        
-        <%=  image_tag @vehicle.photo_2.url %>
-        <br/>
+        <% if @vehicle.photo_2.url.nil? %>
+          <%=  image_tag @vehicle.photo_2.url %>
+          <br/>
         <label>Foto 2</label>
+        <% end %> 
+        
         
       </div>
 
       
     <% end %>
 <div class="col l1">
-<%= link_to 'Back', vehicles_path   %><i class="material-icons left">arrow_back</i>|
+<%= link_to 'Back', vehicles_path   %><i class="material-icons left">arrow_back</i>
 </div>
 <div class="col l1 offset-l3">
 </div>

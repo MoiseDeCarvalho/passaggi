@@ -25,13 +25,14 @@
 
          
         <div class="field">
-          <%= label_tag 'Foto 1', nil , class:"black-text text-lighten-3"%>
+          <% if !@vehicle.photo_1.url.nil? %>
+            <label class="black-text text-lighten-3">Foto 1</label>
+            <%=  image_tag @vehicle.photo_1.url %>
+          <% end %>
           <br/>
 
           
-          <% if @vehicle.nil? %>
-            <%=  image_tag @vehicle.photo_1.url %>
-          <% end %>        
+                 
         </div>
 
         <div class="col l6  field">
@@ -58,7 +59,7 @@
           <p class="testi-show"><%= @vehicle.colour %></p>
         </div >
 <div class="col l1">
-<%= link_to 'Cancella', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i>|
+<%= link_to 'Cancella', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i>
 </div>
 <div class="col l1 offset-l3">
 </div>

@@ -10,10 +10,9 @@ class FeedbacksController < ApplicationController
     #/@feedbacks = Feedback.all
     if request["id"].nil?
       id = current_user.id
-      @feedback= Feedback.where(:user_id => current_user.id).order(id: :desc).paginate(page: params[:page], per_page: 5)
-    else
-      id = request["id"]
-      @feedback= Feedback.joins(:path_offer).where(:user_id => id ).order(id: :desc).paginate(page: params[:page], per_page: 5)
+      
+      @feedback= Feedback.where(:user_id => id).joins(:profile).order(id: :desc).paginate(page: params[:page], per_page: 5)
+      
     end
     
 
@@ -23,10 +22,17 @@ class FeedbacksController < ApplicationController
   def feedback_ricevuti
     if request["id"].nil?
       id = current_user.id
+      @feedback= Feedback.where(:user_id => current_user.id).order(id: :desc).paginate(page: params[:page], per_page: 5)
     else
       id = request["id"]
-    end
-    @feedback= Feedback.where(:user_id => id).order(id: :desc).paginate(page: params[:page], per_page: 5)
+      conditions = String.new
+      wheres = Array.new
+      conditions << "path_offers.user_id = ? "       
+      wheres << id
+      wheres.insert(0, conditions)
+
+      @feedback= Feedback.joins(:path_offer).joins(:profile).where(wheres).order(id: :desc).paginate(page: params[:page], per_page: 5)
+      end
   end
 
 

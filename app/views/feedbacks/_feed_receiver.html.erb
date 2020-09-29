@@ -5,27 +5,35 @@ ciao
 <div class="row row-home">
   <div class="col l8 offset-l2 white">
 
-    <h4>Feedback ricevuti</h4>
+    <h4>Feedback ricevuti </h4>
     <% if !@feedback.nil? %>      
     <table class="striped highlight centered">
       <thead>
         <tr>
-          <th>Id</th>          
-          <th>Passaggio</th>
+          <th>Id</th>
+          <th>Nome</th>          
           <th>Feedback</th>
           <th>Punteggio</th>
-          <th colspan="2">Azione</th>
+          <% if request["id"].nil? %>
+            <th colspan="2">Azione</th>
+          <% else %>
+            <th>Azione</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
         <% @feedback.each do |feedback| %>
           <tr>
-            <td><%= feedback.id %></td>            
-            <td><%= feedback.title %></td>
+            <td><%= feedback.id %></td>
+            <td><%=   feedback.path_offer.profile.name%>            
             <td><%= feedback.feedback %></td>
             <td><%= feedback.score %></td>
-        <td><%= link_to 'Modifica', edit_feedback_path(feedback) %><i class="material-icons left">edit</i></td>
-        <td><%= link_to 'Cancella', feedback, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
+            <% if request["id"].nil? %>
+              <td><%= link_to 'Modifica', edit_feedback_path(feedback) %><i class="material-icons left">edit</i></td>
+              <td><%= link_to 'Cancella', feedback, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
+            <% else %>
+              <td><a href="/feedbacks/<%= feedback.id %>&user=<%= feedback.path_offer.user_id %>" class="waves-effect waves-light btn btn-devise" >Leggi</a></td>
+            <% end %>
           </tr>
         <% end %>     
       </tbody>
