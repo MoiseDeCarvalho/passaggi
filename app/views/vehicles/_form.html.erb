@@ -38,11 +38,7 @@
     </div>
 
     <div class="col l6 field">
-      <% if !@vehicle.photo_1.nil? %>
-        <% if @vehicle.photo_1.url != "/images/original/missing.png" %>
-          <%=  image_tag @vehicle.photo_1.url %>
-        <% end %> 
-      <% end %>
+      <%=  image_tag(@vehicle.photo_1.url, size: "30x30") %>
       <br/>
       <%= form.label :photo_1 %>Seleziona la foto
       <br/>
@@ -51,11 +47,7 @@
       <br/>
       <br/>
 
-      <% if !@vehicle.photo_2.nil? %>
-        <% if @vehicle.photo_2.url != "/images/original/missing.png" %>
-          <%=  image_tag @vehicle.photo_2.url %>
-        <% end %> 
-      <% end %>
+      <%=  image_tag(@vehicle.photo_2.url, size: "30x30") %>
       <br/>
       <%= form.label :photo_2 %>Seleziona la foto
       <br/>

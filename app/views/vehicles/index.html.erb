@@ -24,14 +24,15 @@
         </div >
 
          
-        <div class="field">
-          <% if !@vehicle.photo_1.url.nil? %>
-            <label class="black-text text-lighten-3">Foto 1</label>
-            <%=  image_tag @vehicle.photo_1.url %>
-          <% end %>
-          <br/>
+         
+          <div class="col l6">
+          <label class="black-text text-lighten-3">Foto 1</label>
+          <%=  image_tag(@vehicle.photo_1.url, size: "30x30") %>
+         
 
-          
+
+        <label class="black-text text-lighten-3">Foto 2</label>
+        <%=  image_tag(@vehicle.photo_2.url, size: "30x30") %>
                  
         </div>
 
