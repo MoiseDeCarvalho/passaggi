@@ -22,13 +22,18 @@ class FeedbacksController < ApplicationController
   def feedback_ricevuti
     if request["id"].nil?
       id = current_user.id
-      @feedback= Feedback.where(:user_id => current_user.id).order(id: :desc).paginate(page: params[:page], per_page: 5)
+      conditions = String.new
+      wheres = Array.new
+      conditions << "path_offers_feedbacks_join.user_id = ?"
+      wheres << id
+      wheres.insert(0, conditions)
+      @feedback= Feedback.joins(:path_offer).joins(:feedback_path).where(wheres).order(id: :desc).paginate(page: params[:page], per_page: 5)
     else
       id = request["id"]
       conditions = String.new
       wheres = Array.new
       conditions << "path_offers.user_id = ? "       
-      wheres << id
+      wheres<< id
       wheres.insert(0, conditions)
 
       @feedback= Feedback.joins(:path_offer).joins(:profile).where(wheres).order(id: :desc).paginate(page: params[:page], per_page: 5)

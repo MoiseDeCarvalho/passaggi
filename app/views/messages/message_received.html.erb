@@ -7,8 +7,7 @@
       <thead>
         <tr>
           <th>Mittente</th>
-          <th>Destinatario</th>
-          <th>Titolo</th>
+           <th>Titolo</th>
           <th>Messaggio</th>
           <th>Azione</th>
         </tr>
@@ -17,9 +16,8 @@
       <tbody>
         <% @messages.each do |message| %>
           <tr>
-            <td><%= message.user_id %></td>
-            <td><%= message.dest_user_id %></td>
-            <td><%= message.title %></td>
+            <td><a href="/profiles?id=<%=message.user_id%>"><%= message.profile.name %></a></td>
+             <td><%= message.title %></td>
             <td><%= message.message %></td>
             <td>
               <% if message.read.nil? || message.read == 0%>
