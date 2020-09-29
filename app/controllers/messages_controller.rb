@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+    @profiles = Profile.all
+    @messages = Message.joins(:profile).where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
   end
 
   def message_received

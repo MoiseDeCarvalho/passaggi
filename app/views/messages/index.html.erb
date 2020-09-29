@@ -6,7 +6,6 @@
     <table>
       <thead>
         <tr>
-          <th>Mittente</th>
           <th>Destinatario</th>
           <th>Titolo</th>
           <th>Messaggio</th>
@@ -14,11 +13,16 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody> 
         <% @messages.each do |message| %>
           <tr>
-            <td><%= message.user_id %></td>
-            <td><%= message.dest_user_id %></td>
+            <td> 
+              <% @profiles.each do |profile| %>  
+                <% if profile.user_id.to_i == message.dest_user_id.to_i %>
+                  <a href="/profiles?id=<%=profile.user_id%>"><%= profile.name %></a>
+                <% end %>
+              <% end %> 
+              </td>
             <td><%= message.title %></td>
             <td><%= message.message %></td>
             <td> <button onclick="leggiMessaggio(<%= message.id %>,)" class="waves-effect waves-light btn btn-devise">Leggi</button>
