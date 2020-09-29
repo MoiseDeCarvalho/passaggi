@@ -1,0 +1,102 @@
+<div class="row row-home">
+  <div class="col l6 offset-l3 white">
+    <% if @vehicle.user == current_user %>    
+      <div class="col l6 field">
+        <%= label_tag 'Tipo veicolo', nil %>
+        <br/>
+        <% if !@vehicle.typeVehicle.nil? %>
+          <% @vehicle.typeVehicle.each do |v| %>
+            <% if v.id == @vehicle.type_vehicle_id %>
+              <p class="testi-show">
+                <%= v.description %>
+              </p>  
+            <% end %>
+          <% end %> 
+        <% end %>  
+
+        <br/>
+        <br/>
+<<<<<<< HEAD
+        <%= label( 'Marchio', '', class:"black-text text-lighten-3")%>
+=======
+        <%= label_tag 'Marchio', nil, class:"label-custom"%>
+>>>>>>> 624e48e10675fc582940edf4ff59004cd3c92af9
+        <%= @vehicle.brand %>
+
+        <br/>
+        <br/>
+<<<<<<< HEAD
+        <%= label('Modello', '', class:"black-text text-lighten-3")%>
+=======
+        <%= label_tag 'Modello', nil, class:"label-custom"%>
+>>>>>>> 624e48e10675fc582940edf4ff59004cd3c92af9
+        <%= @vehicle.model %>
+
+        <br/>
+        <br/>
+<<<<<<< HEAD
+        <%= label('Motore', '', class:"black-text text-lighten-3")%>
+=======
+        <%= label_tag 'Motore', nil, class:"label-custom"%>
+>>>>>>> 624e48e10675fc582940edf4ff59004cd3c92af9
+        <%= @vehicle.motor %>
+
+        <br/>
+        <br/>
+<<<<<<< HEAD
+        <%= label('Colore','', class:"black-text text-lighten-3")%>
+=======
+        <%= label_tag 'Colore', nil, class:"label-custom"%>
+>>>>>>> 624e48e10675fc582940edf4ff59004cd3c92af9
+        <%= @vehicle.colour %>
+
+        
+        
+      </div>
+
+      <div class="col l6 field">
+<<<<<<< HEAD
+        <% if !@vehicle.photo_1.url.nil? %>
+            <label class="black-text text-lighten-3">Foto 1</label>
+            <%=  image_tag @vehicle.photo_1.url %>
+          <% end %>
+=======
+        <% if @vehicle.avatar.url != "/images/original/missing.png" %>
+        <%=  image_tag @vehicle.photo_1.url %>
+        <% end %>
+        <br/>
+        <label>Foto 1</label>
+>>>>>>> 624e48e10675fc582940edf4ff59004cd3c92af9
+        <br/>
+         
+
+        <br/>
+        <br/>
+<<<<<<< HEAD
+        <% if @vehicle.photo_2.url.nil? %>
+          <%=  image_tag @vehicle.photo_2.url %>
+          <br/>
+=======
+         <% if @vehicle.avatar.url != "/images/original/missing.png" %>
+        <%=  image_tag @vehicle.photo_2.url %>
+        <% end %>
+        <br/>
+>>>>>>> 624e48e10675fc582940edf4ff59004cd3c92af9
+        <label>Foto 2</label>
+        <% end %> 
+        
+        
+      </div>
+
+      
+    <% end %>
+<div class="col l1">
+<%= link_to 'Back', vehicles_path   %><i class="material-icons left">arrow_back</i>
+</div>
+<div class="col l1 offset-l3">
+</div>
+<div class="col 11">
+<%= link_to 'Modifica', edit_vehicle_path(@vehicle)%><i class="material-icons left">edit</i>
+</div>
+  </div>
+</div>

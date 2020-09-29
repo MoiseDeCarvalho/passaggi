@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     else
       id = request["id"]
     end
-    logger.info("id " + id)
+    #logger.info("id " + id)
     @profile = Profile.find_by(:user_id => id)
     @score = Score.find_by(:user_id => id)
   end
