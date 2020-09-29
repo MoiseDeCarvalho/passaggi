@@ -23,6 +23,7 @@ class VehiclesController < ApplicationController
   def new
     #@vehicle = Vehicle.new
     @vehicle = current_user.build_vehicle
+    @typeVehicles = TypeVehicle.all
   end
 
   # GET /vehicles/1/edit

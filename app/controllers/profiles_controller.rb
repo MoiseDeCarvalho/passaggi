@@ -6,13 +6,21 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profile = Profile.find_by(:user_id => current_user.id)
-    @score = Score.find_by(:user_id => current_user.id)
+
+    if request["id"].nil?
+      id = current_user.id
+    else
+      id = request["id"]
+    end
+    logger.info("id " + id)
+    @profile = Profile.find_by(:user_id => id)
+    @score = Score.find_by(:user_id => id)
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+
   end
 
   # GET /profiles/new

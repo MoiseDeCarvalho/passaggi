@@ -1,0 +1,41 @@
+<% if request["id"].nil? %>
+ciao
+<% end%>
+<p id="notice"><%= notice %></p>
+<div class="row row-home">
+  <div class="col l8 offset-l2 white">
+
+    <h4>Feedback ricevuti</h4>
+    <% if !@feedback.nil? %>      
+    <table class="striped highlight centered">
+      <thead>
+        <tr>
+          <th>Id</th>          
+          <th>Passaggio</th>
+          <th>Feedback</th>
+          <th>Punteggio</th>
+          <th colspan="2">Azione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @feedback.each do |feedback| %>
+          <tr>
+            <td><%= feedback.id %></td>            
+            <td><%= feedback.title %></td>
+            <td><%= feedback.feedback %></td>
+            <td><%= feedback.score %></td>
+        <td><%= link_to 'Modifica', edit_feedback_path(feedback) %><i class="material-icons left">edit</i></td>
+        <td><%= link_to 'Cancella', feedback, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i></td>
+          </tr>
+        <% end %>     
+      </tbody>
+    </table>
+    <% end %>
+    <br/>
+  <div class="center">
+    <%= will_paginate @feedback %>
+  </div>
+  </div>
+
+</div>
+ 

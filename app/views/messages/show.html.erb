@@ -44,8 +44,9 @@
 
     <div class="field">
       <div class="col l11">
-      
-        <button onclick="replyMessage(<%= @message.id %>, '<%= @message.path_offer_id %>', '<%= params["id"] %>')" class="waves-effect waves-light btn btn-devise">Rispondi</button> 
+        <% if !request["issender"].nil? %>
+          <button onclick="replyMessage(<%= @message.id %>, '<%= @message.path_offer_id %>', '<%= params["id"] %>')" class="waves-effect waves-light btn btn-devise">Rispondi</button> 
+          <% end %>
       </div>
       <div class="col l1">
         <%= link_to 'Back', messages_path %>

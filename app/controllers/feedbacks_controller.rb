@@ -8,10 +8,28 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     #/@feedbacks = Feedback.all
-    @feedback= Feedback.where(:user_id => current_user.id).order(id: :desc).paginate(page: params[:page], per_page: 5)
+    if request["id"].nil?
+      id = current_user.id
+      @feedback= Feedback.where(:user_id => current_user.id).order(id: :desc).paginate(page: params[:page], per_page: 5)
+    else
+      id = request["id"]
+      @feedback= Feedback.joins(:path_offer).where(:user_id => id ).order(id: :desc).paginate(page: params[:page], per_page: 5)
+    end
+    
 
 
   end
+
+  def feedback_ricevuti
+    if request["id"].nil?
+      id = current_user.id
+    else
+      id = request["id"]
+    end
+    @feedback= Feedback.where(:user_id => id).order(id: :desc).paginate(page: params[:page], per_page: 5)
+  end
+
+
 
   # GET /feedbacks/1
   # GET /feedbacks/1.json

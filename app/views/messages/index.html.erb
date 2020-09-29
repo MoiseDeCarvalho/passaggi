@@ -10,7 +10,6 @@
           <th>Destinatario</th>
           <th>Titolo</th>
           <th>Messaggio</th>
-          <th>Rispondi</th>
           <th>Azione</th>
         </tr>
       </thead>
@@ -22,7 +21,8 @@
             <td><%= message.dest_user_id %></td>
             <td><%= message.title %></td>
             <td><%= message.message %></td>
-            <td><a href="/messages/<%= message.id%>">Leggi</a></td>
+            <td> <button onclick="leggiMessaggio(<%= message.id %>,)" class="waves-effect waves-light btn btn-devise">Leggi</button>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -34,3 +34,12 @@
   </div>
 </div>
 
+<script>
+  
+  function leggiMessaggio(id){
+    window.location.href = '/messages/' + id ;    
+  }
+
+
+
+</script>

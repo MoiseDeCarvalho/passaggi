@@ -1,3 +1,4 @@
+
  <div class="row row-home">   
   <div class="col l6 offset-l3 white form">
     <% if @profile.nil? %>
@@ -12,7 +13,7 @@
     <% else %>
     
      <!-- @profiles.each do |profile| -->
-      <% if @profile.user == current_user %>
+     
         <div class="field">
           <% if @profile.avatar.url != "/images/original/missing.png" %>
             <%=  image_tag @profile.avatar.url, id: "myImg", height:'20'%>
@@ -74,12 +75,16 @@
           </p>
         </div>
         <br/>
-        <div class="col l12 filed">
-           <%= link_to 'Modifica', edit_profile_path(@profile) %><i class="material-icons right">edit</i>
-        </div>
-          
+        <% if request["id"].nil? %>
+          <div class="col l12 filed">
+             <%= link_to 'Modifica', edit_profile_path(@profile) %><i class="material-icons right">edit</i>
+          </div>
+        <% else %>
+        <!-- mostro i feed che ha ricevuto -->
+          <a href="/feedbacks?id=<%= @profile.user_id %>" class="waves-effect waves-light btn btn-devise">Leggi recensioni</a>
+        <% end %> 
          
-      <% end %>  
+    
     <% end %>
    <!--  end   -->
 <script>

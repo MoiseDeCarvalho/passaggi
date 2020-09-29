@@ -1,9 +1,9 @@
 <header>
 	<nav class="light-blue darken-4">
 		<div class="nav-wrapper">
-			user: id: 
+			<!-- user: id:  -->
 			<% if !current_user.nil? %>
-			<%= current_user.id %>
+			<!--<%= current_user.id %> -->
 			<% end %>
 		  	<%= link_to "Passaggi", root_path, class:"brand-logo"%>
 		  	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -27,14 +27,14 @@
 			  	<li><%= link_to 'Veicolo', vehicles_path, :style=>'color:@ffffff;' %> </li>
 			  	<li><%= link_to 'Passaggi offerti', path_offers_path, :style=>'color:@ffffff;' %> </li>
 			  	<li><%= link_to 'Passaggi prenotati', used_path_offers_path, :style=>'color:@ffffff;' %> </li>
-			    <li><%= link_to 'Feedback', feedbacks_path, :style=>'color:@ffffff;' %> </li>
-			    <li><%= link_to 'Feedback_path', feedback_paths_path, :style=>'color:@ffffff;' %> </li>
+			    <li><%= link_to 'Feedback inviati', feedbacks_path, :style=>'color:@ffffff;' %> </li>
+			    <li><%= link_to 'Feedback ricevuti', feedback_ricevuti_path, :style=>'color:@ffffff;' %> </li>
 			  <li class="divider"></li>
 			  
 		  	</ul>
 		    <ul class="right hide-on-med-and-down ul-header  class="dropdown-content" >
 		     	<li><a style="color:#fff" href="/search"><i class="material-icons left">search</i>Trova</a></li>
-		      	<% if current_user && current_user.active == 0%>
+		      	<% if current_user && current_user.active == 0 && !current_user.admin%>
 		      		<li><a style="color:#fff" href="/path_offers/new"><i class="material-icons left">view_module</i>Nuovo passaggio</a></li>    
 		      	<% end %>
 

@@ -5,6 +5,7 @@ class PathOffer < ApplicationRecord
     belongs_to :vehicle
     has_one :type_vehicle, :through => :vehicle
     has_one :score, :through => :user
+    has_one :profile, :through => :user
 
 
 	def self.search(params)
@@ -136,6 +137,7 @@ class PathOffer < ApplicationRecord
     		.joins(:type_vehicle)
     		.joins(:user)
     		.joins(:score)
+            .joins(:profile)
 		 	.where(wheres)
 	    	.paginate(page: params[:page], per_page: 5)
     	else
@@ -143,6 +145,7 @@ class PathOffer < ApplicationRecord
     		.joins(:type_vehicle)
     		joins(:user)
     		.joins(:score)
+            .joins(:profile)
     		.paginate(page: params[:page], per_page: 5)
     	end
 		
