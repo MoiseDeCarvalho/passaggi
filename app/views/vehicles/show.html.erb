@@ -1,93 +1,73 @@
-<div class="row row-home">
-  <div class="col l4 offset-l4 white">
-    <% if @vehicle.user == current_user %>    
-      <div class="col l6 field">
-        <%= label('Tipo veicolo','Tipo veicolo', class:"black-text text-lighten-3") %>
+<div class="row row-home">   
+  <div class="col l6 offset-l3 form white">
+    <h4>Descrizione del veicolo</h4>
+    <% if @vehicle.nil? %>
+      <div class="col  offset-l2">        
         <br/>
-        <% if !@vehicle.typeVehicle.nil? %>
-          <% @vehicle.typeVehicle.each do |v| %>
-            <% if v.id == @vehicle.type_vehicle_id %>
-              <p class="testi-show">
-                <%= v.description %>
-              </p>  
-            <% end %>
-          <% end %> 
-        <% end %>  
-
-         
-        <div class="col 12 center">
-          <div class="col l6 left">        
-              <label class="black-text text-lighten-3">Foto 1</label>
-              <%=  image_tag(@vehicle.photo_1.url, size: "60x60") %>         
-          </div>
-
-          <div class="col l6 field">        
-              <label class="black-text text-lighten-3">Foto 2</label>
-              <%=  image_tag(@vehicle.photo_2.url, size: "60x60") %>         
-          </div>
-        </div>
-
-
-        <p> </p>
-        <div class="col l12 field">
-          <%= label( 'Marchio', 'Marchio', class:"black-text text-lighten-3")%>
-          <%= @vehicle.brand %>
-        </div>
-
-        
-
-        <div class="col l12 field">
-          <%= label('Modello', 'Modello', class:"black-text text-lighten-3")%>
-          <%= @vehicle.model %>
-        </div>
- 
-        
-
-<<<<<<< HEAD
-      <div class="col l6 field">
-       # <% if @vehicle.avatar.url != "/images/original/missing.png" %>
-        <%=  image_tag @vehicle.photo_1.url %>
-      #  <% end %>
-        <br/>
-        <label>Foto 1</label>
-        <br/>
-         
-
-        <br/>
-        <br/>
-        # <% if @vehicle.avatar.url != "/images/original/missing.png" %>
-        <%=  image_tag @vehicle.photo_2.url %>
-     #   <% end %>
-        <br/>
-        <label>Foto 2</label>
-=======
-        <div class="col l12 field">
-          <%= label('Motore', 'Motore', class:"black-text text-lighten-3")%>
-          <%= @vehicle.motor %>
-        </div>
-
-        <div class="col l12 field">
-          <%= label('Colore','Colore', class:"black-text text-lighten-3")%>
-          <%= @vehicle.colour %>
-        </div>
-        
-       <p></p>
-
-        <div class="col l12 field">
-          <span><%= link_to 'Back', vehicles_path   %><i class="material-icons left">arrow_back</i></span>
-        </div>
-        
-        <div class="col 11 field">
-          <span><%= link_to 'Modifica', edit_vehicle_path(@vehicle)%><i class="material-icons left">edit</i></span>
-        </div>
-         
- 
+        <%= link_to 'Inserisci veicolo', new_vehicle_path %><i class="material-icons right">create</i>
       </div>
->>>>>>> 8b7c2b137fac5c73f9243bc3f65cc86a9426bbb6
-        
-      </div>
+    <% else %>
+      <% if @vehicle.user == current_user %>
 
-      
+        <div class="col l6  field">
+          <%= label_tag 'Tipo veicolo', nil, class:"black-text text-lighten-3" %>
+          <br/>
+          <% if !@typeVehicle.nil? %>
+            <% @typeVehicle.each do |v| %>
+              <% if v.id == @vehicle.type_vehicle_id %>
+                <p class="testi-show">
+                  <%= v.description %>
+                </p>  
+              <% end %>
+            <% end %> 
+          <% end %>                
+        </div >
+
+         
+         
+          <div class="col l6">
+          <label class="black-text text-lighten-3">Foto 1</label>
+          <%=  image_tag(@vehicle.photo_1.url, size: "30x30") %>
+         
+
+
+        <label class="black-text text-lighten-3">Foto 2</label>
+        <%=  image_tag(@vehicle.photo_2.url, size: "30x30") %>
+                 
+        </div>
+
+        <div class="col l6  field">
+          <%= label_tag 'Marca', nil, class:"black-text text-lighten-3" %>
+          <br/>
+          <p class="testi-show"><%= @vehicle.brand %></p>
+        </div >
+
+        <div class="col l6  field">
+          <%= label_tag 'Modello', nil, class:"black-text text-lighten-3" %>
+          <br/>
+          <p class="testi-show"><%= @vehicle.model %></p>
+        </div >
+
+        <div class="col l6  field">
+          <%= label_tag 'Motore', nil, class:"black-text text-lighten-3" %>
+          <br/>
+          <p class="testi-show"><%= @vehicle.motor %></p>
+        </div >
+
+        <div class="col l6  field">
+          <%= label_tag 'Colore', nil, class:"black-text text-lighten-3" %>
+          <br/>
+          <p class="testi-show"><%= @vehicle.colour %></p>
+        </div >
+<div class="col l1">
+<%= link_to 'Cancella', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %><i class="material-icons left">delete</i>
+</div>
+<div class="col l1 offset-l3">
+</div>
+<div class="col 11">
+<%= link_to 'Modifica', edit_vehicle_path(@vehicle)%><i class="material-icons left">edit</i>
+</div>
+      <% end %>
     <% end %>
 
   </div>
