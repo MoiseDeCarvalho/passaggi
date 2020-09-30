@@ -37,6 +37,17 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
 
+    @score = Score.find_by(:user_id => current_user.id)
+    if @score.nil?
+      # creo il record Score per l utente così la join di ricerca funziona
+      @score = Score.new
+      @score.user_id = current_user.id
+      @score.score = 0
+      @score.count = 0
+      @score.total = 0
+      @score.save!
+    end
+
     respond_to do |format|
       if @profile.save
         format.html { redirect_to profiles_url, notice: 'Profilo correttamente inserito' }
@@ -69,7 +80,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to profiles_url, notice: 'Profilo correttamente modificato.' }
+        format.html { redirect_to profiles_url}
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }

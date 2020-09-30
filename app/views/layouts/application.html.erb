@@ -46,20 +46,28 @@
     //var elemsModal = document.querySelectorAll('.modal');
     //var instancesModal = M.Modal.init(elemsModal, options);
 
+    var elemsDatePicker = document.querySelectorAll('.datepicker');
+    var instancesDatePicker = M.Datepicker.init(elemsDatePicker, options);
+
+    var elemsTimePicker = document.querySelectorAll('.timepicker');
+    var instancesTimePicker = M.Timepicker.init(elemsTimePicker, options);
   });
 
+   
   // Or with jQuery
 
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
-    
+    $('.datepicker').datepicker();
+    $('.timepicker').timepicker();
     $('select').formSelect();
    // $('.modal').modal();
 
   });
-
+ 
  
     </script>
 
 </html>
+ 
