@@ -11,8 +11,7 @@
           <th>Utente</th>          
           <th>Feedback</th>
           <th>Punteggio</th>
-          <th colspan="2">Azione</th>
-        </tr>
+         </tr>
       </thead>
       <tbody>
         <% @feedback.each do |feedback| %>
@@ -21,7 +20,7 @@
             <td><%= feedback.path_offer.profile.name %>            
             <td><%= feedback.feedback %></td>
             <td><%= feedback.score %></td>
-            <td><%= link_to 'Cancella', feedback, method: :delete, data: { confirm: 'Are you sure?' } , class:"waves-effect waves-light btn btn-devise"%> </td>
+             
           </tr>
         <% end %>     
       </tbody>
