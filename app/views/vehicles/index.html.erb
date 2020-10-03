@@ -9,11 +9,11 @@
     <% else %>
       <% if @vehicle.user == current_user %>
 
-        <div class="col l6  field">
+        <div class="col l6  field"> 
           <%= label_tag 'Tipo veicolo', nil, class:"black-text text-lighten-3" %>
           <br/>
-          <% if !@typeVehicle.nil? %>
-            <% @typeVehicle.each do |v| %>
+          <% if !@typeVehicles.nil? %>
+            <% @typeVehicles.each do |v| %>
               <% if v.id == @vehicle.type_vehicle_id %>
                 <p class="testi-show">
                   <%= v.description %>

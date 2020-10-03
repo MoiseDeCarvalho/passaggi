@@ -35,7 +35,7 @@
               </td>  
               <td>
                 <% if Date.today  < path_offer.date_departure %>
-                  <button onclick="deletePathBooked(<%= path_offer.id %>, '<%= current_user.id %>, <%= path_offer.departure %>', <'%= path_offer.arrive %>')"  class="waves-effect waves-light btn btn-devise">Cancella</button>
+                  <button onclick="deletePathBooked(<%= path_offer.id %>, <%= current_user.id %>, '<%= path_offer.departure %>', '<%= path_offer.arrive %>')"  class="waves-effect waves-light btn btn-devise">Cancella</button>
                 <% end %>
               </td>     
             </tr> 

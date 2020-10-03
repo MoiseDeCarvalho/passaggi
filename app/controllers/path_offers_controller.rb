@@ -80,7 +80,7 @@ class PathOffersController < ApplicationController
   #GET /delete-path-booked
   def delete_path_booked
     PathOffer.path_delete_booked(params)
-    p = PathOffer.find_where(:id => params["path_offer_id"])
+    p = PathOffer.find_by(:id => params["path_offer_id"])
     UserMailer.path_offer_delete_confirmation(current_user, params).deliver
     path_offer_creator = User.find_by(:id => p.user_id)
     user_delete_path = Profile.find_by(:user_id => current_user.id) # trovo il profilo di chi è collegato
