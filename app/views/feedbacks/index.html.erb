@@ -28,7 +28,11 @@
     <% end %>
     <br/>
   <div class="center">
-    <%= will_paginate @feedback %>
+    <% if !@feedback.nil? %>
+      <%= will_paginate @feedback %>
+      <% else %>
+        <p>Al momento non ci sono recensioni </p>
+      <% end %>
   </div>
   </div>
 
