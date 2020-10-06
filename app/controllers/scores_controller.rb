@@ -79,5 +79,6 @@ class ScoresController < ApplicationController
     def check_user
       if current_user.id != @score.user_id
         redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
+      end
     end
 end
