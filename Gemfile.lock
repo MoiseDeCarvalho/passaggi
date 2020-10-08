@@ -262,7 +262,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (~> 2.3)
+  aws-sdk
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
