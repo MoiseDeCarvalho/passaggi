@@ -48,8 +48,10 @@
 	    </div>
 
 	    <div class="col l3 field">
-	      	<%= label( :vehicle_id , 'Veicolo', '', class:"label-custom") %>
-       		<%= select_tag :type_vehicle_id, options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
+	    	<% if @vehicles.nil? %>
+	      		<%= label( :vehicle_id , 'Veicolo', '', class:"label-custom") %>
+       			<%= select_tag :type_vehicle_id, options_from_collection_for_select(@vehicles, 'id', 'description'), id: 'ty' %>
+       		<% end %>
    		</div>
 
    		<div class="col   l3 field">

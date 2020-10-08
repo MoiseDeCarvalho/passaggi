@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_203303) do
+ActiveRecord::Schema.define(version: 2020_10_07_164536) do
 
   create_table "feedback_paths", force: :cascade do |t|
     t.integer "user_id"
@@ -98,39 +98,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_203303) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "t1s", force: :cascade do |t|
-    t.datetime "tep"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ts", force: :cascade do |t|
-    t.time "tep"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "a"
-  end
-
-  create_table "t1s", force: :cascade do |t|
-    t.datetime "tep"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ts", force: :cascade do |t|
-    t.time "tep"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "a"
-  end
-
   create_table "type_vehicles", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
