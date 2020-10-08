@@ -36,7 +36,7 @@ gem 'aws-sdk'
 gem 'jquery-rails', '~> 4.4'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test, :production]
 
 
 group :development, :test do
