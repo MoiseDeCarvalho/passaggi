@@ -9,8 +9,8 @@ class CreatePathOffers < ActiveRecord::Migration[6.0]
       t.timestamp :date_arrive
       t.float :price
       t.integer :max_available
-      t.boolean :booked
-      t.boolean :full
+      t.integer :booked
+      t.integer :full
 
       t.timestamps
     end
