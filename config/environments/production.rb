@@ -113,7 +113,7 @@ Rails.application.configure do
     user_name: ENV['USER_MAIL'],
     password: ENV['USER_PWD']
   }
-}
+
 
 
 
