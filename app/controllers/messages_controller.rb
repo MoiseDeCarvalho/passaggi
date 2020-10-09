@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    
+    @profile = Profile.find_by(:user_id => current_user.id)
 
     @reply = params["reply"]
     @path = PathOffer.find_by(:id => params["path_offer_id"])

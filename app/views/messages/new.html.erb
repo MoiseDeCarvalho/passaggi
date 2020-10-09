@@ -1,8 +1,17 @@
 <div class="row row-home">
 	<div class="col l6 offset-l3 white">
-		<h4>Scrivi il messaggio</h4>
 
-		<%= render 'form', message: @message %>
+		<% if @profile.nil? %>		     
+		   	<h5 class="center">Completa le informazioni personali</h5>
+		    <br/>
+		    <br/>
+		    <p class="center"><%= link_to 'Compila le informazioni personali', new_profile_path %><i class="material-icons left">add</i></p>
+ 	    <% else %>
+	    	<h4>Scrivi il messaggio</h4>
+
+			<%= render 'form', message: @message %>
+	    <% end %>
+		
 	</div>
 </div>
 

@@ -94,8 +94,25 @@ Rails.application.configure do
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
           s3_region: ENV['S3_REGION'],
           s3_host_name: ENV['S3_HOST_NAME']
-        
+        }
     }
+
+  config.action_mailer.raise_delivery_errors = true
+
+# :smtp :sendmail :file :text
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { host: "localhost:3000"}
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "passaggio.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV['USER_MAIL'],
+    password: ENV['USER_PWD']
+  }
 }
 
 

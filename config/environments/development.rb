@@ -48,6 +48,9 @@ Rails.application.configure do
     enable_starttls_auto: true,
     user_name: "passaggioruby@gmail.com",
     password: "AngeloMoise2020"
+    #user_name: ENV['USER_MAIL'],
+    #password: ENV['USER_PWD']
+
   }
 
   config.action_mailer.perform_caching = false
